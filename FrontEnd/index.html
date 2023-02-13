@@ -91,11 +91,13 @@
 </nav>
 
 <!--CarList-->
+
+<button id="btnRent" type="button" class="btn btn-warning btn-block">Rent</button>
 <div class="container-fluid d-flex justify-content-center">
-    <div class="row mt-4">
+    <div class="row mt-4" id="car-content">
         <div class="col-sm-4">
             <div class="card">
-                <img src="assets/images/Genaral/alto-m/alto-m%20(1).jpg" class="card-img-top" width="100%">
+                <img src="assets/images/Genaral/alto-m/1.png" class="card-img-top" width="100%">
                 <div class="card-body pt-0 px-0">
                     <div class="d-flex flex-row justify-content-between mb-0 px-3 mt-1">
                         <div class="d-flex flex-column"><span class="text-muted">Price Per Day:<br><small class="text-muted">100KM</small></span></span></div>
@@ -139,13 +141,163 @@
 <!--                    <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>-->
                 </div>
             </div>
+
         </div>
+<!--        <div class="col-sm-4">-->
+<!--            <div class="card">-->
+<!--                <img src="assets/images/Genaral/alto-m/2.png" class="card-img-top" width="100%">-->
+<!--                <div class="card-body pt-0 px-0">-->
+<!--                    <div class="d-flex flex-row justify-content-between mb-0 px-3 mt-1">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Price Per Day:<br><small class="text-muted">100KM</small></span></span></div>-->
+<!--                        <h6>Rs2,500</h6>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between mb-0 px-3">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Price Per Month:<br><small class="text-muted">2400KM</small></span></div>-->
+<!--                        <h6>Rs64,350</h6>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between mb-0 px-3">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Price Per extra KM:</span></div>-->
+<!--                        <h6>Rs30</h6>-->
+<!--                    </div>-->
+<!--                    <hr class="mt-2 mx-3">-->
+<!--                    <div class="d-flex flex-row justify-content-between px-3">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Brand:</span></div>-->
+<!--                        <div class="d-flex flex-column"><h5 class="mb-0">Suzuki</h5></div>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between px-3 ">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Model:</span></div>-->
+<!--                        <div class="d-flex flex-column"><h5 class="mb-0">Alto</h5></div>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between px-3 ">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">No of passengers:</span></div>-->
+<!--                        <div class="d-flex flex-column"><h5 class="mb-0">4</h5></div>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between px-3 ">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Transmission type:</span></div>-->
+<!--                        <div class="d-flex flex-column"><h5 class="mb-0">Auto</h5></div>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between px-3 ">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Fuel type:</span></div>-->
+<!--                        <div class="d-flex flex-column"><h5 class="mb-0">Petrol</h5></div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;                    <div class="d-flex flex-row justify-content-between p-3 mid">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <div class="d-flex flex-column"><small class="text-muted mb-1">Daily Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/iPtsG7I.png" width="35px" height="25px"><div class="d-flex flex-column ml-1"><small class="ghj">1.4L MultiAir</small><small class="ghj">16V I-4 Turbo</small></div></div></div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <div class="d-flex flex-column"><small class="text-muted mb-2">Monthly Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/J11mEBq.png"><h6 class="ml-1">135 hp&ast;</h6></div></div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <small class="text-muted key pl-3">Standard key Features</small>&ndash;&gt;-->
+<!--                    <div class="mx-3 mt-3 mb-2"><button type="button" class="btn btn-warning btn-block"><small>Rent</small></button></div>-->
+<!--                    &lt;!&ndash;                    <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--        <div class="col-sm-4">-->
+<!--            <div class="card">-->
+<!--                <img src="assets/images/Genaral/alto-m/3.png" class="card-img-top" width="100%">-->
+<!--                <div class="card-body pt-0 px-0">-->
+<!--                    <div class="d-flex flex-row justify-content-between mb-0 px-3 mt-1">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Price Per Day:<br><small class="text-muted">100KM</small></span></span></div>-->
+<!--                        <h6>Rs2,500</h6>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between mb-0 px-3">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Price Per Month:<br><small class="text-muted">2400KM</small></span></div>-->
+<!--                        <h6>Rs64,350</h6>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between mb-0 px-3">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Price Per extra KM:</span></div>-->
+<!--                        <h6>Rs30</h6>-->
+<!--                    </div>-->
+<!--                    <hr class="mt-2 mx-3">-->
+<!--                    <div class="d-flex flex-row justify-content-between px-3">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Brand:</span></div>-->
+<!--                        <div class="d-flex flex-column"><h5 class="mb-0">Suzuki</h5></div>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between px-3 ">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Model:</span></div>-->
+<!--                        <div class="d-flex flex-column"><h5 class="mb-0">Alto</h5></div>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between px-3 ">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">No of passengers:</span></div>-->
+<!--                        <div class="d-flex flex-column"><h5 class="mb-0">4</h5></div>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between px-3 ">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Transmission type:</span></div>-->
+<!--                        <div class="d-flex flex-column"><h5 class="mb-0">Auto</h5></div>-->
+<!--                    </div>-->
+<!--                    <div class="d-flex flex-row justify-content-between px-3 ">-->
+<!--                        <div class="d-flex flex-column"><span class="text-muted">Fuel type:</span></div>-->
+<!--                        <div class="d-flex flex-column"><h5 class="mb-0">Petrol</h5></div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;                    <div class="d-flex flex-row justify-content-between p-3 mid">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <div class="d-flex flex-column"><small class="text-muted mb-1">Daily Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/iPtsG7I.png" width="35px" height="25px"><div class="d-flex flex-column ml-1"><small class="ghj">1.4L MultiAir</small><small class="ghj">16V I-4 Turbo</small></div></div></div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <div class="d-flex flex-column"><small class="text-muted mb-2">Monthly Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/J11mEBq.png"><h6 class="ml-1">135 hp&ast;</h6></div></div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <small class="text-muted key pl-3">Standard key Features</small>&ndash;&gt;-->
+<!--                    <div class="mx-3 mt-3 mb-2"><button type="button" class="btn btn-warning btn-block"><small>Rent</small></button></div>-->
+<!--                    &lt;!&ndash;                    <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
             </div>
         </div>
+
 
     </div>
 </div>
 
-
+<script>
+    $("#btnRent").click(function (){
+        $("#car-content").append("<div class=\"col-sm-4\">\n" +
+            "            <div class=\"card\">\n" +
+            "                <img src=\"assets/images/Genaral/alto-m/1.png\" class=\"card-img-top\" width=\"100%\">\n" +
+            "                <div class=\"card-body pt-0 px-0\">\n" +
+            "                    <div class=\"d-flex flex-row justify-content-between mb-0 px-3 mt-1\">\n" +
+            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Price Per Day:<br><small class=\"text-muted\">100KM</small></span></span></div>\n" +
+            "                        <h6>Rs2,500</h6>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"d-flex flex-row justify-content-between mb-0 px-3\">\n" +
+            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Price Per Month:<br><small class=\"text-muted\">2400KM</small></span></div>\n" +
+            "                        <h6>Rs64,350</h6>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"d-flex flex-row justify-content-between mb-0 px-3\">\n" +
+            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Price Per extra KM:</span></div>\n" +
+            "                        <h6>Rs30</h6>\n" +
+            "                    </div>\n" +
+            "                    <hr class=\"mt-2 mx-3\">\n" +
+            "                    <div class=\"d-flex flex-row justify-content-between px-3\">\n" +
+            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Brand:</span></div>\n" +
+            "                        <div class=\"d-flex flex-column\"><h5 class=\"mb-0\">Suzuki</h5></div>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"d-flex flex-row justify-content-between px-3 \">\n" +
+            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Model:</span></div>\n" +
+            "                        <div class=\"d-flex flex-column\"><h5 class=\"mb-0\">Alto</h5></div>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"d-flex flex-row justify-content-between px-3 \">\n" +
+            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">No of passengers:</span></div>\n" +
+            "                        <div class=\"d-flex flex-column\"><h5 class=\"mb-0\">4</h5></div>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"d-flex flex-row justify-content-between px-3 \">\n" +
+            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Transmission type:</span></div>\n" +
+            "                        <div class=\"d-flex flex-column\"><h5 class=\"mb-0\">Auto</h5></div>\n" +
+            "                    </div>\n" +
+            "                    <div class=\"d-flex flex-row justify-content-between px-3 \">\n" +
+            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Fuel type:</span></div>\n" +
+            "                        <div class=\"d-flex flex-column\"><h5 class=\"mb-0\">Petrol</h5></div>\n" +
+            "                    </div>\n" +
+            "<!--                    <div class=\"d-flex flex-row justify-content-between p-3 mid\">-->\n" +
+            "<!--                        <div class=\"d-flex flex-column\"><small class=\"text-muted mb-1\">Daily Range:</small><div class=\"d-flex flex-row\"><img src=\"https://imgur.com/iPtsG7I.png\" width=\"35px\" height=\"25px\"><div class=\"d-flex flex-column ml-1\"><small class=\"ghj\">1.4L MultiAir</small><small class=\"ghj\">16V I-4 Turbo</small></div></div></div>-->\n" +
+            "<!--                        <div class=\"d-flex flex-column\"><small class=\"text-muted mb-2\">Monthly Range:</small><div class=\"d-flex flex-row\"><img src=\"https://imgur.com/J11mEBq.png\"><h6 class=\"ml-1\">135 hp&ast;</h6></div></div>-->\n" +
+            "<!--                    </div>-->\n" +
+            "<!--                    <small class=\"text-muted key pl-3\">Standard key Features</small>-->\n" +
+            "                    <div class=\"mx-3 mt-3 mb-2\"><button type=\"button\" class=\"btn btn-warning btn-block\"><small>Rent</small></button></div>\n" +
+            "<!--                    <small class=\"d-flex justify-content-center text-muted\">*Legal Disclaimer</small>-->\n" +
+            "                </div>\n" +
+            "            </div>\n" +
+            "\n" +
+            "        </div>")
+    });
+</script>
 </body>
 </html>
