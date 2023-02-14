@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Easy Car Rental Service</title>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <script src="https://kit.fontawesome.com/97dbc65e21.js" crossorigin="anonymous"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
@@ -57,6 +58,23 @@
                 margin-bottom: 50px;
             }
         }
+
+        #welcomeScreen{
+            width: 99vw;
+            height: 600px;
+            background-image: url("assets/images/bg.jpg");
+            background-size: cover;
+        }
+
+        #welcomeScreen div{
+            max-width: 300px;
+        }
+
+        .form-login{
+            max-width: 300px;
+        }
+
+
     </style>
 
 </head>
@@ -67,7 +85,7 @@
 <!--navBar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container">
-        <a class="navbar-brand" href="#">EasyCar</a>
+        <a class="navbar-brand" href="#"><img src="assets/images/LogoBlack.png" width="200" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -84,15 +102,39 @@
                 </li>
             </ul>
             <span class="navbar-text">
-                011-2332331
+                <i class="fa-solid fa-phone-volume"></i>
+                011-2332331<br>
+                <i class="fa-solid fa-envelope"></i>
+                easycar@contact.lk
             </span>
         </div>
     </div>
 </nav>
 
-<!--CarList-->
+<!--Welcome Screen-->
+<div id="welcomeScreen" class="justify-content-end" >
+    <div class="container bg-light rounded-lg ">
+        <form class="form-login p-4">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 
-<button id="btnRent" type="button" class="btn btn-warning btn-block">Rent</button>
+</div>
+
+<!--CarList-->
 <div class="container-fluid d-flex justify-content-center">
     <div class="row mt-4" id="car-content">
         <div class="col-sm-4">
@@ -248,55 +290,37 @@
 </div>
 
 <script>
-    $("#btnRent").click(function (){
-        $("#car-content").append("<div class=\"col-sm-4\">\n" +
-            "            <div class=\"card\">\n" +
-            "                <img src=\"assets/images/Genaral/alto-m/1.png\" class=\"card-img-top\" width=\"100%\">\n" +
-            "                <div class=\"card-body pt-0 px-0\">\n" +
-            "                    <div class=\"d-flex flex-row justify-content-between mb-0 px-3 mt-1\">\n" +
-            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Price Per Day:<br><small class=\"text-muted\">100KM</small></span></span></div>\n" +
-            "                        <h6>Rs2,500</h6>\n" +
-            "                    </div>\n" +
-            "                    <div class=\"d-flex flex-row justify-content-between mb-0 px-3\">\n" +
-            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Price Per Month:<br><small class=\"text-muted\">2400KM</small></span></div>\n" +
-            "                        <h6>Rs64,350</h6>\n" +
-            "                    </div>\n" +
-            "                    <div class=\"d-flex flex-row justify-content-between mb-0 px-3\">\n" +
-            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Price Per extra KM:</span></div>\n" +
-            "                        <h6>Rs30</h6>\n" +
-            "                    </div>\n" +
-            "                    <hr class=\"mt-2 mx-3\">\n" +
-            "                    <div class=\"d-flex flex-row justify-content-between px-3\">\n" +
-            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Brand:</span></div>\n" +
-            "                        <div class=\"d-flex flex-column\"><h5 class=\"mb-0\">Suzuki</h5></div>\n" +
-            "                    </div>\n" +
-            "                    <div class=\"d-flex flex-row justify-content-between px-3 \">\n" +
-            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Model:</span></div>\n" +
-            "                        <div class=\"d-flex flex-column\"><h5 class=\"mb-0\">Alto</h5></div>\n" +
-            "                    </div>\n" +
-            "                    <div class=\"d-flex flex-row justify-content-between px-3 \">\n" +
-            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">No of passengers:</span></div>\n" +
-            "                        <div class=\"d-flex flex-column\"><h5 class=\"mb-0\">4</h5></div>\n" +
-            "                    </div>\n" +
-            "                    <div class=\"d-flex flex-row justify-content-between px-3 \">\n" +
-            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Transmission type:</span></div>\n" +
-            "                        <div class=\"d-flex flex-column\"><h5 class=\"mb-0\">Auto</h5></div>\n" +
-            "                    </div>\n" +
-            "                    <div class=\"d-flex flex-row justify-content-between px-3 \">\n" +
-            "                        <div class=\"d-flex flex-column\"><span class=\"text-muted\">Fuel type:</span></div>\n" +
-            "                        <div class=\"d-flex flex-column\"><h5 class=\"mb-0\">Petrol</h5></div>\n" +
-            "                    </div>\n" +
-            "<!--                    <div class=\"d-flex flex-row justify-content-between p-3 mid\">-->\n" +
-            "<!--                        <div class=\"d-flex flex-column\"><small class=\"text-muted mb-1\">Daily Range:</small><div class=\"d-flex flex-row\"><img src=\"https://imgur.com/iPtsG7I.png\" width=\"35px\" height=\"25px\"><div class=\"d-flex flex-column ml-1\"><small class=\"ghj\">1.4L MultiAir</small><small class=\"ghj\">16V I-4 Turbo</small></div></div></div>-->\n" +
-            "<!--                        <div class=\"d-flex flex-column\"><small class=\"text-muted mb-2\">Monthly Range:</small><div class=\"d-flex flex-row\"><img src=\"https://imgur.com/J11mEBq.png\"><h6 class=\"ml-1\">135 hp&ast;</h6></div></div>-->\n" +
-            "<!--                    </div>-->\n" +
-            "<!--                    <small class=\"text-muted key pl-3\">Standard key Features</small>-->\n" +
-            "                    <div class=\"mx-3 mt-3 mb-2\"><button type=\"button\" class=\"btn btn-warning btn-block\"><small>Rent</small></button></div>\n" +
-            "<!--                    <small class=\"d-flex justify-content-center text-muted\">*Legal Disclaimer</small>-->\n" +
-            "                </div>\n" +
-            "            </div>\n" +
-            "\n" +
-            "        </div>")
+    $(function() {
+        $(".btn").click(function() {
+            $(".form-signin").toggleClass("form-signin-left");
+            $(".form-signup").toggleClass("form-signup-left");
+            $(".frame").toggleClass("frame-long");
+            $(".signup-inactive").toggleClass("signup-active");
+            $(".signin-active").toggleClass("signin-inactive");
+            $(".forgot").toggleClass("forgot-left");
+            $(this).removeClass("idle").addClass("active");
+        });
+    });
+
+    $(function() {
+        $(".btn-signup").click(function() {
+            $(".nav").toggleClass("nav-up");
+            $(".form-signup-left").toggleClass("form-signup-down");
+            $(".success").toggleClass("success-left");
+            $(".frame").toggleClass("frame-short");
+        });
+    });
+
+    $(function() {
+        $(".btn-signin").click(function() {
+            $(".btn-animate").toggleClass("btn-animate-grow");
+            $(".welcome").toggleClass("welcome-left");
+            $(".cover-photo").toggleClass("cover-photo-down");
+            $(".frame").toggleClass("frame-short");
+            $(".profile-photo").toggleClass("profile-photo-down");
+            $(".btn-goback").toggleClass("btn-goback-up");
+            $(".forgot").toggleClass("forgot-fade");
+        });
     });
 </script>
 </body>
