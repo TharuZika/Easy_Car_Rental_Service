@@ -2,9 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Easy Car Rental Service / Driver</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/97dbc65e21.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
+<!--navBar-->
+<nav class="navbar shadow-sm navbar-expand-lg navbar-light bg-warning">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="assets/images/LogoBlack.png" width="200" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <span class="navbar-text">
+                <i class="fa-solid fa-user"></i>
+                Driver
+            </span>
+        </div>
+    </div>
+</nav>
 
+<div class="container">
+    <div class="mt-md-4 mb-md-4">
+        <h1>Driver Dashboard</h1>
+    <table class="table shadow">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Booking ID</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Option</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>BK-001</td>
+            <td>Saman Kumara</td>
+            <td>2023-02-15</td>
+            <td>2023-03-16</td>
+            <td><button class="btn-sm btn-success mr-2">Get Job</button><button class="btn-sm btn-danger mr-2">Reject</button></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>
