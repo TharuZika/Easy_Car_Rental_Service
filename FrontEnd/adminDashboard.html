@@ -18,13 +18,16 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Dashboard</a>
+          <a class="nav-link" id="dashboardNav" href="#">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Cars</a>
+          <a class="nav-link" id="carsNav" href="#">Cars</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Drivers</a>
+          <a class="nav-link" href="#" id="customersNav">Customers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="driversNav">Drivers</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Income</a>
@@ -38,12 +41,11 @@
   </div>
 </nav>
 
-
+<!--Dashboard-->
+<div id="dashboardPage">
 <div class="container">
-
-  <!--cards-->
-
-  <div class="mt-md-5 mb-md-5">
+<div class="mt-md-4 mb-md-4">
+  <h1>Dashboard</h1>
 <div class="row">
   <div class="col-md-3">
     <div class="card shadow text-dark bg-warning mb-3">
@@ -125,10 +127,356 @@
       </tbody>
     </table>
   </div>
-
+</div>
 </div>
 
+<!--Car Management-->
+<div id="carPage">
+<div class="container">
+<div class="mt-md-4 mb-md-4">
+  <h1>Cars</h1>
+  <div class="row ">
+    <div class="col-6">
+      <form>
+        <div class="row mt-4">
+          <div class="col">
+            <label for="regno">Register Number</label>
+            <input type="text" class="form-control" id="regno" placeholder="ABC-1234">
+          </div>
+          <div class="col">
+            <label for="make">Make</label>
+            <input type="text" class="form-control" id="make" placeholder="Toyota, Suzuki, Honda">
+          </div>
+          <div class="col">
+            <label for="model">Model</label>
+            <input type="text" class="form-control" id="model" placeholder="Vitz, Lancer">
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <label for="fuel">Fuel Type</label>
+            <select class="form-control" id="fuel">
+              <option>Petrol</option>
+              <option>Diesel</option>
+              <option>Hybrid</option>
+              <option>Electric</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="category">Category</label>
+            <select class="form-control" id="category">
+              <option>Genaral</option>
+              <option>Premium</option>
+              <option>Luxury</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="color">Color</label>
+            <input type="text" class="form-control" id="color" placeholder="White, Wine Red">
+          </div>
+        </div>
+        <div class="form-group row mt-4">
+          <div class="col">
+            <label for="priceDay">Price per Day</label>
+            <input type="text" class="form-control" id="priceDay" placeholder="Rs:">
+          </div>
+          <div class="col">
+            <label for="priceDay">Price per Month</label>
+            <input type="text" class="form-control" id="priceMonth" placeholder="Rs:">
+          </div>
+          <div class="col">
+            <label for="priceDay">Price per Km</label>
+            <input type="text" class="form-control" id="priceKm" placeholder="Rs:">
+          </div>
+        </div>
+        <div class="form-group row mt-4">
+          <div class="col">
+            <label for="rangeDay">Range per Day</label>
+            <input type="text" class="form-control" id="rangeDay" placeholder="Km:">
+          </div>
+          <div class="col">
+            <label for="rangeMonth">Range per Month</label>
+            <input type="text" class="form-control" id="rangeMonth" placeholder="Rs:">
+          </div>
+        </div>
+        <div class="form-group row mt-4">
+          <div class="col">
+            <label for="carImg">Car Image</label>
+            <input type="file" class="form-control-file" id="carImg">
+          </div>
+          <div class="col btn-group">
+            <button class="btn btn-success">Save</button>
+            <button class="btn btn-warning">Update</button>
+            <button class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+
+
+    <!--  booking table-->
+    <div class="col-6">
+      <table class="table shadow">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">RegNo</th>
+          <th scope="col">Image</th>
+          <th scope="col">Make</th>
+          <th scope="col">Model</th>
+          <th scope="col">Type</th>
+          <th scope="col">Fuel</th>
+          <th scope="col">NoPas</th>
+          <th scope="col">Avail</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">KL-1234</th>
+          <td><img src="assets/images/Genaral/alto-m/1.png" width="100" alt="1234"></td>
+          <td>Suzuki</td>
+          <td>Alto</td>
+          <td>Genaral</td>
+          <td>Petrol</td>
+          <td>4</td>
+          <td class="text-success">Yes</td>
+        </tr>
+        <tr>
+          <th scope="row">KL-6245</th>
+          <td><img src="assets/images/Genaral/alto-m/2.png" width="100"  alt="1234"></td>
+          <td>Suzuki</td>
+          <td>Alto</td>
+          <td>Genaral</td>
+          <td>Petrol</td>
+          <td>4</td>
+          <td class="text-success">Yes</td>
+        </tr>
+        <tr>
+          <th scope="row">KL-3244</th>
+          <td><img src="assets/images/Genaral/alto-m/3.png" width="100"  alt="1234"></td>
+          <td>Suzuki</td>
+          <td>Alto</td>
+          <td>Genaral</td>
+          <td>Petrol</td>
+          <td>4</td>
+          <td class="text-danger">No</td>
+        </tr>
+        <tr>
+          <th scope="row">KL-3244</th>
+          <td><img src="assets/images/Genaral/alto-m/4.png" width="100"  alt="1234"></td>
+          <td>Suzuki</td>
+          <td>Alto</td>
+          <td>Genaral</td>
+          <td>Petrol</td>
+          <td>4</td>
+          <td class="text-success">Yes</td>
+        </tr>
+        <tr>
+          <th scope="row">KL-3244</th>
+          <td><img src="assets/images/Genaral/alto-m/5.png" width="100"  alt="1234"></td>
+          <td>Suzuki</td>
+          <td>Alto</td>
+          <td>Genaral</td>
+          <td>Petrol</td>
+          <td>4</td>
+          <td class="text-success">Yes</td>
+        </tr>
+        <tr>
+          <th scope="row">KL-3244</th>
+          <td><img src="assets/images/Genaral/alto-m/6.png" width="100"  alt="1234"></td>
+          <td>Suzuki</td>
+          <td>Alto</td>
+          <td>Genaral</td>
+          <td>Petrol</td>
+          <td>4</td>
+          <td class="text-success">Yes</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!--Customer Management-->
+<div id="customerPage">
+  <div class="container">
+    <div class="mt-md-4 mb-md-4">
+      <h1>Customers</h1>
+      <div class="row ">
+        <div class="col-6">
+          <form>
+            <div class="row mt-4">
+              <div class="col">
+                <label for="cus_nic">NIC Number</label>
+                <input type="text" class="form-control" id="cus_nic" placeholder="200023563389">
+              </div>
+              <div class="col">
+                <label for="cus_name">Name</label>
+                <input type="text" class="form-control" id="cus_name" placeholder="Pasan Kumara">
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <label for="cus_address">Address</label>
+                <input type="text" class="form-control" id="cus_address" placeholder="721/C, Galle.">
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <label for="cus_contact">Contact Number</label>
+                <input type="text" class="form-control" id="cus_contact" placeholder="0712345678">
+              </div>
+              <div class="col">
+                <label for="cus_email">Address</label>
+                <input type="text" class="form-control" id="cus_email" placeholder="example@email.com">
+              </div>
+            </div>
+            <div class="form-group row mt-4">
+              <div class="col">
+                <label for="img_nic">NIC Image</label>
+                <input type="file" class="form-control-file" id="img_nic">
+                <small>Upload a valid NIC or Driving License</small>
+              </div>
+              <div class="col btn-group">
+                <button class="btn btn-success">Save</button>
+                <button class="btn btn-warning">Update</button>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+
+
+        <!--  booking table-->
+        <div class="col-6">
+          <table class="table shadow">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">NIC</th>
+              <th scope="col">Name</th>
+              <th scope="col">Address</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>CS-001</td>
+              <td>200113203389</td>
+              <td>Saman Kumara</td>
+              <td>721/C, Galle</td>
+              <td>0788899144</td>
+              <td>contact@gmail.com</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Driver Management-->
+<div id="driverPage">
+  <div class="container">
+    <div class="mt-md-4 mb-md-4">
+      <h1>Drivers</h1>
+      <div class="row ">
+        <div class="col-6">
+          <form>
+            <div class="row mt-4">
+              <div class="col">
+                <label for="cus_nic">License Number</label>
+                <input type="text" class="form-control" id="dr_lic" placeholder="B12345678">
+              </div>
+              <div class="col">
+                <label for="cus_name">Name</label>
+                <input type="text" class="form-control" id="dr_name" placeholder="Pasan Kumara">
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <label for="cus_address">Contact Number</label>
+                <input type="text" class="form-control" id="dr_contact" placeholder="0712345678">
+              </div>
+            </div>
+            <div class="form-group row mt-4">
+              <div class="col-3 btn-group">
+                <button class="btn btn-success">Save</button>
+                <button class="btn btn-warning">Update</button>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+
+
+        <!--  booking table-->
+        <div class="col-6">
+          <table class="table shadow">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">License Number</th>
+              <th scope="col">Name</th>
+              <th scope="col">Contact</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>DR-001</td>
+              <td>B3203389</td>
+              <td>Saman Kumara</td>
+              <td>0788899144</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+
+<script>
+  $("#dashboardNav").click(function (){
+    $("#dashboardPage").css("display" , "block");
+    $("#carPage").css("display", "none");
+    $("#customerPage").css("display", "none");
+    $("#driverPage").css("display", "none");
+  });
+
+  $("#carsNav").click(function (){
+    $("#dashboardPage").css("display" , "none");
+    $("#carPage").css("display", "block");
+    $("#customerPage").css("display", "none");
+    $("#driverPage").css("display", "none");
+  });
+
+  $("#customersNav").click(function (){
+    $("#dashboardPage").css("display" , "none");
+    $("#carPage").css("display", "none");
+    $("#customerPage").css("display", "block");
+    $("#driverPage").css("display", "none");
+  });
+
+  $("#driversNav").click(function (){
+    $("#dashboardPage").css("display" , "none");
+    $("#carPage").css("display", "none");
+    $("#customerPage").css("display", "none");
+    $("#driverPage").css("display", "block");
+  });
+
+
+</script>
 </body>
 </html>
