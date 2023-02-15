@@ -7,6 +7,10 @@
     <script src="https://kit.fontawesome.com/97dbc65e21.js" crossorigin="anonymous"></script>
 
     <style>
+
+        *{
+            scroll-behavior: smooth;
+        }
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
         body{
             background: #4b4b4b;
@@ -69,6 +73,19 @@
             color: white;
         }
 
+        .login-form{
+            background: rgba(0, 0, 0, 0.62);
+            border-radius: 15px;
+        }
+
+        .login-box{
+            /*display: none;*/
+        }
+
+        .profile-box{
+            display: none;
+        }
+
 
     </style>
 
@@ -90,7 +107,7 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="#contact">Contact Us</a>
                 </li>
             </ul>
             <span class="navbar-text">
@@ -107,19 +124,47 @@
 <div id="welcomeScreen" >
     <div class="jumbotron">
         <div class="container">
-        <h1 class="display-4">Rent Your Dream Car Today</h1>
-        <p class="lead">
-            We offer a hassle free car rental service. Book your car online.
-        </p>
-        <hr class="my-4" />
-        <p>Choose from our wide range of cars and start your journey today.</p>
-        <a class="btn btn-outline-warning btn-lg" href="#" role="button">Book Now</a>
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="display-4">Rent Your Dream Car Today</h1>
+                    <p class="lead">
+                        We offer a hassle free car rental service. Book your car online.
+                    </p>
+                    <hr class="my-4" />
+                    <p>Choose from our wide range of cars and start your journey today.</p>
+                    <a class="btn btn-outline-warning btn-lg" href="#cars" role="button">Book Now</a>
+                </div>
+                <div class="col-md-4 login-box">
+                    <div class="login-form p-lg-4 border border-warning">
+                    <form>
+                        <h2 class="text-center">Login</h2>
+                        <div class="form-group">
+                            <label for="email">Username</label>
+                            <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Login</button>
+                        <small>Don't have an account? <a href="register.html" class="text-warning">Register</a></small>
+                    </form>
+                    </div>
+                </div>
+                <div class="col-md-4 profile-box">
+                    <div class="login-form p-lg-4 border border-warning text-sm-center">
+                        <h3 class="font-weight-bold text-warning">Username</h3>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>
 
 <!--CarList-->
-<div class="container-fluid d-flex justify-content-center">
+<div class="container-fluid d-flex justify-content-center" id="cars">
     <div class="row mt-4 ">
         <div class="col-sm-3 mb-4">
             <div class="card">

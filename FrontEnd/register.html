@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Easy Car Rental Service</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <script src="https://kit.fontawesome.com/97dbc65e21.js" crossorigin="anonymous"></script>
+
+  <style>
+    body{
+      background-image: url("assets/images/bg.jpg");
+      background-size: cover;
+      color: white;
+    }
+  </style>
+
+</head>
+<body>
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+
+<!--navBar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="assets/images/LogoBlack.png" width="200" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html?#contact">Contact Us</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+                <i class="fa-solid fa-phone-volume"></i>
+                011-2332331<br>
+                <i class="fa-solid fa-envelope"></i>
+                easycar@contact.lk
+            </span>
+    </div>
+  </div>
+</nav>
+
+<!--LoginForm-->
+
+<div class="container">
+  <div class="mt-lg-4 mb-lg-4 reg-content">
+  <h1 class="text-warning">Registration Form</h1>
+  <form action="#" method="post" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="nic" class="form-label">NIC Number</label>
+          <input type="text" class="form-control" id="nic" name="nic" required>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="phone" name="phone" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="nic_photo" class="form-label">NIC Photo</label>
+          <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>
+          <small class="form-text text-muted">Please upload a photo of your NIC or Driving License.</small>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-warning font-weight-bold">Register</button>
+  </form>
+  </div>
+</div>
+
+<!--Footer-->
+<footer class="bg-warning py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="text-dark">&copy; 2023 Car Rental Service</p>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-inline float-md-right">
+          <li class="list-inline-item">
+            <a href="#" class="text-dark">Terms of Use</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#" class="text-dark">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
