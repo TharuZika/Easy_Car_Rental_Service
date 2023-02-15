@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b8ba8c90-bc6b-4824-af07-b4d92039fe9e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/testing.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/testing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/adminDashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/adminDashboard.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,17 +48,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="FrontEnd" />
       <method v="2">
@@ -176,6 +163,7 @@
       <workItem from="1676355082767" duration="7866000" />
       <workItem from="1676393304910" duration="4075000" />
       <workItem from="1676434493743" duration="11813000" />
+      <workItem from="1676468016131" duration="705000" />
     </task>
     <servers />
   </component>
