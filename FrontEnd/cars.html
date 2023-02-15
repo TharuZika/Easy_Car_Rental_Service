@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Easy Car Rental Service / Admin</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/97dbc65e21.js" crossorigin="anonymous"></script>
+
+</head>
+<body class="bg-light">
+<!--navBar-->
+<nav class="navbar shadow-sm navbar-expand-lg navbar-light bg-warning">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="assets/images/LogoBlack.png" width="200" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Cars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Drivers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Income</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+                <i class="fa-solid fa-user"></i>
+                Administrator
+            </span>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-6">
+        <form>
+          <div class="row mt-4">
+            <div class="col">
+              <label for="regno">Register Number</label>
+              <input type="text" class="form-control" id="regno" placeholder="ABC-1234">
+            </div>
+            <div class="col">
+              <label for="make">Make</label>
+              <input type="text" class="form-control" id="make" placeholder="Toyota, Suzuki, Honda">
+            </div>
+            <div class="col">
+              <label for="model">Model</label>
+              <input type="text" class="form-control" id="model" placeholder="Vitz, Lancer">
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <label for="fuel">Fuel Type</label>
+              <select class="form-control" id="fuel">
+                <option>Petrol</option>
+                <option>Diesel</option>
+                <option>Hybrid</option>
+                <option>Electric</option>
+              </select>
+              </div>
+              <div class="col">
+                <label for="category">Category</label>
+                <select class="form-control" id="category">
+                  <option>Genaral</option>
+                  <option>Premium</option>
+                  <option>Luxury</option>
+                </select>
+            </div>
+            <div class="col">
+              <label for="color">Color</label>
+              <input type="text" class="form-control" id="color" placeholder="White, Wine Red">
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <div class="col">
+              <label for="priceDay">Price per Day</label>
+              <input type="text" class="form-control" id="priceDay" placeholder="Rs:">
+            </div>
+            <div class="col">
+              <label for="priceDay">Price per Month</label>
+              <input type="text" class="form-control" id="priceMonth" placeholder="Rs:">
+            </div>
+            <div class="col">
+              <label for="priceDay">Price per Km</label>
+              <input type="text" class="form-control" id="priceKm" placeholder="Rs:">
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <div class="col">
+              <label for="rangeDay">Range per Day</label>
+              <input type="text" class="form-control" id="rangeDay" placeholder="Km:">
+            </div>
+            <div class="col">
+              <label for="rangeMonth">Range per Month</label>
+              <input type="text" class="form-control" id="rangeMonth" placeholder="Rs:">
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <div class="col">
+            <label for="carImg">Car Image</label>
+            <input type="file" class="form-control-file" id="carImg">
+            </div>
+            <div class="col btn-group">
+              <button class="btn btn-success">Save</button>
+              <button class="btn btn-warning">Update</button>
+              <button class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+      </form>
+
+    </div>
+
+
+
+  <!--  booking table-->
+  <div class="col-6">
+    <table class="table shadow">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">RegNo</th>
+        <th scope="col">Image</th>
+        <th scope="col">Make</th>
+        <th scope="col">Model</th>
+        <th scope="col">Type</th>
+        <th scope="col">Fuel</th>
+        <th scope="col">NoPas</th>
+        <th scope="col">Avail</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">KL-1234</th>
+        <td><img src="assets/images/Genaral/alto-m/1.png" width="100" alt="1234"></td>
+        <td>Suzuki</td>
+        <td>Alto</td>
+        <td>Genaral</td>
+        <td>Petrol</td>
+        <td>4</td>
+        <td class="text-success">Yes</td>
+      </tr>
+      <tr>
+        <th scope="row">KL-6245</th>
+        <td><img src="assets/images/Genaral/alto-m/2.png" width="100"  alt="1234"></td>
+        <td>Suzuki</td>
+        <td>Alto</td>
+        <td>Genaral</td>
+        <td>Petrol</td>
+        <td>4</td>
+        <td class="text-success">Yes</td>
+      </tr>
+      <tr>
+        <th scope="row">KL-3244</th>
+        <td><img src="assets/images/Genaral/alto-m/3.png" width="100"  alt="1234"></td>
+        <td>Suzuki</td>
+        <td>Alto</td>
+        <td>Genaral</td>
+        <td>Petrol</td>
+        <td>4</td>
+        <td class="text-danger">No</td>
+      </tr>
+      <tr>
+        <th scope="row">KL-3244</th>
+        <td><img src="assets/images/Genaral/alto-m/4.png" width="100"  alt="1234"></td>
+        <td>Suzuki</td>
+        <td>Alto</td>
+        <td>Genaral</td>
+        <td>Petrol</td>
+        <td>4</td>
+        <td class="text-success">Yes</td>
+      </tr>
+      <tr>
+        <th scope="row">KL-3244</th>
+        <td><img src="assets/images/Genaral/alto-m/5.png" width="100"  alt="1234"></td>
+        <td>Suzuki</td>
+        <td>Alto</td>
+        <td>Genaral</td>
+        <td>Petrol</td>
+        <td>4</td>
+        <td class="text-success">Yes</td>
+      </tr>
+      <tr>
+        <th scope="row">KL-3244</th>
+        <td><img src="assets/images/Genaral/alto-m/6.png" width="100"  alt="1234"></td>
+        <td>Suzuki</td>
+        <td>Alto</td>
+        <td>Genaral</td>
+        <td>Petrol</td>
+        <td>4</td>
+        <td class="text-success">Yes</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>
