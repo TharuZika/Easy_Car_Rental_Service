@@ -5,54 +5,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Registration Form</title>
+  <title>Admin Dashboard</title>
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 
 <body>
 <div class="container">
-  <h1>Registration Form</h1>
-  <form action="#" method="post" enctype="multipart/form-data">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" name="name" required>
-        </div>
-        <div class="mb-3">
-          <label for="nic" class="form-label">NIC Number</label>
-          <input type="text" class="form-control" id="nic" name="nic" required>
-        </div>
-        <div class="mb-3">
-          <label for="address" class="form-label">Address</label>
-          <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="phone" class="form-label">Phone Number</label>
-          <input type="tel" class="form-control" id="phone" name="phone" required>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="mb-3">
-          <label for="nic_photo" class="form-label">NIC Photo</label>
-          <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>
-          <small class="form-text text-muted">Please upload a photo of your NIC.</small>
+  <h1>Admin Dashboard</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Cars</h5>
+          <p class="card-text">Total number of cars in the system: 50</p>
         </div>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+    <div class="col-md-3">
+      <div class="card text-white bg-success mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Customers</h5>
+          <p class="card-text">Total number of customers in the system: 100</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-white bg-warning mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Drivers</h5>
+          <p class="card-text">Total number of drivers in the system: 25</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-white bg-danger mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Bookings</h5>
+          <p class="card-text">Total number of bookings in the system: 200</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 <!-- jQuery and Bootstrap Bundle (includes Popper) -->
 <script src="assets/js/jquery-3.6.1.min.js"></script>
-<script src="assets/js/bootstrap.js"></script>
-
+<script src="assets/js/bootstrap.min.js"></script>
 </body>
+
 </html>
