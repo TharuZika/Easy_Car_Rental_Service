@@ -350,7 +350,7 @@
       <h1>Customers</h1>
       <div class="row ">
         <div class="col-5">
-          <form>
+          <form id="fromCustomer">
             <div class="row mt-4">
               <div class="col">
                 <label for="txtcus_nic">NIC Number</label>
@@ -384,9 +384,9 @@
                 <small>Upload a valid NIC or Driving License</small>
               </div>
               <div class="col btn-group">
-                <button class="btn btn-success">Save</button>
-                <button class="btn btn-warning">Update</button>
-                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-success" type="button" id="btnSaveCus">Save</button>
+                <button class="btn btn-warning" type="button" id="btnUpdateCus">Update</button>
+                <button class="btn btn-danger" type="button" id="btnDeleteCus">Delete</button>
               </div>
             </div>
           </form>
@@ -439,7 +439,7 @@
     <div class="mt-md-4 mb-md-4">
       <h1>Drivers</h1>
       <div class="row ">
-        <div class="col-6">
+        <div class="col-4">
           <form>
             <div class="row mt-4">
               <div class="col">
@@ -470,8 +470,8 @@
 
 
 
-        <!--  booking table-->
-        <div class="col-6">
+        <!--  Driver table-->
+        <div class="col-8">
           <table class="table shadow">
             <thead class="thead-dark">
             <tr>
@@ -479,6 +479,7 @@
               <th scope="col">License Number</th>
               <th scope="col">Name</th>
               <th scope="col">Contact</th>
+              <th scope="col">Availability</th>
             </tr>
             </thead>
             <tbody id="tblDriver">
@@ -487,12 +488,14 @@
               <td>B3203389</td>
               <td>Saman Kumara</td>
               <td>0788899144</td>
+              <td>Yes</td>
             </tr>
             <tr>
               <td>DR-002</td>
               <td>B1324568</td>
               <td>Sadun Widuranga</td>
               <td>0713284658</td>
+              <td>Yes</td>
             </tr>
             </tbody>
           </table>
@@ -506,6 +509,9 @@
 <script src="assets/js/bootstrap.min.js"></script>
 
 <script>
+
+  let baseURL = "http://localhost:8080/easycar/"
+
   $("#dashboardNav").click(function (){
     $("#dashboardPage").css("display" , "block");
     $("#carPage").css("display", "none");
@@ -540,7 +546,7 @@
       let cusAddress = $(this).children(":eq(3)").text();
       let cusContact = $(this).children(":eq(4)").text();
       let cusEmail = $(this).children(":eq(5)").text();
-      
+
       $('#txtcus_nic').val(cusNic);
       $('#txtcus_name').val(cusName);
       $('#txtcus_address').val(cusAddress);
@@ -574,12 +580,33 @@
     let drLic = $(this).find("td:eq(1)").text();
     let drName = $(this).find("td:eq(2)").text();
     let drContact = $(this).find("td:eq(3)").text();
+    let drAvail = $(this).find("td:eq(4)").text();
+
 
     $('#txtdr_lic').val(drLic);
     $('#txtdr_name').val(drName);
     $('#txtdr_contact').val(drContact);
 
   });
+
+  $("#btnSaveCus").click(function (){
+    let formData = $("#fromCustomer").serialize();
+    $.ajax({
+      url: baseURL+"customer",
+      method:"post",
+      data: formData,
+      dataType: "json",
+      success: function (res){
+        alert("Success "+res.toString());
+        console.log("Success : "+res)
+      },
+      error: function (err){
+        alert("Error" +err.toString());
+        console.log("Error : "+err)
+      }
+    });
+  });
+
 
 
 </script>
