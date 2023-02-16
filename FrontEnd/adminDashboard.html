@@ -6,6 +6,31 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <script src="https://kit.fontawesome.com/97dbc65e21.js" crossorigin="anonymous"></script>
 
+  <style>
+    *{
+      scroll-behavior: smooth;
+      transition: all 1s;
+    }
+
+    #dashboardPage{
+      display: block;
+    }
+
+    #carPage{
+      display: none;
+    }
+
+    #driverPage{
+      display: none;
+    }
+
+    #customerPage{
+      display: none;
+    }
+
+
+  </style>
+
 </head>
 <body>
 <!--navBar-->
@@ -135,27 +160,27 @@
 <div class="container">
 <div class="mt-md-4 mb-md-4">
   <h1>Cars</h1>
-  <div class="row ">
-    <div class="col-6">
+  <div class="row">
+    <div class="col">
       <form>
         <div class="row mt-4">
           <div class="col">
-            <label for="regno">Register Number</label>
-            <input type="text" class="form-control" id="regno" placeholder="ABC-1234">
+            <label for="txtCar_reg">Reg Number</label>
+            <input type="text" class="form-control" id="txtCar_reg" placeholder="ABC-1234">
           </div>
           <div class="col">
-            <label for="make">Make</label>
-            <input type="text" class="form-control" id="make" placeholder="Toyota, Suzuki, Honda">
+            <label for="txtCar_make">Make</label>
+            <input type="text" class="form-control" id="txtCar_make" placeholder="Toyota, Suzuki, Honda">
           </div>
           <div class="col">
-            <label for="model">Model</label>
-            <input type="text" class="form-control" id="model" placeholder="Vitz, Lancer">
+            <label for="txtCar_model">Model</label>
+            <input type="text" class="form-control" id="txtCar_model" placeholder="Vitz, Lancer">
           </div>
         </div>
         <div class="row mt-4">
           <div class="col">
-            <label for="fuel">Fuel Type</label>
-            <select class="form-control" id="fuel">
+            <label for="txtCar_fuel">Fuel Type</label>
+            <select class="form-control" id="txtCar_fuel">
               <option>Petrol</option>
               <option>Diesel</option>
               <option>Hybrid</option>
@@ -163,48 +188,44 @@
             </select>
           </div>
           <div class="col">
-            <label for="category">Category</label>
-            <select class="form-control" id="category">
+            <label for="txtCar_type">Category</label>
+            <select class="form-control" id="txtCar_type">
               <option>Genaral</option>
               <option>Premium</option>
               <option>Luxury</option>
             </select>
           </div>
+        </div>
+        <div class="form-group row mt-4">
           <div class="col">
-            <label for="color">Color</label>
-            <input type="text" class="form-control" id="color" placeholder="White, Wine Red">
+            <label for="txtCar_day">Price per Day</label>
+            <input type="text" class="form-control" id="txtCar_day" placeholder="Rs:">
+          </div>
+          <div class="col">
+            <label for="txtCar_month">Month</label>
+            <input type="text" class="form-control" id="txtCar_month" placeholder="Rs:">
+          </div>
+          <div class="col">
+            <label for="txtCar_km">Extra Km</label>
+            <input type="text" class="form-control" id="txtCar_km" placeholder="Rs:">
           </div>
         </div>
         <div class="form-group row mt-4">
           <div class="col">
-            <label for="priceDay">Price per Day</label>
-            <input type="text" class="form-control" id="priceDay" placeholder="Rs:">
+            <label for="txtCar_rangeDay">Range per Day</label>
+            <input type="text" class="form-control" id="txtCar_rangeDay" placeholder="Km:">
           </div>
           <div class="col">
-            <label for="priceDay">Price per Month</label>
-            <input type="text" class="form-control" id="priceMonth" placeholder="Rs:">
-          </div>
-          <div class="col">
-            <label for="priceDay">Price per Km</label>
-            <input type="text" class="form-control" id="priceKm" placeholder="Rs:">
+            <label for="txtCar_rangeMonth">Range per Month</label>
+            <input type="text" class="form-control" id="txtCar_rangeMonth" placeholder="Km:">
           </div>
         </div>
         <div class="form-group row mt-4">
           <div class="col">
-            <label for="rangeDay">Range per Day</label>
-            <input type="text" class="form-control" id="rangeDay" placeholder="Km:">
+            <label for="imgCar">Car Image</label>
+            <input type="file" class="form-control-file" id="imgCar">
           </div>
-          <div class="col">
-            <label for="rangeMonth">Range per Month</label>
-            <input type="text" class="form-control" id="rangeMonth" placeholder="Rs:">
-          </div>
-        </div>
-        <div class="form-group row mt-4">
-          <div class="col">
-            <label for="carImg">Car Image</label>
-            <input type="file" class="form-control-file" id="carImg">
-          </div>
-          <div class="col btn-group">
+          <div class="col-3 btn-group">
             <button class="btn btn-success">Save</button>
             <button class="btn btn-warning">Update</button>
             <button class="btn btn-danger">Delete</button>
@@ -213,11 +234,12 @@
       </form>
 
     </div>
+  </div>
 
 
-
-    <!--  booking table-->
-    <div class="col-6">
+  <div class="row">
+    <!--  Car table-->
+    <div class="col">
       <table class="table shadow">
         <thead class="thead-dark">
         <tr>
@@ -228,68 +250,89 @@
           <th scope="col">Type</th>
           <th scope="col">Fuel</th>
           <th scope="col">NoPas</th>
+          <th scope="col">Day/Rs</th>
+          <th scope="col">Month/Rs</th>
+          <th scope="col">Km/Rs</th>
           <th scope="col">Avail</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="tblCar">
         <tr>
-          <th scope="row">KL-1234</th>
+          <td>KL-1234</td>
           <td><img src="assets/images/Genaral/alto-m/1.png" width="100" alt="1234"></td>
           <td>Suzuki</td>
           <td>Alto</td>
           <td>Genaral</td>
           <td>Petrol</td>
           <td>4</td>
+          <td>2400</td>
+          <td>62000</td>
+          <td>100</td>
           <td class="text-success">Yes</td>
         </tr>
         <tr>
-          <th scope="row">KL-6245</th>
+          <td>KL-6245</td>
           <td><img src="assets/images/Genaral/alto-m/2.png" width="100"  alt="1234"></td>
           <td>Suzuki</td>
           <td>Alto</td>
           <td>Genaral</td>
           <td>Petrol</td>
           <td>4</td>
+          <td>2400</td>
+          <td>62000</td>
+          <td>100</td>
           <td class="text-success">Yes</td>
         </tr>
         <tr>
-          <th scope="row">KL-3244</th>
+          <td>KL-3244</td>
           <td><img src="assets/images/Genaral/alto-m/3.png" width="100"  alt="1234"></td>
           <td>Suzuki</td>
           <td>Alto</td>
           <td>Genaral</td>
           <td>Petrol</td>
           <td>4</td>
+          <td>2400</td>
+          <td>62000</td>
+          <td>100</td>
           <td class="text-danger">No</td>
         </tr>
         <tr>
-          <th scope="row">KL-3244</th>
+          <td>KL-3244</td>
           <td><img src="assets/images/Genaral/alto-m/4.png" width="100"  alt="1234"></td>
-          <td>Suzuki</td>
+          <td>Bmw</td>
           <td>Alto</td>
           <td>Genaral</td>
           <td>Petrol</td>
           <td>4</td>
+          <td>2400</td>
+          <td>62000</td>
+          <td>100</td>
           <td class="text-success">Yes</td>
         </tr>
         <tr>
-          <th scope="row">KL-3244</th>
+          <td>KL-3244</td>
           <td><img src="assets/images/Genaral/alto-m/5.png" width="100"  alt="1234"></td>
           <td>Suzuki</td>
           <td>Alto</td>
           <td>Genaral</td>
           <td>Petrol</td>
           <td>4</td>
+          <td>2400</td>
+          <td>62000</td>
+          <td>100</td>
           <td class="text-success">Yes</td>
         </tr>
         <tr>
-          <th scope="row">KL-3244</th>
+          <td>KL-3244</td>
           <td><img src="assets/images/Genaral/alto-m/6.png" width="100"  alt="1234"></td>
           <td>Suzuki</td>
           <td>Alto</td>
           <td>Genaral</td>
           <td>Petrol</td>
           <td>4</td>
+          <td>2400</td>
+          <td>62000</td>
+          <td>100</td>
           <td class="text-success">Yes</td>
         </tr>
         </tbody>
@@ -306,32 +349,32 @@
     <div class="mt-md-4 mb-md-4">
       <h1>Customers</h1>
       <div class="row ">
-        <div class="col-6">
+        <div class="col-5">
           <form>
             <div class="row mt-4">
               <div class="col">
-                <label for="cus_nic">NIC Number</label>
-                <input type="text" class="form-control" id="cus_nic" placeholder="200023563389">
+                <label for="txtcus_nic">NIC Number</label>
+                <input type="text" class="form-control" id="txtcus_nic" placeholder="200023563389">
               </div>
               <div class="col">
-                <label for="cus_name">Name</label>
-                <input type="text" class="form-control" id="cus_name" placeholder="Pasan Kumara">
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col">
-                <label for="cus_address">Address</label>
-                <input type="text" class="form-control" id="cus_address" placeholder="721/C, Galle.">
+                <label for="txtcus_name">Name</label>
+                <input type="text" class="form-control" id="txtcus_name" placeholder="Pasan Kumara">
               </div>
             </div>
             <div class="row mt-4">
               <div class="col">
-                <label for="cus_contact">Contact Number</label>
-                <input type="text" class="form-control" id="cus_contact" placeholder="0712345678">
+                <label for="txtcus_address">Address</label>
+                <input type="text" class="form-control" id="txtcus_address" placeholder="721/C, Galle.">
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <label for="txtcus_contact">Contact Number</label>
+                <input type="text" class="form-control" id="txtcus_contact" placeholder="0712345678">
               </div>
               <div class="col">
-                <label for="cus_email">Address</label>
-                <input type="text" class="form-control" id="cus_email" placeholder="example@email.com">
+                <label for="txtcus_email">Address</label>
+                <input type="text" class="form-control" id="txtcus_email" placeholder="example@email.com">
               </div>
             </div>
             <div class="form-group row mt-4">
@@ -352,8 +395,8 @@
 
 
 
-        <!--  booking table-->
-        <div class="col-6">
+        <!--  Customer table-->
+        <div class="col-7">
           <table class="table shadow">
             <thead class="thead-dark">
             <tr>
@@ -365,13 +408,21 @@
               <th scope="col">Email</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="tblCustomer">
             <tr>
               <td>CS-001</td>
               <td>200113203389</td>
               <td>Saman Kumara</td>
               <td>721/C, Galle</td>
               <td>0788899144</td>
+              <td>contact@gmail.com</td>
+            </tr>
+            <tr>
+              <td>CS-002</td>
+              <td>20014123403389</td>
+              <td>Gayan Withana</td>
+              <td>Colombo</td>
+              <td>0721345687</td>
               <td>contact@gmail.com</td>
             </tr>
             </tbody>
@@ -392,18 +443,18 @@
           <form>
             <div class="row mt-4">
               <div class="col">
-                <label for="cus_nic">License Number</label>
-                <input type="text" class="form-control" id="dr_lic" placeholder="B12345678">
+                <label for="txtdr_lic">License Number</label>
+                <input type="text" class="form-control" id="txtdr_lic" placeholder="B12345678">
               </div>
               <div class="col">
-                <label for="cus_name">Name</label>
-                <input type="text" class="form-control" id="dr_name" placeholder="Pasan Kumara">
+                <label for="txtdr_name">Name</label>
+                <input type="text" class="form-control" id="txtdr_name" placeholder="Pasan Kumara">
               </div>
             </div>
             <div class="row mt-4">
               <div class="col">
-                <label for="cus_address">Contact Number</label>
-                <input type="text" class="form-control" id="dr_contact" placeholder="0712345678">
+                <label for="txtdr_contact">Contact Number</label>
+                <input type="text" class="form-control" id="txtdr_contact" placeholder="0712345678">
               </div>
             </div>
             <div class="form-group row mt-4">
@@ -430,12 +481,18 @@
               <th scope="col">Contact</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="tblDriver">
             <tr>
               <td>DR-001</td>
               <td>B3203389</td>
               <td>Saman Kumara</td>
               <td>0788899144</td>
+            </tr>
+            <tr>
+              <td>DR-002</td>
+              <td>B1324568</td>
+              <td>Sadun Widuranga</td>
+              <td>0713284658</td>
             </tr>
             </tbody>
           </table>
@@ -444,6 +501,7 @@
     </div>
   </div>
 </div>
+
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 
@@ -474,6 +532,53 @@
     $("#carPage").css("display", "none");
     $("#customerPage").css("display", "none");
     $("#driverPage").css("display", "block");
+  });
+
+    $("#tblCustomer>tr").click(function () {
+      let cusNic = $(this).children(":eq(1)").text();
+      let cusName = $(this).children(":eq(2)").text();
+      let cusAddress = $(this).children(":eq(3)").text();
+      let cusContact = $(this).children(":eq(4)").text();
+      let cusEmail = $(this).children(":eq(5)").text();
+      
+      $('#txtcus_nic').val(cusNic);
+      $('#txtcus_name').val(cusName);
+      $('#txtcus_address').val(cusAddress);
+      $('#txtcus_contact').val(cusContact);
+      $('#txtcus_email').val(cusEmail);
+    });
+
+    $("#tblCar>tr").click(function (){
+      let carReg = $(this).find("td:eq(0)").text();
+      let carMake =$(this).find("td:eq(2)").text();
+      let carModel = $(this).find("td:eq(3)").text();
+      let carType = $(this).find("td:eq(4)").text();
+      let carFuel = $(this).find("td:eq(5)").text();
+      let carPas = $(this).find("td:eq(6)").text();
+      let carDay = $(this).find("td:eq(7)").text();
+      let carMonth = $(this).find("td:eq(8)").text();
+      let carKm = $(this).find("td:eq(9)").text();
+
+      $('#txtCar_reg').val(carReg);
+      $('#txtCar_make').val(carMake);
+      $('#txtCar_model').val(carModel);
+      $('#txtCar_type').val(carType);
+      $('#txtCar_fuel').val(carFuel);
+      $('#txtCar_day').val(carDay);
+      $('#txtCar_month').val(carMonth);
+      $('#txtCar_km').val(carKm);
+    });
+
+  $("#tblDriver>tr").click(function () {
+    let drId = $(this).find("td:eq(0)").text();
+    let drLic = $(this).find("td:eq(1)").text();
+    let drName = $(this).find("td:eq(2)").text();
+    let drContact = $(this).find("td:eq(3)").text();
+
+    $('#txtdr_lic').val(drLic);
+    $('#txtdr_name').val(drName);
+    $('#txtdr_contact').val(drContact);
+
   });
 
 
