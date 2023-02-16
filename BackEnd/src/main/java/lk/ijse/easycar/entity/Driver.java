@@ -17,8 +17,8 @@ public class Driver {
 
     @Id
     private String dr_id;
-    private String dr_name;
     private String dr_lic;
+    private String dr_name;
     private String dr_contact;
     private Boolean dr_avail;
 }
