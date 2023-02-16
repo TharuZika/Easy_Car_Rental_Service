@@ -86,6 +86,12 @@
             display: none;
         }
 
+        .settings-content{
+            background-image: url("assets/images/bg.jpg");
+            background-size: cover;
+            color: white;
+        }
+
 
     </style>
 
@@ -109,6 +115,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#contact">Contact Us</a>
                 </li>
+                <li class="nav-item dropdown profile-link">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Username
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item btn" type="button"  data-toggle="modal" data-target=".bd-example-modal-lg">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
             </ul>
             <span class="navbar-text">
                 <i class="fa-solid fa-phone-volume"></i>
@@ -119,6 +135,58 @@
         </div>
     </div>
 </nav>
+
+<!--Profile Modal-->
+
+<div class=" modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="settings-content modal-content">
+            <div class="container">
+                <div class="mt-lg-4 mb-lg-4">
+                    <h1 class="text-warning">Settings</h1>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="set-name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="set-name" name="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="set-nic" class="form-label">NIC Number</label>
+                                    <input type="text" class="form-control" id="set-nic" name="nic" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="set-address" class="form-label">Address</label>
+                                    <textarea class="form-control" id="set-address" name="address" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="set-phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="set-phone" name="phone" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="set-password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="set-password" name="password" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="set-email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="set-email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nic_photo" class="form-label">NIC Photo</label>
+                                    <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>
+                                    <small class="form-text text-muted">Please upload a photo of your NIC or Driving License.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-warning font-weight-bold">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--Welcome Screen-->
 <div id="welcomeScreen" >
