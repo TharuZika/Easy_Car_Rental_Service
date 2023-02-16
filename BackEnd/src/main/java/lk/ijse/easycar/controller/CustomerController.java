@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/customer")
 public class CustomerController {
 
-//    @PostMapping
-//    public ResponseUtil saveCustomer(CustomerDTO dto){
-//        return new ResponseUtil("OK", "Successfully Registered..!", dto);
-//    }
+    @PostMapping
+    public ResponseUtil saveCustomer(CustomerDTO dto){
+        return new ResponseUtil("OK", "Successfully Registered..!", dto);
+    }
 
 }

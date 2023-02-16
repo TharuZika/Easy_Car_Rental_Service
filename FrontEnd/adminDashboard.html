@@ -162,11 +162,11 @@
   <h1>Cars</h1>
   <div class="row">
     <div class="col">
-      <form>
+      <form id="formCar">
         <div class="row mt-4">
           <div class="col">
             <label for="txtCar_reg">Reg Number</label>
-            <input type="text" class="form-control" id="txtCar_reg" placeholder="ABC-1234">
+            <input type="text" class="form-control" id="txtCar_reg" name="txtCar_reg" placeholder="ABC-1234">
           </div>
           <div class="col">
             <label for="txtCar_make">Make</label>
@@ -180,7 +180,7 @@
         <div class="row mt-4">
           <div class="col">
             <label for="txtCar_fuel">Fuel Type</label>
-            <select class="form-control" id="txtCar_fuel">
+            <select class="form-control" id="txtCar_fuel" name="txtCar_fuel">
               <option>Petrol</option>
               <option>Diesel</option>
               <option>Hybrid</option>
@@ -189,7 +189,7 @@
           </div>
           <div class="col">
             <label for="txtCar_type">Category</label>
-            <select class="form-control" id="txtCar_type">
+            <select class="form-control" id="txtCar_type" name="txtCar_type">
               <option>Genaral</option>
               <option>Premium</option>
               <option>Luxury</option>
@@ -199,36 +199,36 @@
         <div class="form-group row mt-4">
           <div class="col">
             <label for="txtCar_day">Price per Day</label>
-            <input type="text" class="form-control" id="txtCar_day" placeholder="Rs:">
+            <input type="text" class="form-control" id="txtCar_day" name="txtCar_day" placeholder="Rs:">
           </div>
           <div class="col">
             <label for="txtCar_month">Month</label>
-            <input type="text" class="form-control" id="txtCar_month" placeholder="Rs:">
+            <input type="text" class="form-control" id="txtCar_month" name="txtCar_month" placeholder="Rs:">
           </div>
           <div class="col">
             <label for="txtCar_km">Extra Km</label>
-            <input type="text" class="form-control" id="txtCar_km" placeholder="Rs:">
+            <input type="text" class="form-control" id="txtCar_km" name="txtCar_km" placeholder="Rs:">
           </div>
         </div>
         <div class="form-group row mt-4">
           <div class="col">
             <label for="txtCar_rangeDay">Range per Day</label>
-            <input type="text" class="form-control" id="txtCar_rangeDay" placeholder="Km:">
+            <input type="text" class="form-control" id="txtCar_rangeDay" name="txtCar_rangeDay" placeholder="Km:">
           </div>
           <div class="col">
             <label for="txtCar_rangeMonth">Range per Month</label>
-            <input type="text" class="form-control" id="txtCar_rangeMonth" placeholder="Km:">
+            <input type="text" class="form-control" id="txtCar_rangeMonth" name="txtCar_rangeMonth" placeholder="Km:">
           </div>
         </div>
         <div class="form-group row mt-4">
           <div class="col">
             <label for="imgCar">Car Image</label>
-            <input type="file" class="form-control-file" id="imgCar">
+            <input type="file" class="form-control-file" id="imgCar" name="imgCar">
           </div>
           <div class="col-3 btn-group">
-            <button class="btn btn-success">Save</button>
-            <button class="btn btn-warning">Update</button>
-            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-success" type="button" id="btnSaveCar">Save</button>
+            <button class="btn btn-warning" type="button" id="btnUpdateCar">Update</button>
+            <button class="btn btn-danger" type="button" id="btnDeleteCar">Delete</button>
           </div>
         </div>
       </form>
@@ -354,27 +354,27 @@
             <div class="row mt-4">
               <div class="col">
                 <label for="txtcus_nic">NIC Number</label>
-                <input type="text" class="form-control" id="txtcus_nic" placeholder="200023563389">
+                <input type="text" class="form-control" id="txtcus_nic" name="txtcus_nic" placeholder="200023563389">
               </div>
               <div class="col">
                 <label for="txtcus_name">Name</label>
-                <input type="text" class="form-control" id="txtcus_name" placeholder="Pasan Kumara">
+                <input type="text" class="form-control" id="txtcus_name" name="txtcus_name" placeholder="Pasan Kumara">
               </div>
             </div>
             <div class="row mt-4">
               <div class="col">
                 <label for="txtcus_address">Address</label>
-                <input type="text" class="form-control" id="txtcus_address" placeholder="721/C, Galle.">
+                <input type="text" class="form-control" id="txtcus_address" name="txtcus_address" placeholder="721/C, Galle.">
               </div>
             </div>
             <div class="row mt-4">
               <div class="col">
                 <label for="txtcus_contact">Contact Number</label>
-                <input type="text" class="form-control" id="txtcus_contact" placeholder="0712345678">
+                <input type="text" class="form-control" id="txtcus_contact" name="txtcus_contact" placeholder="0712345678">
               </div>
               <div class="col">
                 <label for="txtcus_email">Address</label>
-                <input type="text" class="form-control" id="txtcus_email" placeholder="example@email.com">
+                <input type="text" class="form-control" id="txtcus_email" name="txtcus_email" placeholder="example@email.com">
               </div>
             </div>
             <div class="form-group row mt-4">
@@ -590,11 +590,29 @@
   });
 
   $("#btnSaveCus").click(function (){
-    let formData = $("#fromCustomer").serialize();
+    let formCusData = $("#fromCustomer").serialize();
     $.ajax({
       url: baseURL+"customer",
       method:"post",
-      data: formData,
+      data: formCusData,
+      dataType: "json",
+      success: function (res){
+        alert("Success "+res.toString());
+        console.log("Success : "+res)
+      },
+      error: function (err){
+        alert("Error" +err.toString());
+        console.log("Error : "+err)
+      }
+    });
+  });
+
+  $("#btnSaveCar").click(function (){
+    let formCarData = $("#formCar").serialize();
+    $.ajax({
+      url: baseURL+"car",
+      method:"post",
+      data: formCarData,
       dataType: "json",
       success: function (res){
         alert("Success "+res.toString());
