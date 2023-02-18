@@ -1,9 +1,11 @@
 package lk.ijse.easycar.service;
 
 import lk.ijse.easycar.dto.CustomerDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+@Service
 public interface CustomerService {
 
     public void saveCustomer(CustomerDTO dto);

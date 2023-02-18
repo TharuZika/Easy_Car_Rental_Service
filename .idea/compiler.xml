@@ -12,6 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="BackEnd" target="8" />
+      <module name="BackEndTest" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

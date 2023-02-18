@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-//@EnableJpaRepositories(basePackageClasses = {CustomerRepo.class})
+@EnableJpaRepositories(basePackageClasses = {CustomerRepo.class})
 @PropertySource("classpath:application.properties")
 public class JPAConfig {
 
