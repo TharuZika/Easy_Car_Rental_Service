@@ -8,15 +8,15 @@ public class CustomerDTO {
     private String cus_address;
     private String cus_contact;
     private String cus_email;
-//    private MultipartFile cus_img;
+    private MultipartFile cus_img;
 
-//    public void setCus_img(MultipartFile cus_img) {
-//        this.cus_img = cus_img;
-//    }
+    public void setCus_img(MultipartFile cus_img) {
+        this.cus_img = cus_img;
+    }
 
-//    public MultipartFile getCus_img() {
-//        return cus_img;
-//    }
+    public MultipartFile getCus_img() {
+        return cus_img;
+    }
 
     public void setCus_nic(String cus_nic) {
         this.cus_nic = cus_nic;
@@ -59,13 +59,13 @@ public class CustomerDTO {
         return cus_email;
     }
 
-    public CustomerDTO( String cus_nic, String cus_name, String cus_address, String cus_contact, String cus_email/*, MultipartFile cus_img*/) {
+    public CustomerDTO( String cus_nic, String cus_name, String cus_address, String cus_contact, String cus_email, MultipartFile cus_img) {
         this.cus_nic = cus_nic;
         this.cus_name = cus_name;
         this.cus_address = cus_address;
         this.cus_contact = cus_contact;
         this.cus_email = cus_email;
-//        this.cus_img = cus_img;
+        this.cus_img = cus_img;
     }
 
     public CustomerDTO() {
@@ -79,7 +79,7 @@ public class CustomerDTO {
                 ", cus_address='" + cus_address + '\'' +
                 ", cus_contact='" + cus_contact + '\'' +
                 ", cus_email='" + cus_email + '\'' +
-//                ", cus_img='" + cus_img + '\'' +
+                ", cus_img='" + cus_img + '\'' +
                 '}';
     }
 

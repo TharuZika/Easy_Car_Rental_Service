@@ -1089,33 +1089,37 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="317" parent="291" name="PRIMARY">
+    <column id="317" parent="291" name="cus_img">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <key id="318" parent="291" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cus_nic</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="318" parent="292" name="dr_id">
+    <column id="319" parent="292" name="dr_id">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="319" parent="292" name="dr_avail">
+    <column id="320" parent="292" name="dr_avail">
       <Position>2</Position>
       <DataType>bit(1)|0s</DataType>
     </column>
-    <column id="320" parent="292" name="dr_contact">
+    <column id="321" parent="292" name="dr_contact">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="321" parent="292" name="dr_lic">
+    <column id="322" parent="292" name="dr_lic">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="322" parent="292" name="dr_name">
+    <column id="323" parent="292" name="dr_name">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="323" parent="292" name="PRIMARY">
+    <key id="324" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>dr_id</ColNames>
       <Primary>1</Primary>

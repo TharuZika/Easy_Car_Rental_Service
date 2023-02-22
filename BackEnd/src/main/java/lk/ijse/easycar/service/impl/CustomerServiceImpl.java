@@ -27,22 +27,25 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void saveCustomer(CustomerDTO dto) {
         Customer cus = new Customer();
-//        String fileName = StringUtils.cleanPath(dto.getCus_img().getOriginalFilename());
-//        if (fileName.contains("..")){
-//            System.out.println("Not a Image");
-//        }
+        String fileName = StringUtils.cleanPath(dto.getCus_img().getOriginalFilename());
+        if (fileName.contains("..")){
+            System.out.println("Not a Image");
+        }
         cus.setCus_nic(dto.getCus_nic());
         cus.setCus_name(dto.getCus_name());
         cus.setCus_address(dto.getCus_address());
         cus.setCus_contact(dto.getCus_contact());
         cus.setCus_email(dto.getCus_email());
-//        try {
-//            cus.setCus_img(Base64.getEncoder().encodeToString(dto.getCus_img().getBytes()));
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
+        try {
+            cus.setCus_img(Base64.getEncoder().encodeToString(dto.getCus_img().getBytes()));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
         repo.save(cus);
+
+        System.out.println(fileName+" : "+dto.getCus_img());
+
     }
 
     @Override
