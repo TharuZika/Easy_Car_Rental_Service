@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -19,8 +20,11 @@ public class Customer {
     private String cus_nic;
     private String cus_name;
     private String cus_address;
+    @Column(unique = true)
     private String cus_contact;
+    @Column(unique = true)
     private String cus_email;
+    @Column(unique = true)
     private String cus_img;
 
 }

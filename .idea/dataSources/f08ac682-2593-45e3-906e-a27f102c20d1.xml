@@ -1085,11 +1085,11 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="316" parent="291" name="cus_name">
+    <column id="316" parent="291" name="cus_img">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="317" parent="291" name="cus_img">
+    <column id="317" parent="291" name="cus_name">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
@@ -1105,7 +1105,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </column>
     <column id="320" parent="292" name="dr_avail">
       <Position>2</Position>
-      <DataType>bit(1)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
     </column>
     <column id="321" parent="292" name="dr_contact">
       <Position>3</Position>

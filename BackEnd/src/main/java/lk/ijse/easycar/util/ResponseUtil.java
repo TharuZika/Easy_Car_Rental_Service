@@ -5,6 +5,15 @@ public class ResponseUtil {
     private String message;
     private Object data;
 
+    @Override
+    public String toString() {
+        return "ResponseUtil{" +
+                "state='" + state + '\'' +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
     public void setState(String state) {
         this.state = state;
     }

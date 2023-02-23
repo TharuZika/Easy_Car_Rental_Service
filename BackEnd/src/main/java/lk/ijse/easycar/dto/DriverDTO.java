@@ -6,17 +6,6 @@ public class DriverDTO {
     private String dr_contact;
     private String dr_avail;
 
-    @Override
-    public String toString() {
-        return "DriverDTO{" +
-                ", dr_lic='" + dr_lic + '\'' +
-                ", dr_name='" + dr_name + '\'' +
-                ", dr_contact='" + dr_contact + '\'' +
-                ", dr_avail=" + dr_avail +
-                '}';
-    }
-
-
     public void setDr_lic(String dr_lic) {
         this.dr_lic = dr_lic;
     }
@@ -58,4 +47,16 @@ public class DriverDTO {
         this.dr_contact = dr_contact;
         this.dr_avail = dr_avail;
     }
+
+    @Override
+    public String toString() {
+        return "DriverDTO{" +
+                ", dr_lic='" + dr_lic + '\'' +
+                ", dr_name='" + dr_name + '\'' +
+                ", dr_contact='" + dr_contact + '\'' +
+                ", dr_avail=" + dr_avail +
+                '}';
+    }
+
 }
+

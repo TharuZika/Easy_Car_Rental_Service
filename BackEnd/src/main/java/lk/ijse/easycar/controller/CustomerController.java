@@ -27,41 +27,11 @@ public class CustomerController {
     @Autowired
     private CustomerService service;
 
-    @Autowired
-    private CustomerRepo customerRepo;
 
     @PostMapping
-    public ResponseUtil saveCustomer(@ModelAttribute  CustomerDTO dto, @RequestParam(name = "cus_img", required = false) MultipartFile cusImg) {
-
-        try {
-            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
-            File uploadsDir = new File(projectPath + "/uploads");
-            System.out.println(projectPath);
-            uploadsDir.mkdir();
-            cusImg.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + dto.getCus_img().getOriginalFilename()));
-
-            Customer cus = new Customer();
-            String fileName = StringUtils.cleanPath(cusImg.getOriginalFilename());
-            if (fileName.contains("..")){
-                System.out.println("Can't Process Image");
-            }
-            cus.setCus_nic(dto.getCus_nic());
-            cus.setCus_name(dto.getCus_name());
-            cus.setCus_address(dto.getCus_address());
-            cus.setCus_contact(dto.getCus_contact());
-            cus.setCus_email(dto.getCus_email());
-            cus.setCus_img("uploads/" + cusImg.getOriginalFilename());
-
-            customerRepo.save(cus);
-
-            return new ResponseUtil("OK", "Successfully Registered..!", dto);
-
-        }catch (IOException e){
-            return new ResponseUtil("Error", "Something Went Wrong..! "+e, null);
-        }catch (URISyntaxException e){
-            return new ResponseUtil("Error", "Something Went Wrong..! "+e, null);
-        }
-
+    public ResponseUtil saveCustomer(CustomerDTO dto) {
+        service.saveCustomer(dto);
+        return new ResponseUtil("OK", "Successfully Registered..!", dto);
     }
 
 
