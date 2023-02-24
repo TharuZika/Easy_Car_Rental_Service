@@ -1,5 +1,7 @@
 package lk.ijse.easycar.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.math.BigDecimal;
 
 public class CarDTO {
@@ -17,15 +19,15 @@ public class CarDTO {
 
     private Boolean cr_avail;
 
-//    private String cr_img;
-//
-//    public void setCr_img(String cr_img) {
-//        this.cr_img = cr_img;
-//    }
-//
-//    public String getCr_img() {
-//        return cr_img;
-//    }
+    private MultipartFile cr_img;
+
+    public void setCr_img(MultipartFile cr_img) {
+        this.cr_img = cr_img;
+    }
+
+    public MultipartFile getCr_img() {
+        return cr_img;
+    }
 
     public void setCr_reg(String cr_reg) {
         this.cr_reg = cr_reg;
@@ -124,7 +126,7 @@ public class CarDTO {
                 '}';
     }
 
-    public CarDTO(String cr_reg, String cr_make, String cr_model, String cr_type, String cr_fuel, String cr_nfp, BigDecimal cr_day, BigDecimal cr_month, BigDecimal cr_km, Boolean cr_avail/*, String cr_img*/) {
+    public CarDTO(String cr_reg, String cr_make, String cr_model, String cr_type, String cr_fuel, String cr_nfp, BigDecimal cr_day, BigDecimal cr_month, BigDecimal cr_km, Boolean cr_avail, MultipartFile cr_img) {
         this.cr_reg = cr_reg;
         this.cr_make = cr_make;
         this.cr_model = cr_model;
@@ -135,7 +137,7 @@ public class CarDTO {
         this.cr_month = cr_month;
         this.cr_km = cr_km;
         this.cr_avail = cr_avail;
-//        this.cr_img = cr_img;
+        this.cr_img = cr_img;
     }
 
     public CarDTO() {

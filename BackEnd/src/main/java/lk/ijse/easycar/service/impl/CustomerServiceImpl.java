@@ -29,6 +29,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void saveCustomer(CustomerDTO dto) {
+        if (repo.existsById(dto.getCus_nic())){
+            throw new RuntimeException("User Already Exists!");
+        }
         try {
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
             File uploadsDir = new File(projectPath + "/uploads");
@@ -49,13 +52,13 @@ public class CustomerServiceImpl implements CustomerService {
             cus.setCus_email(dto.getCus_email());
             cus.setCus_img("uploads/" + dto.getCus_img().getOriginalFilename());
 
-            repo.save(cus);
+            //repo.save(cus);
 
-            System.out.println(fileName + " : " + dto.getCus_img());
 
         }catch (IOException e){
             e.printStackTrace();
             throw new RuntimeException("Something went wrong! : "+e);
+
         }catch (URISyntaxException e){
             throw new RuntimeException("Something went wrong! : "+e);
         }

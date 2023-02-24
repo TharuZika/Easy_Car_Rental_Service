@@ -28,6 +28,14 @@
       display: none;
     }
 
+    tr{
+      cursor: pointer;
+    }
+
+    tr:hover{
+      background: #ffc107;
+    }
+
 
   </style>
 
@@ -165,49 +173,49 @@
       <form id="formCar">
         <div class="row mt-4">
           <div class="col">
-            <label for="txtCar_reg">Reg Number</label>
-            <input type="text" class="form-control" id="txtCar_reg" name="txtCar_reg" placeholder="ABC-1234">
+            <label for="cr_reg">Reg Number</label>
+            <input type="text" class="form-control" id="cr_reg" name="cr_reg" placeholder="ABC-1234">
           </div>
           <div class="col">
-            <label for="txtCar_make">Make</label>
-            <input type="text" class="form-control" id="txtCar_make" placeholder="Toyota, Suzuki, Honda">
+            <label for="cr_make">Make</label>
+            <input type="text" class="form-control" id="cr_make" name="cr_make" placeholder="Toyota, Suzuki, Honda">
           </div>
           <div class="col">
-            <label for="txtCar_model">Model</label>
-            <input type="text" class="form-control" id="txtCar_model" placeholder="Vitz, Lancer">
+            <label for="cr_model">Model</label>
+            <input type="text" class="form-control" id="cr_model" name="cr_model" placeholder="Vitz, Lancer">
           </div>
         </div>
         <div class="row mt-4">
           <div class="col">
-            <label for="txtCar_fuel">Fuel Type</label>
-            <select class="form-control" id="txtCar_fuel" name="txtCar_fuel">
-              <option>Petrol</option>
-              <option>Diesel</option>
-              <option>Hybrid</option>
-              <option>Electric</option>
+            <label for="cr_fuel">Fuel Type</label>
+            <select class="form-control" id="cr_fuel" name="cr_fuel">
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Electric">Electric</option>
             </select>
           </div>
           <div class="col">
-            <label for="txtCar_type">Category</label>
-            <select class="form-control" id="txtCar_type" name="txtCar_type">
-              <option>Genaral</option>
-              <option>Premium</option>
-              <option>Luxury</option>
+            <label for="cr_type">Category</label>
+            <select class="form-control" id="cr_type" name="cr_type">
+              <option value="General">General</option>
+              <option value="Premium">Premium</option>
+              <option value="Luxury">Luxury</option>
             </select>
           </div>
         </div>
         <div class="form-group row mt-4">
           <div class="col">
-            <label for="txtCar_day">Price per Day</label>
-            <input type="text" class="form-control" id="txtCar_day" name="txtCar_day" placeholder="Rs:">
+            <label for="cr_day">Price per Day</label>
+            <input type="text" class="form-control" id="cr_day" name="cr_day" placeholder="Rs:">
           </div>
           <div class="col">
-            <label for="txtCar_month">Month</label>
-            <input type="text" class="form-control" id="txtCar_month" name="txtCar_month" placeholder="Rs:">
+            <label for="cr_month">Month</label>
+            <input type="text" class="form-control" id="cr_month" name="cr_month" placeholder="Rs:">
           </div>
           <div class="col">
-            <label for="txtCar_km">Extra Km</label>
-            <input type="text" class="form-control" id="txtCar_km" name="txtCar_km" placeholder="Rs:">
+            <label for="cr_km">Extra Km</label>
+            <input type="text" class="form-control" id="cr_km" name="cr_km" placeholder="Rs:">
           </div>
         </div>
         <div class="form-group row mt-4">
@@ -216,14 +224,14 @@
             <input type="text" class="form-control" id="txtCar_rangeDay" name="txtCar_rangeDay" placeholder="Km:">
           </div>
           <div class="col">
-            <label for="txtCar_rangeMonth">Range per Month</label>
-            <input type="text" class="form-control" id="txtCar_rangeMonth" name="txtCar_rangeMonth" placeholder="Km:">
+            <label for="cr_rangeMonth">Range per Month</label>
+            <input type="text" class="form-control" id="cr_rangeMonth" name="cr_rangeMonth" placeholder="Km:">
           </div>
         </div>
         <div class="form-group row mt-4">
           <div class="col">
-            <label for="imgCar">Car Image</label>
-            <input type="file" class="form-control-file" id="imgCar" name="imgCar">
+            <label for="cr_img">Car Image</label>
+            <input type="file" class="form-control-file" id="cr_img" name="cr_img">
           </div>
           <div class="col-3">
             <button class="btn btn-success" type="button" id="btnSaveCar">Save</button>
@@ -262,7 +270,7 @@
           <td><img src="assets/images/Genaral/alto-m/1.png" width="100" alt="1234"></td>
           <td>Suzuki</td>
           <td>Alto</td>
-          <td>Genaral</td>
+          <td>Luxury</td>
           <td>Petrol</td>
           <td>4</td>
           <td>2400</td>
@@ -275,8 +283,8 @@
           <td><img src="assets/images/Genaral/alto-m/2.png" width="100"  alt="1234"></td>
           <td>Suzuki</td>
           <td>Alto</td>
-          <td>Genaral</td>
-          <td>Petrol</td>
+          <td>Premium</td>
+          <td>Diesel</td>
           <td>4</td>
           <td>2400</td>
           <td>62000</td>
@@ -288,7 +296,7 @@
           <td><img src="assets/images/Genaral/alto-m/3.png" width="100"  alt="1234"></td>
           <td>Suzuki</td>
           <td>Alto</td>
-          <td>Genaral</td>
+          <td>General</td>
           <td>Petrol</td>
           <td>4</td>
           <td>2400</td>
@@ -301,7 +309,7 @@
           <td><img src="assets/images/Genaral/alto-m/4.png" width="100"  alt="1234"></td>
           <td>Bmw</td>
           <td>Alto</td>
-          <td>Genaral</td>
+          <td>General</td>
           <td>Petrol</td>
           <td>4</td>
           <td>2400</td>
@@ -314,7 +322,7 @@
           <td><img src="assets/images/Genaral/alto-m/5.png" width="100"  alt="1234"></td>
           <td>Suzuki</td>
           <td>Alto</td>
-          <td>Genaral</td>
+          <td>General</td>
           <td>Petrol</td>
           <td>4</td>
           <td>2400</td>
@@ -327,7 +335,7 @@
           <td><img src="assets/images/Genaral/alto-m/6.png" width="100"  alt="1234"></td>
           <td>Suzuki</td>
           <td>Alto</td>
-          <td>Genaral</td>
+          <td>General</td>
           <td>Petrol</td>
           <td>4</td>
           <td>2400</td>
@@ -390,7 +398,6 @@
           <table class="table shadow">
             <thead class="thead-dark">
             <tr>
-              <th scope="col">Id</th>
               <th scope="col">NIC</th>
               <th scope="col">Name</th>
               <th scope="col">Address</th>
@@ -400,7 +407,6 @@
             </thead>
             <tbody id="tblCustomer">
             <tr>
-              <td>CS-001</td>
               <td>200113203389</td>
               <td>Saman Kumara</td>
               <td>721/C, Galle</td>
@@ -408,15 +414,27 @@
               <td>contact@gmail.com</td>
             </tr>
             <tr>
-              <td>CS-002</td>
               <td>20014123403389</td>
               <td>Gayan Withana</td>
               <td>Colombo</td>
               <td>0721345687</td>
               <td>contact@gmail.com</td>
             </tr>
+            <tr>
+              <td>20014123403389</td>
+              <td>Gayan Withana</td>
+              <td>Colombo</td>
+              <td>0721345687</td>
+              <td>contact@gmail.com</td>
+              <td><img src="assets/images/bg.jpg"  width="200"></td>
+            </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+      <div class="row">
+        <div id="display">
+
         </div>
       </div>
     </div>
@@ -536,11 +554,11 @@
   });
 
     $("#tblCustomer>tr").click(function () {
-      let cusNic = $(this).children(":eq(1)").text();
-      let cusName = $(this).children(":eq(2)").text();
-      let cusAddress = $(this).children(":eq(3)").text();
-      let cusContact = $(this).children(":eq(4)").text();
-      let cusEmail = $(this).children(":eq(5)").text();
+      let cusNic = $(this).children(":eq(0)").text();
+      let cusName = $(this).children(":eq(1)").text();
+      let cusAddress = $(this).children(":eq(2)").text();
+      let cusContact = $(this).children(":eq(3)").text();
+      let cusEmail = $(this).children(":eq(4)").text();
 
       $('#cus_nic').val(cusNic);
       $('#cus_name').val(cusName);
@@ -560,14 +578,16 @@
       let carMonth = $(this).find("td:eq(8)").text();
       let carKm = $(this).find("td:eq(9)").text();
 
-      $('#txtCar_reg').val(carReg);
-      $('#txtCar_make').val(carMake);
-      $('#txtCar_model').val(carModel);
-      $('#txtCar_type').val(carType);
-      $('#txtCar_fuel').val(carFuel);
-      $('#txtCar_day').val(carDay);
-      $('#txtCar_month').val(carMonth);
-      $('#txtCar_km').val(carKm);
+      $('#cr_reg').val(carReg);
+      $('#cr_make').val(carMake);
+      $('#cr_model').val(carModel);
+      $('#cr_type').val(carType);
+      $('#cr_fuel').val(carFuel);
+      $('#cr_day').val(carDay);
+      $('#cr_month').val(carMonth);
+      $('#cr_km').val(carKm);
+
+      console.log(carType);
     });
 
   $("#tblDriver>tr").click(function () {
@@ -635,21 +655,94 @@
       contentType: false,
       data: formData,
       success: function (res){
-        alert(res.state+" : "+res.message);
-        console.log("Success : "+res.message)
-        // uploadimg();
+        alert("Success : "+res.message);
+        console.log("Success : "+res.message);
+        getAllCustomers();
       },
       error: function (err){
-        alert(err.state+" : "+err.message);
-        console.log("Error : "+err.message)
+        let message = JSON.parse(err.responseText).message;
+        alert(message);
+        console.log("Error : "+message)
+        getAllCustomers();
+      }
+    });
+  });
+
+  $("#btnDeleteCus").click(function (){
+    let cus_nic = $("#cus_nic").val();
+    console.log(cus_nic);
+    $.ajax({
+      url: baseURL+"customer",
+      method:"delete",
+      data: cus_nic,
+      dataType: "json",
+      success: function (res){
+        alert("Success "+res.toString());
+        console.log("Success : "+res)
+        getAllCustomers();
+      },
+      error: function (err){
+        alert("Error" +err.toString());
+        console.log("Error : "+err)
+        getAllCustomers();
       }
     });
   });
 
 
+
+  function getAllCustomers() {
+    $("#tblCustomer").empty();
+    $.ajax({
+      url: baseURL+"customer",
+      method: 'get',
+      dataType: 'json',
+      success: function (res) {
+        for (let c of res.data) {
+          let cusNic = c.cus_nic;
+          let cusName = c.cus_name;
+          let cusAddress = c.cus_address;
+          let cusContact = c.cus_contact;
+          let cusEmail = c.cus_email;
+          let cusImg = c.cus_img;
+
+          $("#display").css({
+            "background": `url(${baseURL + cusImg})`,
+            "background-size": "cover",
+            "height": "300px"
+          });
+
+          // console.log(res.data +" : "+cusImg);
+          //
+          // let row =  "<tr><td>" + cusNic + "</td><td>" + cusName + "</td><td>" + cusAddress + "</td><td>" + cusContact + "</td><td>" + cusEmail + "</td><td> <img src='${baseUrl + res}' width='100'> </td></tr>";
+          //
+          // $("#tblCustomer").append(row);
+        }
+
+      },
+      error: function (error) {
+        let message = JSON.parse(error.responseText).message;
+        alert(message);
+      }
+    });
+  }
+
+
   //Car
   $("#btnSaveCar").click(function (){
-    let formCarData = $("#formCar").serialize();
+    var formData = new FormData();
+
+    formData.append('cr_reg', cr_reg);
+    formData.append('cr_make', cr_make);
+    formData.append('cr_model', cr_model);
+    formData.append('cr_type', cr_type);
+    formData.append('cr_fuel', cr_fuel);
+    formData.append('cr_nfp', cr_nfp);
+    formData.append('cr_day', cr_day);
+    formData.append('cr_month', cr_month);
+    formData.append('cr_km', cr_km);
+    formData.append('cr_avail', "Yes");
+    formData.append('cr_img', cr_img);
     $.ajax({
       url: baseURL+"car",
       method:"post",

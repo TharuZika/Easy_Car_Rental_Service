@@ -21,7 +21,7 @@ public class DriverController {
     private DriverService service;
 
     @PostMapping
-    public ResponseUtil saveCustomer(String dr_lic, String dr_name, String dr_contact, String dr_avail){
+    public ResponseUtil saveDriver(String dr_lic, String dr_name, String dr_contact, String dr_avail){
         Driver driver = new Driver();
         driver.setDr_lic(dr_lic);
         driver.setDr_name(dr_name);
@@ -29,7 +29,7 @@ public class DriverController {
         driver.setDr_avail(dr_avail);
         repo.save(driver);
 
-        return new ResponseUtil("OK", "Successfully Registered..!", null);
+        return new ResponseUtil("OK", "Successfully Registered..!", driver);
     }
 
 
