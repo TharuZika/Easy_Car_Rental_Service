@@ -497,8 +497,8 @@
             <div class="form-group row mt-4">
               <div class="col">
                 <button class="btn btn-success" type="button" id="btnSaveDr" >Save</button>
-                <button class="btn btn-warning" id="btnUpdateDr" >Update</button>
-                <button class="btn btn-danger" id="btnDeleteDr" >Delete</button>
+                <button class="btn btn-warning" type="button" id="btnUpdateDr" >Update</button>
+                <button class="btn btn-danger" type="button" id="btnDeleteDr" >Delete</button>
               </div>
             </div>
           </form>
@@ -552,9 +552,13 @@
   var bookingCount = 0;
 
   getCusCount();
+  getDrCount()
 
 
   getAllCustomers();
+  getAllDrivers();
+  getAllCars();
+
   cusBindRowClickEvents();
   carBindRowClickEvents();
   drBindRowClickEvents();
@@ -602,6 +606,13 @@
     $("#cus_email").val(cus_email);
   }
 
+  function setDrTextField(dr_lic, dr_name, dr_contact, dr_avail){
+    $("#dr_lic").val(dr_lic);
+    $("#dr_name").val(dr_name);
+    $("#dr_contact").val(dr_contact);
+    $("#dr_avail").val(dr_avail);
+  }
+
   function cusBindRowClickEvents(){
       $("#tblCustomer>tr").click(function () {
         let cusNic = $(this).children(":eq(0)").text();
@@ -621,14 +632,14 @@
   function carBindRowClickEvents() {
     $("#tblCar>tr").click(function () {
       let carReg = $(this).find("td:eq(0)").text();
-      let carMake = $(this).find("td:eq(2)").text();
-      let carModel = $(this).find("td:eq(3)").text();
+      let carMake = $(this).find("td:eq(1)").text();
+      let carModel = $(this).find("td:eq(2)").text();
       let carType = $(this).find("td:eq(4)").text();
-      let carFuel = $(this).find("td:eq(5)").text();
-      let carPas = $(this).find("td:eq(6)").text();
-      let carDay = $(this).find("td:eq(7)").text();
-      let carMonth = $(this).find("td:eq(8)").text();
-      let carKm = $(this).find("td:eq(9)").text();
+      let carFuel = $(this).find("td:eq(3)").text();
+      let carPas = $(this).find("td:eq(5)").text();
+      let carDay = $(this).find("td:eq(6)").text();
+      let carMonth = $(this).find("td:eq(7)").text();
+      let carKm = $(this).find("td:eq(8)").text();
 
       $('#cr_reg').val(carReg);
       $('#cr_make').val(carMake);
@@ -638,6 +649,7 @@
       $('#cr_day').val(carDay);
       $('#cr_month').val(carMonth);
       $('#cr_km').val(carKm);
+      $('#cr_nfp').val(carPas);
 
       console.log(carType);
     });
@@ -659,62 +671,131 @@
     });
   }
 
-  // Driver
-  
+  // Driver - Done
+
     $("#btnSaveDr").click(function () {
       let formDrData = $("#formDriver").serialize();
 
       $.ajax({
-        url: baseURL + "driver",
+        url: baseURL + "driver/save",
         method: "post",
         data: formDrData,
         dataType: "json",
         success: function (res) {
-          alert(res.state + " : " + res.message);
-          console.log("Success : " + res.message)
-          // uploadimg();
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Success");
+          $("#txtWarning").text(res.message);
+          getAllDrivers();
+          drBindRowClickEvents();
         },
         error: function (err) {
-          alert(err.state + " : " + err.message);
-          console.log("Error : " + err.message)
+          let message = JSON.parse(err.responseText).message;
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Error");
+          $("#txtWarning").text(message);
         }
       });
     });
 
     $("#btnUpdateDr").click(function () {
-      let formDrData = $("#formDriver").serialize();
+
+      let driverDataObj={
+        dr_lic: $("#dr_lic").val(),
+        dr_name: $("#dr_name").val(),
+        dr_contact: $("#dr_contact").val(),
+        dr_avail: $("#dr_avail").val()
+      }
 
       $.ajax({
-        url: baseURL + "driver",
-        method: "put",
-        data: formDrData,
-        dataType: "html",
+        url: baseURL + "driver/update",
+        method: "PUT",
+        data: JSON.stringify(driverDataObj),
+        contentType: "application/json",
+        dataType: "json",
         success: function (res) {
-          alert(res.state + " : " + res.message);
-          console.log("Success : " + res.message)
-          // uploadimg();
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Success");
+          $("#txtWarning").text(res.message);
         },
         error: function (err) {
-          alert(err.state + " : " + err.message);
-          console.log("Error : " + err.message)
+          let message = JSON.parse(err.responseText).message;
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Error");
+          $("#txtWarning").text(message);
         }
       });
     });
 
-    $("#btnSaveDr").click(function () {
+    $("#btnDeleteDr").click(function () {
       let dr_lic = $("#dr_lic").val();
       $.ajax({
-        url: baseURL + "car?dr_lic=" + dr_lic,
+        url: baseURL + "driver/delete?dr_lic=" + dr_lic,
         method: "delete",
-        success: function (resp) {
-          alert(resp.message);
+        success: function (res) {
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Success");
+          $("#txtWarning").text(res.message);
         },
-        error: function (error) {
-          let message = JSON.parse(error.responseText).message;
-          alert(message);
+        error: function (err) {
+          let message = JSON.parse(err.responseText).message;
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Error");
+          $("#txtWarning").text(message);
         }
       });
     });
+
+  function getAllDrivers() {
+    $("#tblDriver").empty();
+    $.ajax({
+      url: baseURL + "driver/alldr",
+      method: 'get',
+      dataType: 'json',
+      success: function (res) {
+        for (let c of res.data) {
+          let dr_lic = c.dr_lic;
+          let dr_name = c.dr_name;
+          let dr_contact = c.dr_contact;
+          let dr_avail = c.dr_avail;
+
+          let row = "<tr><td>" + dr_lic + "</td><td>" + dr_name + "</td><td>" + dr_contact + "</td><td>" + dr_avail + "</td></tr>";
+
+          $("#tblDriver").append(row);
+          drBindRowClickEvents();
+          setDrTextField("", "", "", "", "");
+        }
+
+      },
+      error: function (error) {
+        let message = JSON.parse(error.responseText).message;
+        alert(message);
+        cusBindRowClickEvents();
+        setCusTxtField("", "", "", "", "");
+      }
+    });
+  }
+
+  function getDrCount() {
+    $.ajax({
+      url: baseURL + "driver/count",
+      method: 'get',
+      dataType: 'json',
+      success: function (res) {
+        if (res.data < 10) {
+          $("#txtCountDr").text("0" + res.data);
+        } else {
+          $("#txtCountDr").text(res.data);
+        }
+
+      },
+      error: function (error) {
+        let message = JSON.parse(error.responseText).message;
+        alert(message);
+        cusBindRowClickEvents();
+        setCusTxtField("", "", "", "", "");
+      }
+    });
+  }
 
 
   //Customer - Done
@@ -808,9 +889,31 @@
           $("#txtWarning").text(message);
         }
       });
-
-
     });
+
+  $(document).on('click', '.btnDeleteCus', function () {
+    let cus_nic = $(this).closest('tr').find('td:first').text();
+    $.ajax({
+      url: baseURL + "customer/delete?cus_nic=" + cus_nic,
+      method: "delete",
+      success: function (resp) {
+        $("#warningModal").modal();
+        $("#txtWarningHeader").text("Success");
+        $("#txtWarning").text(resp.message);
+
+        getAllCustomers();
+        setCusTxtField("", "", "", "", "")
+        getCusCount();
+      },
+      error: function (error) {
+        let message = JSON.parse(error.responseText).message;
+        $("#warningModal").modal();
+        $("#txtWarningHeader").text("Error");
+        $("#txtWarning").text(message);
+      }
+    });
+  });
+
 
     function getAllCustomers() {
       $("#tblCustomer").empty();
@@ -826,7 +929,7 @@
             let cusContact = c.cus_contact;
             let cusEmail = c.cus_email;
 
-            let row = "<tr><td>" + cusNic + "</td><td>" + cusName + "</td><td>" + cusAddress + "</td><td>" + cusContact + "</td><td>" + cusEmail + "</td><td><img src='assets/images/download.jpg' width='100'></td><td><button type=\"button\" class=\"btn btn-danger btnDeleteCus\" >Remove</button></td></tr>";
+            let row = "<tr><td>" + cusNic + "</td><td>" + cusName + "</td><td>" + cusAddress + "</td><td>" + cusContact + "</td><td>" + cusEmail + "</td><td><img src='assets/images/download.jpg' width='100'></td><td><button type=\"button\" class=\"btn btn-sm btn-danger btnDeleteCus\" >Remove</button></td></tr>";
 
             $("#tblCustomer").append(row);
 
@@ -873,53 +976,131 @@
       var formCarData = $("#formCar").serialize();
 
       $.ajax({
-        url: baseURL + "car",
+        url: baseURL + "car/save",
         method: "post",
         data: formCarData,
         dataType: "json",
         success: function (res) {
-          alert(res.message);
-          console.log("Success : " + res.message);
+          getAllCars();
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Success");
+          $("#txtWarning").text(res.message);
         },
         error: function (err) {
           let message = JSON.parse(err.responseText).message;
-          alert(message);
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Error");
+          $("#txtWarning").text(message);
         }
       });
     });
 
     $("#btnUpdateCar").click(function () {
-      var formCarData = $("#formCar").serialize();
+
+      var carDataObj = {
+        cr_reg: $("#cr_reg").val(),
+        cr_make: $("#cr_make").val(),
+        cr_model: $("#cr_model").val(),
+        cr_fuel: $("#cr_fuel").val(),
+        cr_type: $("#cr_type").val(),
+        cr_nfp: $("#cr_nfp").val(),
+        cr_day: $("#cr_day").val(),
+        cr_month: $("#cr_month").val(),
+        cr_km: $("#cr_km").val()
+      };
+
       $.ajax({
-        url: baseURL + "car",
-        method: "put",
-        data: formCarData,
+        url: baseURL + "car/update",
+        method: "PUT",
+        data: JSON.stringify(carDataObj),
+        contentType: "application/json",
         dataType: "json",
         success: function (res) {
-          alert("Success " + res.toString());
-          console.log("Success : " + res)
+          getAllCars();
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Success");
+          $("#txtWarning").text(res.message);
         },
         error: function (err) {
-          alert("Error" + err.toString());
-          console.log("Error : " + err)
+          let message = JSON.parse(err.responseText).message;
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Error");
+          $("#txtWarning").text(message);
         }
       });
+      getAllCars();
     });
 
     $("#btnDeleteCar").click(function () {
       let cr_reg = $("#cr_reg").val();
       $.ajax({
-        url: baseURL + "car?cr_reg=" + cr_reg,
+        url: baseURL + "car/delete?cr_reg=" + cr_reg,
         method: "delete",
         success: function (resp) {
-          alert(resp.message);
+          getAllCars();
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Success");
+          $("#txtWarning").text(resp.message);
+
         },
         error: function (error) {
           let message = JSON.parse(error.responseText).message;
-          alert(message);
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Error");
+          $("#txtWarning").text(message);
         }
       });
     });
+
+  function getAllCars() {
+    $("#tblCar").empty();
+    $.ajax({
+      url: baseURL + "car/allcar",
+      method: 'get',
+      dataType: 'json',
+      success: function (res) {
+        for (let c of res.data) {
+          let carReg = c.cr_reg;
+          let carMake = c.cr_make;
+          let carModel = c.cr_model;
+          let carType = c.cr_type;
+          let carFuel = c.cr_fuel;
+          let carNfp = c.cr_nfp;
+          let carDay = c.cr_day;
+          let carMonth = c.cr_month;
+          let carKm = c.cr_km;
+          let carAvail = c.cr_avail;
+
+
+          let row = "<tr><td>" + carReg + "</td><td>" + carMake + "</td><td>" + carModel + "</td><td>" + carType + "</td><td>" + carFuel + "</td><td>" + carNfp + "</td><td>" + carDay + "</td><td>" + carMonth + "</td><td>" + carKm + "</td><td>" + carAvail + "</td><td><img src='assets/images/Genaral/alto-m/2.png' width='100'></td></tr>";
+
+          $("#tblCar").append(row);
+
+          carBindRowClickEvents();
+          setCarTextField("", "", "", "", "","", "", "", "", "","","");
+        }
+
+      },
+      error: function (error) {
+        let message = JSON.parse(error.responseText).message;
+        alert(message);
+      }
+    });
+  }
+
+  function setCarTextField(cr_reg,cr_make,cr_model,cr_type,cr_fuel,cr_nfp,cr_day,cr_month,cr_km,cr_avail){
+    $("#cr_reg").val(cr_reg);
+    $("#cr_make").val(cr_make);
+    $("#cr_model").val(cr_model);
+    $("#cr_type").val(cr_type);
+    $("#cr_fuel").val(cr_fuel);
+    $("#cr_nfp").val(cr_nfp);
+    $("#cr_day").val(cr_day);
+    $("#cr_month").val(cr_month);
+    $("#cr_km").val(cr_km);
+    $("#cr_avail").val(cr_avail);
+
+  }
 
 
 

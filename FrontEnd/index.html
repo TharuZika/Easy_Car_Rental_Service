@@ -129,7 +129,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Username
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu hide" id="dropdownProfile" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item btn" type="button"  data-toggle="modal" data-target=".bd-settings-modal-lg">Settings</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Logout</a>
@@ -140,11 +140,32 @@
                 <i class="fa-solid fa-phone-volume"></i>
                 011-2332331<br>
                 <i class="fa-solid fa-envelope"></i>
-                easycar@contact.lk
+                contact@easycar.lk
             </span>
         </div>
     </div>
 </nav>
+
+<!--Warning Box-->
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="txtWarningHeader">Warning!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="txtWarning">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!--Profile Modal-->
 <div class=" modal fade bd-settings-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -240,14 +261,14 @@
                     <form>
                         <h2 class="text-center">Login</h2>
                         <div class="form-group">
-                            <label for="email">Username</label>
-                            <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+                            <label for="email">Nic / Lic</label>
+                            <input type="text" class="form-control" id="username" placeholder="Nic/Lic">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-warning">Login</button>
+                        <button type="submit" class="btn btn-warning" id="btnLogin">Login</button>
                         <small>Don't have an account? <a href="register.html" class="text-warning">Register</a></small>
                     </form>
                     </div>
@@ -536,7 +557,16 @@
 <script>
     $(".btnRent").click(function (){
         $('.bd-booking-modal-lg').modal();
-    })
+    });
+
+    $("#btnLogin").click(function (){
+        $(".login-box").css('display', 'none');
+        $("#warningModal").modal();
+        $("#txtWarningHeader").text("Success");
+        $("#txtWarning").text("Login Successfully");
+
+    });
+
 </script>
 </body>
 </html>

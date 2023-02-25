@@ -25,25 +25,25 @@ public class CarController {
     @Autowired
     private ModelMapper mapper;
 
-    @PostMapping
+    @PostMapping(path = "/save")
     public ResponseUtil saveCar(CarDTO dto){
         service.saveCar(dto);
         return new ResponseUtil("OK", "Successfully Registered..!", null);
     }
 
-    @PutMapping
-    public ResponseUtil updateCar(CarDTO dto){
+    @PutMapping(path = "/update")
+    public ResponseUtil updateCar(@RequestBody CarDTO dto){
         service.updateCar(dto);
-        return new ResponseUtil("OK", "Successfully Updated..!", null);
+        return new ResponseUtil("OK", "Successfully Updated..!", dto);
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "/delete")
     public ResponseUtil deleteCar(String cr_reg){
         service.deleteCar(cr_reg);
         return new ResponseUtil("OK", "Successfully Deleted..!", null);
     }
 
-    @GetMapping
+    @GetMapping(path = "/allcar")
     public ResponseUtil getAllCars(){
         ArrayList allList = service.getAllCars();
         return new ResponseUtil("OK", "Successfully loaded..!", allList);

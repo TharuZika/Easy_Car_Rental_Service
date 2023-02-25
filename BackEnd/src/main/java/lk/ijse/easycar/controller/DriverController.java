@@ -5,7 +5,9 @@ import lk.ijse.easycar.entity.Driver;
 import lk.ijse.easycar.repo.DriverRepo;
 import lk.ijse.easycar.service.DriverService;
 import lk.ijse.easycar.util.ResponseUtil;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -20,17 +22,27 @@ public class DriverController {
     @Autowired
     private DriverService service;
 
-    @PostMapping
-    public ResponseUtil saveDriver(String dr_lic, String dr_name, String dr_contact, String dr_avail){
-        Driver driver = new Driver();
-        driver.setDr_lic(dr_lic);
-        driver.setDr_name(dr_name);
-        driver.setDr_contact(dr_contact);
-        driver.setDr_avail(dr_avail);
-        repo.save(driver);
-
-        return new ResponseUtil("OK", "Successfully Registered..!", driver);
+    @PostMapping(path = "/save")
+    public ResponseUtil saveDriver(DriverDTO dto){
+       service.saveDriver(dto);
+       return new ResponseUtil("OK", "Successfully Registered..!", null);
     }
 
+    @GetMapping(path = "/alldr")
+    public ResponseUtil getAllDrivers(){
+        return new ResponseUtil("OK", "Successfully loaded..!", service.getAllDrivers());
+    }
+
+    @PutMapping(path = "/update")
+    public ResponseUtil updateDriver(@RequestBody DriverDTO dto){
+        service.updateDriver(dto);
+        return new ResponseUtil("OK", "Successfully Updated..!", dto);
+    }
+
+    @GetMapping(path ="/count",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil countDrivers(){
+        int count = service.countDriver();
+        return new ResponseUtil("OK", "Successfully Counted!", count);
+    }
 
 }

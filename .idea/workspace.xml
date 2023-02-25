@@ -10,34 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8ba8c90-bc6b-4824-af07-b4d92039fe9e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FrontEnd/.idea/FrontEnd.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_3_25.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/BackEnd.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/BackEnd.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/config/WebAppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/config/WebAppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/config/WebRootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/config/WebRootConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/CarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/DriverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/DriverController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/dto/CarDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/dto/CarDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/dto/CustomerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/dto/CustomerDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/dto/DriverDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/dto/DriverDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/entity/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/entity/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/CustomerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/CustomerRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/DriverRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/DriverRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/CarService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/DriverService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/DriverService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/util/ResponseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/util/ResponseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/CarServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/DriverServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/DriverServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/controller/CarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/controller/CarController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/dto/CarDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/dto/CarDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/dto/DriverDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/dto/DriverDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/controller/CarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/controller/CarController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/dto/CarDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/dto/CarDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/dto/DriverDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/dto/DriverDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/adminDashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/adminDashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +226,7 @@
       <workItem from="1677218714757" duration="13887000" />
       <workItem from="1677259758515" duration="1286000" />
       <workItem from="1677261106506" duration="5000" />
-      <workItem from="1677299779122" duration="20030000" />
+      <workItem from="1677299779122" duration="29153000" />
     </task>
     <servers />
   </component>

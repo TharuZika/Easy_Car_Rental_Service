@@ -56,4 +56,5 @@ public class CarServiceImpl implements CarService {
         ArrayList<CarDTO> allList = mapper.map(all, new TypeToken<ArrayList<CarDTO>>(){}.getType());
         return allList;
     }
+
 }

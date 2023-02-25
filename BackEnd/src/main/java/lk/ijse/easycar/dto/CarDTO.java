@@ -17,8 +17,8 @@ public class CarDTO {
     private String cr_reg;
     private String cr_make;
     private String cr_model;
-    private String cr_type;
     private String cr_fuel;
+    private String cr_type;
     private String cr_nfp; //no of passengers
 
     private BigDecimal cr_day;

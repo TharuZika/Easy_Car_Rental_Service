@@ -87,7 +87,7 @@ public class CustomerController {
     }
 
     @GetMapping(path ="/count",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil countVehicle(){
+    public ResponseUtil countCustomers(){
         int count = service.countCustomer();
         return new ResponseUtil("OK", "Successfully Counted!", count);
     }
