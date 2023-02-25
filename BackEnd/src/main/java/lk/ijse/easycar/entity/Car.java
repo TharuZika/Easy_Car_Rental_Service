@@ -28,5 +28,5 @@ public class Car {
     private BigDecimal cr_month;
     private BigDecimal cr_km;
 
-    private Boolean cr_avail;
+    private String cr_avail;
 }

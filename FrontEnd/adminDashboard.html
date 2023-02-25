@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Easy Car Rental Service / Admin</title>
+  <title>Admin</title>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <script src="https://kit.fontawesome.com/97dbc65e21.js" crossorigin="anonymous"></script>
 
@@ -74,6 +74,26 @@
   </div>
 </nav>
 
+<!-- Modal -->
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="txtWarningHeader">Warning!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="txtWarning">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--Dashboard-->
 <div id="dashboardPage">
 <div class="container">
@@ -84,7 +104,7 @@
     <div class="card shadow text-dark bg-warning mb-3">
       <div class="card-body">
         <h5 class="card-title">Cars</h5>
-        <h1 class="display-4"><strong>30</strong></h1>
+        <h1 class="display-4"><strong id="txtCountCar">30</strong></h1>
         <i class="fa-solid fa-car  display-4 d-flex justify-content-end"></i>
       </div>
     </div>
@@ -93,7 +113,7 @@
     <div class="card shadow text-dark bg-warning mb-3">
       <div class="card-body">
         <h5 class="card-title">Customers</h5>
-        <h1 class="display-4"><strong>18</strong></h1>
+        <h1 class="display-4" ><strong id="txtCountCus">18</strong></h1>
         <i class="fa-solid fa-user  display-4 d-flex justify-content-end"></i>
       </div>
     </div>
@@ -102,7 +122,7 @@
     <div class="card shadow text-dark bg-warning mb-3">
       <div class="card-body">
         <h5 class="card-title">Drivers</h5>
-        <h1 class="display-4"><strong>15</strong></h1>
+        <h1 class="display-4" ><strong id="txtCountDr">15</strong></h1>
         <i class="fa-solid fa-person  display-4 d-flex justify-content-end"></i>
       </div>
     </div>
@@ -111,7 +131,7 @@
     <div class="card shadow text-dark bg-warning mb-3">
       <div class="card-body">
         <h5 class="card-title">Bookings</h5>
-        <h1 class="display-4"><strong>03</strong></h1>
+        <h1 class="display-4" ><strong id="txtCountBk">03</strong></h1>
         <i class="fa-solid fa-plus  display-4 d-flex justify-content-end"></i>
       </div>
     </div>
@@ -203,6 +223,17 @@
               <option value="Luxury">Luxury</option>
             </select>
           </div>
+          <div class="col">
+            <label for="cr_nfp">No of Passengers</label>
+            <select class="form-control" id="cr_nfp" name="cr_nfp">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4" selected>4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
         </div>
         <div class="form-group row mt-4">
           <div class="col">
@@ -221,11 +252,18 @@
         <div class="form-group row mt-4">
           <div class="col">
             <label for="txtCar_rangeDay">Range per Day</label>
-            <input type="text" class="form-control" id="txtCar_rangeDay" name="txtCar_rangeDay" placeholder="Km:">
+            <input type="text" class="form-control" id="txtCar_rangeDay" placeholder="Km:">
           </div>
           <div class="col">
             <label for="cr_rangeMonth">Range per Month</label>
-            <input type="text" class="form-control" id="cr_rangeMonth" name="cr_rangeMonth" placeholder="Km:">
+            <input type="text" class="form-control" id="cr_rangeMonth" placeholder="Km:">
+          </div>
+          <div class="col">
+            <label for="cr_avail">Availability</label>
+            <select class="form-control" id="cr_avail" name="cr_avail">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
           </div>
         </div>
         <div class="form-group row mt-4">
@@ -252,7 +290,6 @@
         <thead class="thead-dark">
         <tr>
           <th scope="col">RegNo</th>
-          <th scope="col">Image</th>
           <th scope="col">Make</th>
           <th scope="col">Model</th>
           <th scope="col">Type</th>
@@ -262,87 +299,88 @@
           <th scope="col">Month/Rs</th>
           <th scope="col">Km/Rs</th>
           <th scope="col">Avail</th>
+          <th scope="col">Image</th>
         </tr>
         </thead>
         <tbody id="tblCar">
-        <tr>
-          <td>KL-1234</td>
-          <td><img src="assets/images/Genaral/alto-m/1.png" width="100" alt="1234"></td>
-          <td>Suzuki</td>
-          <td>Alto</td>
-          <td>Luxury</td>
-          <td>Petrol</td>
-          <td>4</td>
-          <td>2400</td>
-          <td>62000</td>
-          <td>100</td>
-          <td class="text-success">Yes</td>
-        </tr>
-        <tr>
-          <td>KL-6245</td>
-          <td><img src="assets/images/Genaral/alto-m/2.png" width="100"  alt="1234"></td>
-          <td>Suzuki</td>
-          <td>Alto</td>
-          <td>Premium</td>
-          <td>Diesel</td>
-          <td>4</td>
-          <td>2400</td>
-          <td>62000</td>
-          <td>100</td>
-          <td class="text-success">Yes</td>
-        </tr>
-        <tr>
-          <td>KL-3244</td>
-          <td><img src="assets/images/Genaral/alto-m/3.png" width="100"  alt="1234"></td>
-          <td>Suzuki</td>
-          <td>Alto</td>
-          <td>General</td>
-          <td>Petrol</td>
-          <td>4</td>
-          <td>2400</td>
-          <td>62000</td>
-          <td>100</td>
-          <td class="text-danger">No</td>
-        </tr>
-        <tr>
-          <td>KL-3244</td>
-          <td><img src="assets/images/Genaral/alto-m/4.png" width="100"  alt="1234"></td>
-          <td>Bmw</td>
-          <td>Alto</td>
-          <td>General</td>
-          <td>Petrol</td>
-          <td>4</td>
-          <td>2400</td>
-          <td>62000</td>
-          <td>100</td>
-          <td class="text-success">Yes</td>
-        </tr>
-        <tr>
-          <td>KL-3244</td>
-          <td><img src="assets/images/Genaral/alto-m/5.png" width="100"  alt="1234"></td>
-          <td>Suzuki</td>
-          <td>Alto</td>
-          <td>General</td>
-          <td>Petrol</td>
-          <td>4</td>
-          <td>2400</td>
-          <td>62000</td>
-          <td>100</td>
-          <td class="text-success">Yes</td>
-        </tr>
-        <tr>
-          <td>KL-3244</td>
-          <td><img src="assets/images/Genaral/alto-m/6.png" width="100"  alt="1234"></td>
-          <td>Suzuki</td>
-          <td>Alto</td>
-          <td>General</td>
-          <td>Petrol</td>
-          <td>4</td>
-          <td>2400</td>
-          <td>62000</td>
-          <td>100</td>
-          <td class="text-success">Yes</td>
-        </tr>
+<!--        <tr>-->
+<!--          <td>KL-1234</td>-->
+<!--          <td><img src="assets/images/Genaral/alto-m/1.png" width="100" alt="1234"></td>-->
+<!--          <td>Suzuki</td>-->
+<!--          <td>Alto</td>-->
+<!--          <td>Luxury</td>-->
+<!--          <td>Petrol</td>-->
+<!--          <td>4</td>-->
+<!--          <td>2400</td>-->
+<!--          <td>62000</td>-->
+<!--          <td>100</td>-->
+<!--          <td class="text-success">Yes</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td>KL-6245</td>-->
+<!--          <td><img src="assets/images/Genaral/alto-m/2.png" width="100"  alt="1234"></td>-->
+<!--          <td>Suzuki</td>-->
+<!--          <td>Alto</td>-->
+<!--          <td>Premium</td>-->
+<!--          <td>Diesel</td>-->
+<!--          <td>4</td>-->
+<!--          <td>2400</td>-->
+<!--          <td>62000</td>-->
+<!--          <td>100</td>-->
+<!--          <td class="text-success">Yes</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td>KL-3244</td>-->
+<!--          <td><img src="assets/images/Genaral/alto-m/3.png" width="100"  alt="1234"></td>-->
+<!--          <td>Suzuki</td>-->
+<!--          <td>Alto</td>-->
+<!--          <td>General</td>-->
+<!--          <td>Petrol</td>-->
+<!--          <td>4</td>-->
+<!--          <td>2400</td>-->
+<!--          <td>62000</td>-->
+<!--          <td>100</td>-->
+<!--          <td class="text-danger">No</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td>KL-3244</td>-->
+<!--          <td><img src="assets/images/Genaral/alto-m/4.png" width="100"  alt="1234"></td>-->
+<!--          <td>Bmw</td>-->
+<!--          <td>Alto</td>-->
+<!--          <td>General</td>-->
+<!--          <td>Petrol</td>-->
+<!--          <td>4</td>-->
+<!--          <td>2400</td>-->
+<!--          <td>62000</td>-->
+<!--          <td>100</td>-->
+<!--          <td class="text-success">Yes</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td>KL-3244</td>-->
+<!--          <td><img src="assets/images/Genaral/alto-m/5.png" width="100"  alt="1234"></td>-->
+<!--          <td>Suzuki</td>-->
+<!--          <td>Alto</td>-->
+<!--          <td>General</td>-->
+<!--          <td>Petrol</td>-->
+<!--          <td>4</td>-->
+<!--          <td>2400</td>-->
+<!--          <td>62000</td>-->
+<!--          <td>100</td>-->
+<!--          <td class="text-success">Yes</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td>KL-3244</td>-->
+<!--          <td><img src="assets/images/Genaral/alto-m/6.png" width="100"  alt="1234"></td>-->
+<!--          <td>Suzuki</td>-->
+<!--          <td>Alto</td>-->
+<!--          <td>General</td>-->
+<!--          <td>Petrol</td>-->
+<!--          <td>4</td>-->
+<!--          <td>2400</td>-->
+<!--          <td>62000</td>-->
+<!--          <td>100</td>-->
+<!--          <td class="text-success">Yes</td>-->
+<!--        </tr>-->
         </tbody>
       </table>
     </div>
@@ -381,15 +419,17 @@
               <input type="email" class="form-control" id="cus_email" name="cus_email" required>
             </div></div>
 
-            <div class="form-group">
+            <div class=" form-group">
               <label for="cus_img">NIC Image:</label>
-              <input type="file" class="form-control-file" id="cus_img" name="cus_img" accept="image/*" required>
+              <input type="file" class="form-control-file" id="cus_img" accept="image/*" required>
             </div>
             <button type="button" class="btn btn-success" id="btnSaveCus">Save</button>
             <button type="button" class="btn btn-warning" id="btnUpdateCus">Update</button>
-            <button type="button" class="btn btn-danger" id="btnDeleteCus">Remove</button>
+            <button type="button" class="btn btn-danger btnDeleteCus" >Remove</button>
           </form>
         </div>
+
+
 
 
 
@@ -398,36 +438,17 @@
           <table class="table shadow">
             <thead class="thead-dark">
             <tr>
-              <th scope="col">NIC</th>
+              <th scope="col">NIC-No</th>
               <th scope="col">Name</th>
               <th scope="col">Address</th>
               <th scope="col">Contact</th>
               <th scope="col">Email</th>
+              <th scope="col">NIC-Image</th>
+              <th scope="col">Option</th>
             </tr>
             </thead>
             <tbody id="tblCustomer">
-            <tr>
-              <td>200113203389</td>
-              <td>Saman Kumara</td>
-              <td>721/C, Galle</td>
-              <td>0788899144</td>
-              <td>contact@gmail.com</td>
-            </tr>
-            <tr>
-              <td>20014123403389</td>
-              <td>Gayan Withana</td>
-              <td>Colombo</td>
-              <td>0721345687</td>
-              <td>contact@gmail.com</td>
-            </tr>
-            <tr>
-              <td>20014123403389</td>
-              <td>Gayan Withana</td>
-              <td>Colombo</td>
-              <td>0721345687</td>
-              <td>contact@gmail.com</td>
-              <td><img src="assets/images/bg.jpg"  width="200"></td>
-            </tr>
+
             </tbody>
           </table>
         </div>
@@ -524,6 +545,26 @@
 <script>
 
   let baseURL = "http://localhost:8080/BackEnd_war/"
+  let projectPath = "C:\\Users\\ASUS\\Documents\\GDSE60\\Advanced API\\AAD CourseWork\\Easy_car_rental_private_limited\\BackEnd\\src\\main\\resources\\static\\Images";
+  var carCount = 0;
+  var customerCount = 0;
+  var driverCount = 0;
+  var bookingCount = 0;
+
+  getCusCount();
+
+
+  getAllCustomers();
+  cusBindRowClickEvents();
+  carBindRowClickEvents();
+  drBindRowClickEvents();
+
+  function txtCountCards(cars, customers, drivers, bookings){
+    $("#txtCountCar").text(cars);
+    $("#txtCountCus").text(customers);
+    $("#txtCountDr").text(drivers);
+    $("#txtCountBk").text(bookings);
+  }
 
   $("#dashboardNav").click(function (){
     $("#dashboardPage").css("display" , "block");
@@ -553,23 +594,34 @@
     $("#driverPage").css("display", "block");
   });
 
-    $("#tblCustomer>tr").click(function () {
-      let cusNic = $(this).children(":eq(0)").text();
-      let cusName = $(this).children(":eq(1)").text();
-      let cusAddress = $(this).children(":eq(2)").text();
-      let cusContact = $(this).children(":eq(3)").text();
-      let cusEmail = $(this).children(":eq(4)").text();
+  function setCusTxtField(cus_nic, cus_name, cus_address, cus_contact, cus_email){
+    $("#cus_nic").val(cus_nic);
+    $("#cus_name").val(cus_name);
+    $("#cus_address").val(cus_address);
+    $("#cus_contact").val(cus_contact);
+    $("#cus_email").val(cus_email);
+  }
 
-      $('#cus_nic').val(cusNic);
-      $('#cus_name').val(cusName);
-      $('#cus_address').val(cusAddress);
-      $('#cus_contact').val(cusContact);
-      $('#cus_email').val(cusEmail);
-    });
+  function cusBindRowClickEvents(){
+      $("#tblCustomer>tr").click(function () {
+        let cusNic = $(this).children(":eq(0)").text();
+        let cusName = $(this).children(":eq(1)").text();
+        let cusAddress = $(this).children(":eq(2)").text();
+        let cusContact = $(this).children(":eq(3)").text();
+        let cusEmail = $(this).children(":eq(4)").text();
 
-    $("#tblCar>tr").click(function (){
+        $('#cus_nic').val(cusNic);
+        $('#cus_name').val(cusName);
+        $('#cus_address').val(cusAddress);
+        $('#cus_contact').val(cusContact);
+        $('#cus_email').val(cusEmail);
+      });
+    }
+
+  function carBindRowClickEvents() {
+    $("#tblCar>tr").click(function () {
       let carReg = $(this).find("td:eq(0)").text();
-      let carMake =$(this).find("td:eq(2)").text();
+      let carMake = $(this).find("td:eq(2)").text();
       let carModel = $(this).find("td:eq(3)").text();
       let carType = $(this).find("td:eq(4)").text();
       let carFuel = $(this).find("td:eq(5)").text();
@@ -589,175 +641,287 @@
 
       console.log(carType);
     });
+  }
 
-  $("#tblDriver>tr").click(function () {
-    let drLic = $(this).find("td:eq(0)").text();
-    let drName = $(this).find("td:eq(1)").text();
-    let drContact = $(this).find("td:eq(2)").text();
-    let drAvail = $(this).find("td:eq(3)").text();
-
-
-    $('#dr_lic').val(drLic);
-    $('#dr_name').val(drName);
-    $('#dr_contact').val(drContact);
-    $('#dr_avail').val(drAvail);
-
-  });
-
-  // Driver
-  $("#btnSaveDr").click(function (){
-    let formDrData = $("#formDriver").serialize();
-
-    $.ajax({
-      url: baseURL+"driver",
-      method:"post",
-      data: formDrData,
-      dataType: "json",
-      success: function (res){
-        alert(res.state+" : "+res.message);
-        console.log("Success : "+res.message)
-        // uploadimg();
-      },
-      error: function (err){
-        alert(err.state+" : "+err.message);
-        console.log("Error : "+err.message)
-      }
-    });
-  });
-
-  //Customer
-  $("#btnSaveCus").click(function (){
-    let formCusData = $("#fromCustomer").serialize();
-
-    let cus_nic = $("#cus_nic").val();
-    let cus_name = $("#cus_name").val();
-    let cus_address = $("#cus_address").val();
-    let cus_contact = $("#cus_contact").val();
-    let cus_email = $("#cus_email").val();
-
-    let file = $("#cus_img")[0].files[0];
-
-    var formData = new FormData();
-
-    formData.append('cus_nic', cus_nic);
-    formData.append('cus_name', cus_name);
-    formData.append('cus_address', cus_address);
-    formData.append('cus_contact', cus_contact);
-    formData.append('cus_email', cus_email);
-    formData.append('cus_img', file);
-
-    console.log(cus_nic);
-
-    $.ajax({
-      url: baseURL+"customer",
-      method: 'post',
-      processData: false,
-      contentType: false,
-      data: formData,
-      success: function (res){
-        alert("Success : "+res.message);
-        console.log("Success : "+res.message);
-        getAllCustomers();
-      },
-      error: function (err){
-        let message = JSON.parse(err.responseText).message;
-        alert(message);
-        console.log("Error : "+message)
-        getAllCustomers();
-      }
-    });
-  });
-
-  $("#btnDeleteCus").click(function (){
-    let cus_nic = $("#cus_nic").val();
-    console.log(cus_nic);
-    $.ajax({
-      url: baseURL+"customer",
-      method:"delete",
-      data: cus_nic,
-      dataType: "json",
-      success: function (res){
-        alert("Success "+res.toString());
-        console.log("Success : "+res)
-        getAllCustomers();
-      },
-      error: function (err){
-        alert("Error" +err.toString());
-        console.log("Error : "+err)
-        getAllCustomers();
-      }
-    });
-  });
+  function drBindRowClickEvents() {
+    $("#tblDriver>tr").click(function () {
+      let drLic = $(this).find("td:eq(0)").text();
+      let drName = $(this).find("td:eq(1)").text();
+      let drContact = $(this).find("td:eq(2)").text();
+      let drAvail = $(this).find("td:eq(3)").text();
 
 
+      $('#dr_lic').val(drLic);
+      $('#dr_name').val(drName);
+      $('#dr_contact').val(drContact);
+      $('#dr_avail').val(drAvail);
 
-  function getAllCustomers() {
-    $("#tblCustomer").empty();
-    $.ajax({
-      url: baseURL+"customer",
-      method: 'get',
-      dataType: 'json',
-      success: function (res) {
-        for (let c of res.data) {
-          let cusNic = c.cus_nic;
-          let cusName = c.cus_name;
-          let cusAddress = c.cus_address;
-          let cusContact = c.cus_contact;
-          let cusEmail = c.cus_email;
-          let cusImg = c.cus_img;
-
-          $("#display").css({
-            "background": `url(${baseURL + cusImg})`,
-            "background-size": "cover",
-            "height": "300px"
-          });
-
-          // console.log(res.data +" : "+cusImg);
-          //
-          // let row =  "<tr><td>" + cusNic + "</td><td>" + cusName + "</td><td>" + cusAddress + "</td><td>" + cusContact + "</td><td>" + cusEmail + "</td><td> <img src='${baseUrl + res}' width='100'> </td></tr>";
-          //
-          // $("#tblCustomer").append(row);
-        }
-
-      },
-      error: function (error) {
-        let message = JSON.parse(error.responseText).message;
-        alert(message);
-      }
     });
   }
 
+  // Driver
+  
+    $("#btnSaveDr").click(function () {
+      let formDrData = $("#formDriver").serialize();
+
+      $.ajax({
+        url: baseURL + "driver",
+        method: "post",
+        data: formDrData,
+        dataType: "json",
+        success: function (res) {
+          alert(res.state + " : " + res.message);
+          console.log("Success : " + res.message)
+          // uploadimg();
+        },
+        error: function (err) {
+          alert(err.state + " : " + err.message);
+          console.log("Error : " + err.message)
+        }
+      });
+    });
+
+    $("#btnUpdateDr").click(function () {
+      let formDrData = $("#formDriver").serialize();
+
+      $.ajax({
+        url: baseURL + "driver",
+        method: "put",
+        data: formDrData,
+        dataType: "html",
+        success: function (res) {
+          alert(res.state + " : " + res.message);
+          console.log("Success : " + res.message)
+          // uploadimg();
+        },
+        error: function (err) {
+          alert(err.state + " : " + err.message);
+          console.log("Error : " + err.message)
+        }
+      });
+    });
+
+    $("#btnSaveDr").click(function () {
+      let dr_lic = $("#dr_lic").val();
+      $.ajax({
+        url: baseURL + "car?dr_lic=" + dr_lic,
+        method: "delete",
+        success: function (resp) {
+          alert(resp.message);
+        },
+        error: function (error) {
+          let message = JSON.parse(error.responseText).message;
+          alert(message);
+        }
+      });
+    });
+
+
+  //Customer - Done
+
+    $("#btnSaveCus").click(function () {
+      let formCusData = $("#fromCustomer").serialize();
+
+      // let file = $("#cus_img")[0].files[0];
+
+      $.ajax({
+        url: baseURL + "customer/save",
+        method: "post",
+        data: formCusData,
+        dataType: "json",
+        success: function (res) {
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Success");
+          $("#txtWarning").text(res.message);
+
+          console.log("Success : " + res.message);
+          getAllCustomers();
+          setCusTxtField("", "", "", "", "");
+          getCusCount();
+        },
+        error: function (err) {
+          let message = JSON.parse(err.responseText).message;
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Error");
+          $("#txtWarning").text(message);
+          console.log("Error : " + message)
+        }
+      });
+    });
+
+    $("#btnUpdateCus").click(function () {
+      let cusDataObj = {
+        cus_nic: $("#cus_nic").val(),
+        cus_name: $("#cus_name").val(),
+        cus_address: $("#cus_address").val(),
+        cus_contact: $("#cus_contact").val(),
+        cus_email: $("#cus_email").val()
+      };
+
+      $.ajax({
+        url: baseURL + "customer/update",
+        method: "PUT",
+        data: JSON.stringify(cusDataObj),
+        contentType: "application/json",
+        dataType: "json",
+        success: function (res) {
+          let message = res.message;
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Success");
+          $("#txtWarning").text(res.message);
+
+          console.log("Success : " + message);
+          setCusTxtField("", "", "", "", "")
+          getAllCustomers();
+          getCusCount();
+        },
+        error: function (err) {
+          let message = JSON.parse(err.responseText).message;
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Error");
+          $("#txtWarning").text(message);
+
+          console.log("Error : " + message)
+        }
+      });
+    });
+
+    $(".btnDeleteCus").click(function () {
+      let cus_nic = $("#cus_nic").val();
+
+      $.ajax({
+        url: baseURL + "customer/delete?cus_nic=" + cus_nic,
+        method: "delete",
+        success: function (resp) {
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Success");
+          $("#txtWarning").text(resp.message);
+
+          getAllCustomers();
+          setCusTxtField("", "", "", "", "")
+          getCusCount();
+        },
+        error: function (error) {
+          let message = JSON.parse(error.responseText).message;
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Error");
+          $("#txtWarning").text(message);
+        }
+      });
+
+
+    });
+
+    function getAllCustomers() {
+      $("#tblCustomer").empty();
+      $.ajax({
+        url: baseURL + "customer/allcus",
+        method: 'get',
+        dataType: 'json',
+        success: function (res) {
+          for (let c of res.data) {
+            let cusNic = c.cus_nic;
+            let cusName = c.cus_name;
+            let cusAddress = c.cus_address;
+            let cusContact = c.cus_contact;
+            let cusEmail = c.cus_email;
+
+            let row = "<tr><td>" + cusNic + "</td><td>" + cusName + "</td><td>" + cusAddress + "</td><td>" + cusContact + "</td><td>" + cusEmail + "</td><td><img src='assets/images/download.jpg' width='100'></td><td><button type=\"button\" class=\"btn btn-danger btnDeleteCus\" >Remove</button></td></tr>";
+
+            $("#tblCustomer").append(row);
+
+            cusBindRowClickEvents();
+            setCusTxtField("", "", "", "", "");
+          }
+
+        },
+        error: function (error) {
+          let message = JSON.parse(error.responseText).message;
+          alert(message);
+          cusBindRowClickEvents();
+          setCusTxtField("", "", "", "", "");
+        }
+      });
+    }
+
+    function getCusCount() {
+      $.ajax({
+        url: baseURL + "customer/count",
+        method: 'get',
+        dataType: 'json',
+        success: function (res) {
+          if (res.data < 10) {
+            $("#txtCountCus").text("0" + res.data);
+          } else {
+            $("#txtCountCus").text(res.data);
+          }
+
+        },
+        error: function (error) {
+          let message = JSON.parse(error.responseText).message;
+          alert(message);
+          cusBindRowClickEvents();
+          setCusTxtField("", "", "", "", "");
+        }
+      });
+    }
+
 
   //Car
-  $("#btnSaveCar").click(function (){
-    var formData = new FormData();
 
-    formData.append('cr_reg', cr_reg);
-    formData.append('cr_make', cr_make);
-    formData.append('cr_model', cr_model);
-    formData.append('cr_type', cr_type);
-    formData.append('cr_fuel', cr_fuel);
-    formData.append('cr_nfp', cr_nfp);
-    formData.append('cr_day', cr_day);
-    formData.append('cr_month', cr_month);
-    formData.append('cr_km', cr_km);
-    formData.append('cr_avail', "Yes");
-    formData.append('cr_img', cr_img);
-    $.ajax({
-      url: baseURL+"car",
-      method:"post",
-      data: formCarData,
-      dataType: "json",
-      success: function (res){
-        alert("Success "+res.toString());
-        console.log("Success : "+res)
-      },
-      error: function (err){
-        alert("Error" +err.toString());
-        console.log("Error : "+err)
-      }
+    $("#btnSaveCar").click(function () {
+      var formCarData = $("#formCar").serialize();
+
+      $.ajax({
+        url: baseURL + "car",
+        method: "post",
+        data: formCarData,
+        dataType: "json",
+        success: function (res) {
+          alert(res.message);
+          console.log("Success : " + res.message);
+        },
+        error: function (err) {
+          let message = JSON.parse(err.responseText).message;
+          alert(message);
+        }
+      });
     });
-  });
+
+    $("#btnUpdateCar").click(function () {
+      var formCarData = $("#formCar").serialize();
+      $.ajax({
+        url: baseURL + "car",
+        method: "put",
+        data: formCarData,
+        dataType: "json",
+        success: function (res) {
+          alert("Success " + res.toString());
+          console.log("Success : " + res)
+        },
+        error: function (err) {
+          alert("Error" + err.toString());
+          console.log("Error : " + err)
+        }
+      });
+    });
+
+    $("#btnDeleteCar").click(function () {
+      let cr_reg = $("#cr_reg").val();
+      $.ajax({
+        url: baseURL + "car?cr_reg=" + cr_reg,
+        method: "delete",
+        success: function (resp) {
+          alert(resp.message);
+        },
+        error: function (error) {
+          let message = JSON.parse(error.responseText).message;
+          alert(message);
+        }
+      });
+    });
+
+
 
 
 

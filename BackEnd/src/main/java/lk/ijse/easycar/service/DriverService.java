@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
-@Service
 public interface DriverService {
 
     public void saveDriver(DriverDTO dto);

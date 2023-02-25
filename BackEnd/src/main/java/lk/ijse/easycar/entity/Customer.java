@@ -22,6 +22,5 @@ public class Customer {
     private String cus_address;
     private String cus_contact;
     private String cus_email;
-    private String cus_img;
 
 }

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
-@Service
 public interface CustomerService {
 
     public void saveCustomer(CustomerDTO dto);
@@ -17,4 +16,6 @@ public interface CustomerService {
     public ArrayList<CustomerDTO> getAllCustomers();
 
     public CustomerDTO searchCustomerWithName(String name);
+
+    int countCustomer();
 }
