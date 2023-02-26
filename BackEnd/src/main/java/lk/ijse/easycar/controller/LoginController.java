@@ -33,16 +33,18 @@ public class LoginController {
     private ModelMapper mapper;
 
     @PostMapping
-    public ResponseUtil loginUser(@RequestBody UserDTO dto){
-        User map = mapper.map(userRepo.findById(dto.getUserName()), User.class);
-        if (!map.getPassword().equals(dto.getPassword())){
+    public ResponseUtil loginUser(@RequestBody UserDTO userDto){
+        User map = mapper.map(userRepo.findByUserName(userDto.getUserName()), User.class);
+        if (!map.getPassword().equals(userDto.getPassword())){
             System.out.println("Password incorrect");
             return new ResponseUtil("Error", "Password or Username Incorrect", null);
         }
         if (map.getRole().equals("Customer")){
             System.out.println("This is Customer");
-            CustomerDTO customer = customerRepo.findCustomerByCus_nic(map.getUserId());
-            return new ResponseUtil("Ok", "Successfully Login", customer);
+            Customer customer = customerRepo.findByUserNic(userDto.getUserId());
+            CustomerDTO customerDTO = mapper.map(customer, CustomerDTO.class);
+            System.out.println(customerDTO.getCus_name());
+            return new ResponseUtil("Ok", "Successfully Login", customerDTO);
         }if (map.getRole().equals("Driver")){
             System.out.println("This is Driver");
             Optional<Driver> driver = driverRepo.findById(map.getUserId());
