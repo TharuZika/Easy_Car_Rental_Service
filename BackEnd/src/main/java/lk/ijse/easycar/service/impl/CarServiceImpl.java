@@ -57,4 +57,9 @@ public class CarServiceImpl implements CarService {
         return allList;
     }
 
+    @Override
+    public int countCars() {
+        return repo.countCar();
+    }
+
 }

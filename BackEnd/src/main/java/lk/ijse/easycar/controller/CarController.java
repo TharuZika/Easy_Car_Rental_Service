@@ -7,6 +7,7 @@ import lk.ijse.easycar.service.CarService;
 import lk.ijse.easycar.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -47,6 +48,12 @@ public class CarController {
     public ResponseUtil getAllCars(){
         ArrayList allList = service.getAllCars();
         return new ResponseUtil("OK", "Successfully loaded..!", allList);
+    }
+
+    @GetMapping(path ="/count",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil countCar(){
+        int count = service.countCars();
+        return new ResponseUtil("OK", "Successfully Counted!", count);
     }
 
 

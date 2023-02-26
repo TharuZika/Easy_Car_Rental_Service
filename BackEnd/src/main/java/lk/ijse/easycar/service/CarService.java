@@ -16,5 +16,6 @@ public interface CarService {
 
     public ArrayList<CarDTO> getAllCars();
 
+    public int countCars();
 
 }

@@ -12,23 +12,14 @@
     <list default="true" id="b8ba8c90-bc6b-4824-af07-b4d92039fe9e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/CarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/DriverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/DriverController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/dto/CarDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/dto/CarDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/entity/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/entity/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/DriverRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/DriverRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/entity/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/entity/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/CarRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/CarRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/CarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/DriverService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/DriverService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/CarServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/DriverServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/DriverServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/controller/CarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/controller/CarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/dto/CarDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/dto/CarDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/controller/CarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/controller/CarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/dto/CarDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/dto/CarDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/adminDashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/adminDashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +30,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -83,13 +74,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -226,7 +219,8 @@
       <workItem from="1677218714757" duration="13887000" />
       <workItem from="1677259758515" duration="1286000" />
       <workItem from="1677261106506" duration="5000" />
-      <workItem from="1677299779122" duration="29153000" />
+      <workItem from="1677299779122" duration="29582000" />
+      <workItem from="1677384732575" duration="7833000" />
     </task>
     <servers />
   </component>

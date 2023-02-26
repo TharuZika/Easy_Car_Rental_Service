@@ -553,6 +553,7 @@
 
   getCusCount();
   getDrCount()
+  getCarCount();
 
 
   getAllCustomers();
@@ -982,6 +983,7 @@
         dataType: "json",
         success: function (res) {
           getAllCars();
+          getCarCount();
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(res.message);
@@ -1017,6 +1019,7 @@
         dataType: "json",
         success: function (res) {
           getAllCars();
+          getCarCount();
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(res.message);
@@ -1038,6 +1041,7 @@
         method: "delete",
         success: function (resp) {
           getAllCars();
+          getCarCount();
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(resp.message);
@@ -1078,6 +1082,26 @@
 
           carBindRowClickEvents();
           setCarTextField("", "", "", "", "","", "", "", "", "","","");
+        }
+
+      },
+      error: function (error) {
+        let message = JSON.parse(error.responseText).message;
+        alert(message);
+      }
+    });
+  }
+
+  function getCarCount() {
+    $.ajax({
+      url: baseURL + "car/count",
+      method: 'get',
+      dataType: 'json',
+      success: function (res) {
+        if (res.data < 10) {
+          $("#txtCountCar").text("0" + res.data);
+        } else {
+          $("#txtCountCar").text(res.data);
         }
 
       },
