@@ -23,9 +23,6 @@
 
 </head>
 <body>
-<script src="assets/js/jquery-3.6.1.min.js"></script>
-<script src="assets/js/bootstrap.js"></script>
-
 <!--navBar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
   <div class="container">
@@ -52,12 +49,12 @@
   </div>
 </nav>
 
-<!--LoginForm-->
+<!--RegisterForm-->
 
 <div class="container content">
   <div class="mt-lg-4 mb-lg-4 reg-content">
   <h1 class="text-warning">Registration Form</h1>
-    <form id="fromCustomer">
+    <form id="formCustomer">
       <div class="row">
         <div class="form-group col-4">
           <label for="cus_nic">NIC Number:</label>
@@ -93,17 +90,16 @@
 </div>
 
 <!--Modal For Login Details-->
-
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content bg-dark rounded-lg">
       <div class="login-form p-lg-4 border border-warning rounded-lg">
-        <form>
+        <form id="formCusLogin">
           <p class="text-center text-warning"><Strong>Saved!</Strong><br>Now Enter Login Details</p>
-          <h2 class="text-center">Login</h2>
+          <h2 class="text-center">SignUp</h2>
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+            <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
@@ -111,9 +107,9 @@
           </div>
           <div class="form-group">
             <label for="conPassword">Confirm Password</label>
-            <input type="password" class="form-control" id="conPassword" placeholder="Confirm Password">
+            <input type="password" class="form-control" id="conPassword" name="password" placeholder="Confirm Password">
           </div>
-          <button type="submit" class="btn btn-warning font-weight-bold">Save</button>
+          <button type="button" class="btn btn-warning font-weight-bold" id="btnSaveCusWithLogin">Save</button>
         </form>
       </div>
     </div>
@@ -140,5 +136,67 @@
     </div>
   </div>
 </footer>
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script>
+  let baseURL = "http://localhost:8080/BackEnd_war/"
+  $("#btnSaveCusWithLogin").click(function (){
+    let formCusData = $("#formCustomer").serialize();
+
+    $.ajax({
+      url: baseURL + "customer/save",
+      method: "post",
+      data: formCusData,
+      dataType: "json",
+      success: function (res) {
+
+        alert(res.message);
+
+        console.log("Success : " + res.message);
+        setCusTxtField("", "", "", "", "");
+      },
+      error: function (err) {
+        let message = JSON.parse(err.responseText).message;
+        alert(message);
+        console.log("Error : " + message)
+      }
+    });
+
+    var cusLogObj = {
+      userId: $("#cus_nic").val(),
+      userName : $("#username").val(),
+      password : $("#password").val(),
+      role  : "Customer"
+    }
+
+    $.ajax({
+      url: baseURL + "register/customer",
+      method: "post",
+      data: JSON.stringify(cusLogObj),
+      contentType: "application/json",
+      dataType: "json",
+      success: function (res) {
+        alert(res.message);
+        console.log("Success : " + res.message);
+        $(location).attr('href', 'index.html');
+      },
+      error: function (err) {
+        let message = JSON.parse(err.responseText).message;
+        alert(message);
+        console.log("Error : " + message)
+      }
+    });
+
+  });
+
+  function setCusTxtField(cus_nic, cus_name, cus_address, cus_contact, cus_email){
+    $("#cus_nic").val(cus_nic);
+    $("#cus_name").val(cus_name);
+    $("#cus_address").val(cus_address);
+    $("#cus_contact").val(cus_contact);
+    $("#cus_email").val(cus_email);
+  }
+
+</script>
 </body>
 </html>

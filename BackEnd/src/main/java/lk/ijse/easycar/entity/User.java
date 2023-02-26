@@ -14,7 +14,6 @@ import javax.persistence.Id;
 @Data
 @ToString
 public class User {
-    @Id
     private String userId;
     @Id
     private String userName;

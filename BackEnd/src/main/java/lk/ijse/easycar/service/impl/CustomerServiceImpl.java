@@ -2,7 +2,9 @@ package lk.ijse.easycar.service.impl;
 
 import lk.ijse.easycar.dto.CustomerDTO;
 import lk.ijse.easycar.entity.Customer;
+import lk.ijse.easycar.entity.User;
 import lk.ijse.easycar.repo.CustomerRepo;
+import lk.ijse.easycar.repo.UserRepo;
 import lk.ijse.easycar.service.CustomerService;
 import lk.ijse.easycar.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
@@ -29,6 +31,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private ModelMapper mapper;
+
+    @Autowired
+    private UserRepo userRepo;
 
     @Override
     public void saveCustomer(CustomerDTO dto) {
@@ -73,4 +78,5 @@ public class CustomerServiceImpl implements CustomerService {
     public int countCustomer() {
         return repo.countCustomer();
     }
+
 }

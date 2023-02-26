@@ -109,6 +109,10 @@
             grid-gap: 1rem;
         }
 
+        #btnProfile{
+            display: none;
+        }
+
 
     </style>
 
@@ -133,14 +137,7 @@
                     <a class="nav-link" href="#contact">Contact Us</a>
                 </li>
                 <li class="nav-item dropdown profile-link">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Username
-                    </a>
-                    <div class="dropdown-menu hide" id="dropdownProfile" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item btn" type="button"  data-toggle="modal" data-target=".bd-settings-modal-lg">Settings</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
-                    </div>
+                    <button type="button" class="btn btn-success" id="btnProfile" data-toggle="modal" data-target=".bd-settings-modal-lg">:UserName:</button>
                 </li>
             </ul>
             <span class="navbar-text">
@@ -185,30 +182,34 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="set-name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="set-name" name="name" required>
+                                    <label for="cus_name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="cus_name" name="cus_name" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="set-nic" class="form-label">NIC Number</label>
-                                    <input type="text" class="form-control" id="set-nic" name="nic" required>
+                                    <label for="cus_nic" class="form-label">NIC Number</label>
+                                    <input type="text" class="form-control" id="cus_nic" name="cus_nic" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="set-address" class="form-label">Address</label>
-                                    <textarea class="form-control" id="set-address" name="address" rows="3" required></textarea>
+                                    <label for="cus_address" class="form-label">Address</label>
+                                    <textarea class="form-control" id="cus_address" name="cus_address" rows="3" required></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="set-phone" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="set-phone" name="phone" required>
+                                    <label for="cus_contact" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="cus_contact" name="cus_contact" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cus_email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="cus_email" name="cus_email" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="set-password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="set-password" name="password" required>
+                                    <label for="set-username" class="form-label">Username</label>
+                                    <input type="email" class="form-control" id="set-username" name="email" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="set-email" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="set-email" name="email" required>
+                                    <label for="set-password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="set-password" name="password" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nic_photo" class="form-label">NIC Photo</label>
@@ -217,8 +218,10 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-warning font-weight-bold">Save</button>
+                        <button type="button" class="btn btn-warning font-weight-bold" id="btnCusSettingsSave">Save</button>
+                        <a class="btn btn-danger" href="index.html">Logout</a>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -303,19 +306,20 @@
                     <p>Choose from our wide range of cars and start your journey today.</p>
                     <a class="btn btn-outline-warning btn-lg" href="#cars" role="button">Book Now</a>
                 </div>
+<!--Login Form-->
                 <div class="col-md-4 login-box">
                     <div class="login-form p-lg-4 border border-warning">
                     <form>
                         <h2 class="text-center">Login</h2>
                         <div class="form-group">
-                            <label for="email">Nic / Lic</label>
+                            <label for="email">Username</label>
                             <input type="text" class="form-control" id="username" placeholder="Nic/Lic">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-warning" id="btnLogin">Login</button>
+                        <button type="button" class="btn btn-warning" id="btnLogin">Login</button>
                         <small>Don't have an account? <a href="register.html" class="text-warning">Register</a></small>
                     </form>
                     </div>
@@ -532,11 +536,7 @@
             </div>
 
 
-
-
         </div>
-
-
     </div>
 </div>
 
@@ -613,10 +613,44 @@
 
 
     $("#btnLogin").click(function (){
-        $(".login-box").css('display', 'none');
-        $("#warningModal").modal();
-        $("#txtWarningHeader").text("Success");
-        $("#txtWarning").text("Login Successfully");
+
+        var loginObj = {
+            userName: $("#username").val(),
+            password: $("#password").val(),
+            role: null,
+            userId: null
+        }
+
+        $.ajax({
+            url: baseURL + "login",
+            method: "post",
+            data: JSON.stringify(loginObj),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (res) {
+                $("#warningModal").modal();
+                $("#txtWarningHeader").text("Success");
+                $("#txtWarning").text(res.message+" Welcome "+res.data.cus_name);
+
+                console.log("Success : " + res.data.cus_name);
+
+                $("#btnProfile").css('display', 'block');
+                $(".login-box").css('display', 'none');
+                $("#warningModal").modal();
+                $("#txtWarningHeader").text("Success");
+                $("#txtWarning").text("Login Successfully");
+
+            },
+            error: function (err) {
+                let message = JSON.parse(err.responseText).message;
+                $("#warningModal").modal();
+                $("#txtWarningHeader").text("Error");
+                $("#txtWarning").text(message);
+
+                console.log("Error : " + message)
+            }
+        });
+
     });
 
     function getCarsForCards(){
@@ -649,8 +683,6 @@
                         $("#cardCars").append(card);
                     }
 
-
-
                 }
                 rentModalOpen();
 
@@ -669,6 +701,43 @@
         var days = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
 
         console.log('Number of days between the two dates: ' + days);
+    });
+
+    $("#btnCusSettingsSave").click(function (){
+        let cusDataObj = {
+            cus_nic: $("#cus_nic").val(),
+            cus_name: $("#cus_name").val(),
+            cus_address: $("#cus_address").val(),
+            cus_contact: $("#cus_contact").val(),
+            cus_email: $("#cus_email").val()
+        };
+
+        $.ajax({
+            url: baseURL + "customer/update",
+            method: "PUT",
+            data: JSON.stringify(cusDataObj),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (res) {
+                let message = res.message;
+                $("#warningModal").modal();
+                $("#txtWarningHeader").text("Success");
+                $("#txtWarning").text(res.message);
+
+                console.log("Success : " + message);
+                setCusTxtField("", "", "", "", "")
+                getAllCustomers();
+                getCusCount();
+            },
+            error: function (err) {
+                let message = JSON.parse(err.responseText).message;
+                $("#warningModal").modal();
+                $("#txtWarningHeader").text("Error");
+                $("#txtWarning").text(message);
+
+                console.log("Error : " + message)
+            }
+        });
     });
 
 

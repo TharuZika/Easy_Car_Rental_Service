@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 
-
+import javax.xml.xpath.XPath;
 import java.util.List;
 
 @RestController
@@ -83,7 +83,7 @@ public class CustomerController {
     @GetMapping(path = "/allcus")
     public ResponseUtil getAllCustomers(){
        List allList = service.getAllCustomers();
-        return new ResponseUtil("OK", "Successfully Deleted", allList);
+        return new ResponseUtil("OK", "Successfully Loaded!", allList);
     }
 
     @GetMapping(path ="/count",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -91,6 +91,7 @@ public class CustomerController {
         int count = service.countCustomer();
         return new ResponseUtil("OK", "Successfully Counted!", count);
     }
+
 
 
 }
