@@ -113,6 +113,9 @@
             display: none;
         }
 
+        #driverDashboardContext{
+            display: none;
+        }
 
     </style>
 
@@ -120,6 +123,7 @@
 <body>
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<div id="homePageContext">
 
 <!--navBar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
@@ -137,7 +141,7 @@
                     <a class="nav-link" href="#contact">Contact Us</a>
                 </li>
                 <li class="nav-item dropdown profile-link">
-                    <button type="button" class="btn btn-success" id="btnProfile" data-toggle="modal" data-target=".bd-settings-modal-lg">:UserName:</button>
+                    <button type="button" class="btn btn-dark" id="btnProfile" data-toggle="modal" data-target=".bd-settings-modal-lg">:UserName:</button>
                 </li>
             </ul>
             <span class="navbar-text">
@@ -187,7 +191,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="cus_nic" class="form-label">NIC Number</label>
-                                    <input type="text" class="form-control" id="cus_nic" name="cus_nic" required>
+                                    <input type="text" class="form-control" id="cus_nic" name="cus_nic" disabled>
                                 </div>
                                 <div class="mb-3">
                                     <label for="cus_address" class="form-label">Address</label>
@@ -572,6 +576,56 @@
         </div>
     </div>
 </section>
+</div>
+
+<!--Driver Dashboard-->
+
+ <div id="driverDashboardContext">
+    <nav class="navbar shadow-sm navbar-expand-lg navbar-light bg-warning">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="assets/images/LogoBlack.png" width="200" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <span class="navbar-text">
+                <i class="fa-solid fa-user"></i>
+                Driver
+            </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="mt-md-4 mb-md-4">
+            <h1>Driver Dashboard</h1>
+            <table class="table shadow">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Booking ID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Car</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Option</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>BK-001</td>
+                    <td>Saman Kumara</td>
+                    <td>KL-1234</td>
+                    <td>2023-02-15</td>
+                    <td>2023-03-16</td>
+                    <td><button class="btn-sm btn-success">Get Job</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <footer class="bg-warning py-3">
     <div class="container">
@@ -600,6 +654,7 @@
 
 <script>
     let baseURL = "http://localhost:8080/BackEnd_war/"
+    let originUserId = null;
 
     getCarsForCards();
     rentModalOpen();
@@ -622,37 +677,63 @@
         }
 
         $.ajax({
-            url: baseURL + "login",
+            url: baseURL + "login/user",
             method: "post",
             data: JSON.stringify(loginObj),
             contentType: "application/json",
             dataType: "json",
             success: function (res) {
+                if (res.data.role == "Customer"){
+                    $.ajax({
+                        url: baseURL + "login/customer?userId=" + res.data.userId,
+                        method: "get",
+                        success: function (res) {
+                            originUserId = res.data.userId;
+
+                            $("#warningModal").modal();
+                            $("#txtWarningHeader").text("Success");
+                            $("#txtWarning").text(res.message+" Welcome "+res.data.cus_name);
+
+                            console.log("Success : " + res.data.cus_name);
+
+                            $("#btnProfile").css('display', 'block');
+                            $("#btnProfile").text(res.data.cus_name);
+
+                            $("#cus_nic").val(res.data.cus_nic);
+                            $("#cus_name").val(res.data.cus_name);
+                            $("#cus_address").val(res.data.cus_address);
+                            $("#cus_contact").val(res.data.cus_contact);
+                            $("#cus_email").val(res.data.cus_email);
+
+                            $("#set-username").val(loginObj.userName);
+                            $("#set-password").val(loginObj.password);
+
+                            $(".login-box").css('display', 'none');
+                            $("#warningModal").modal();
+                            $("#txtWarningHeader").text("Success");
+                            $("#txtWarning").text("Login Successfully");
+                        },
+                        error: function (err){
+                            let message = JSON.parse(err.responseText).message;
+                            $("#warningModal").modal();
+                            $("#txtWarningHeader").text("Error");
+                            $("#txtWarning").text(message);
+
+                            console.log("Error : " + message)
+                        }
+                    });
+                }if (res.data.role == "Driver"){
+                    $("#driverDashboardContext").css('display' , 'block');
+                    $("#homePageContext").css('display' , 'none');
+
+                }if (res.data.role == "Admin"){
+                    $(location).attr('href', 'adminDashboard.html');
+                }
+
+
 
                 //methanata thawa ajax ekk danna oona customer da driver da admin da kiyala balanna. response eka widiyta userdto enna oona
 
-                $("#warningModal").modal();
-                $("#txtWarningHeader").text("Success");
-                $("#txtWarning").text(res.message+" Welcome "+res.data.cus_name);
-
-                console.log("Success : " + res.data.cus_name);
-
-                $("#btnProfile").css('display', 'block');
-                $("#btnProfile").text(res.data.cus_name);
-
-                $("#cus_nic").val(res.data.cus_nic);
-                $("#cus_name").val(res.data.cus_name);
-                $("#cus_address").val(res.data.cus_address);
-                $("#cus_contact").val(res.data.cus_contact);
-                $("#cus_email").val(res.data.cus_email);
-
-                $("#set-username").val(loginObj.userName);
-                $("#set-password").val(loginObj.password);
-
-                $(".login-box").css('display', 'none');
-                $("#warningModal").modal();
-                $("#txtWarningHeader").text("Success");
-                $("#txtWarning").text("Login Successfully");
 
             },
             error: function (err) {
@@ -726,6 +807,14 @@
             cus_email: $("#cus_email").val()
         };
 
+        let cusLoginDataObj = {
+            userId: originUserId,
+            userName: $("#set-username").val,
+            password: $("#set-password").val,
+            role: "Customer"
+
+        }
+
         $.ajax({
             url: baseURL + "customer/update",
             method: "PUT",
@@ -733,15 +822,41 @@
             contentType: "application/json",
             dataType: "json",
             success: function (res) {
+
+                // Customer Username Password Update
+                // $.ajax({
+                //     url: baseURL + "register/updatecus",
+                //     method: "PUT",
+                //     data: JSON.stringify(cusLoginDataObj),
+                //     contentType: "application/json",
+                //     dataType: "json",
+                //     error: function (err) {
+                //         let message = JSON.parse(err.responseText).message;
+                //         $("#warningModal").modal();
+                //         $("#txtWarningHeader").text("Error");
+                //         $("#txtWarning").text(message);
+                //
+                //         console.log("Error : " + message)
+                //     }
+                // });
+
+                $("#btnProfile").css('display', 'block');
+                $("#btnProfile").text(cusDataObj.cus_name);
+
+                $("#cus_nic").val(cusDataObj.cus_nic);
+                $("#cus_name").val(cusDataObj.cus_name);
+                $("#cus_address").val(cusDataObj.cus_address);
+                $("#cus_contact").val(cusDataObj.cus_contact);
+                $("#cus_email").val(cusDataObj.cus_email);
+
                 let message = res.message;
                 $("#warningModal").modal();
                 $("#txtWarningHeader").text("Success");
                 $("#txtWarning").text(res.message);
 
+                $(".bd-settings-modal-lg").modal('hide');
+
                 console.log("Success : " + message);
-                setCusTxtField("", "", "", "", "")
-                getAllCustomers();
-                getCusCount();
             },
             error: function (err) {
                 let message = JSON.parse(err.responseText).message;

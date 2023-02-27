@@ -34,7 +34,6 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public void saveCustomer(@RequestBody UserDTO dto) {
         userRepo.save(mapper.map(dto, User.class));
-
     }
 
     @Override

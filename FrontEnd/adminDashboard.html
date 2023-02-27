@@ -519,18 +519,6 @@
             </tr>
             </thead>
             <tbody id="tblDriver">
-            <tr>
-              <td>B3203389</td>
-              <td>Saman Kumara</td>
-              <td>0788899144</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>B1324568</td>
-              <td>Sadun Widuranga</td>
-              <td>0713284658</td>
-              <td>No</td>
-            </tr>
             </tbody>
           </table>
         </div>
@@ -687,7 +675,7 @@
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(res.message);
           getAllDrivers();
-          drBindRowClickEvents();
+          getDrCount()
         },
         error: function (err) {
           let message = JSON.parse(err.responseText).message;
@@ -717,6 +705,7 @@
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(res.message);
+          getAllDrivers();
         },
         error: function (err) {
           let message = JSON.parse(err.responseText).message;
@@ -736,6 +725,8 @@
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(res.message);
+          getAllDrivers();
+          getDrCount()
         },
         error: function (err) {
           let message = JSON.parse(err.responseText).message;

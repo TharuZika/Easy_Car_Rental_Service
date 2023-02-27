@@ -47,6 +47,7 @@ public class DriverController {
 
     @DeleteMapping(path = "/delete")
     public ResponseUtil deleteDriver(String dr_lic){
+        System.out.println("Driver Delete : "+dr_lic);
         service.deleteDriver(dr_lic);
         return new ResponseUtil("OK", "Successfully Deleted! : "+dr_lic, null);
     }

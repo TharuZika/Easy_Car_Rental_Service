@@ -36,7 +36,7 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public void deleteDriver(String dr_lic) {
-        if (repo.existsById(dr_lic)){
+        if (!repo.existsById(dr_lic)){
             throw new RuntimeException("Driver Not Found!");
         }
         repo.deleteById(dr_lic);
@@ -44,6 +44,7 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public void updateDriver(DriverDTO dto) {
+        System.out.println("Driver : "+dto.getDr_lic());
         if (!repo.existsById(dto.getDr_lic())){
             throw new RuntimeException("Driver Not Found!");
         }

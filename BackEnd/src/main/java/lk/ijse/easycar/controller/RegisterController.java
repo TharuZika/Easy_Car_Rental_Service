@@ -21,6 +21,13 @@ public class RegisterController {
         return new ResponseUtil("OK", "Success", null);
     }
 
+    @PutMapping("/updatecus")
+    public ResponseUtil updateCusLogin(@RequestBody UserDTO dto){
+        System.out.println("Customer Login Save Method Invoked");
+        service.saveCustomer(dto);
+        return new ResponseUtil("OK", "Success", null);
+    }
+
     @PostMapping(path = "/driver")
     public ResponseUtil saveDriver(UserDTO dto){
         service.saveDriver(dto);
