@@ -10,6 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface CarRepo extends JpaRepository<Car, String> {
     @Query(value = "SELECT COUNT(*) FROM car", nativeQuery = true)
     int countCar();
-
-    CustomerDTO findByCr_reg(String cr_reg);
 }
