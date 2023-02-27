@@ -1,11 +1,14 @@
 package lk.ijse.easycar.controller;
 
+import lk.ijse.easycar.dto.AdminDTO;
 import lk.ijse.easycar.dto.CustomerDTO;
 import lk.ijse.easycar.dto.DriverDTO;
 import lk.ijse.easycar.dto.UserDTO;
+import lk.ijse.easycar.entity.Admin;
 import lk.ijse.easycar.entity.Customer;
 import lk.ijse.easycar.entity.Driver;
 import lk.ijse.easycar.entity.User;
+import lk.ijse.easycar.repo.AdminRepo;
 import lk.ijse.easycar.repo.CustomerRepo;
 import lk.ijse.easycar.repo.DriverRepo;
 import lk.ijse.easycar.repo.UserRepo;
@@ -32,6 +35,9 @@ public class LoginController {
 
     @Autowired
     private ModelMapper mapper;
+
+    @Autowired
+    private AdminRepo adminRepo;
 
     @PostMapping(path = "/user")
     public ResponseUtil loginUser(@RequestBody UserDTO userDto){
@@ -80,5 +86,13 @@ public class LoginController {
         return new ResponseUtil("Ok", "Successfully Login", driverDTO);
     }
 
+    @PostMapping(path = "/admin")
+    public ResponseUtil loginAdmin(String userId){
+        Optional<Admin> admin = adminRepo.findById(userId);
+        AdminDTO adminDTO = mapper.map(admin, AdminDTO.class);
+        System.out.println(adminDTO.getAdminName());
+
+        return new ResponseUtil("Ok", "Successfully Login", adminDTO);
+    }
 
 }

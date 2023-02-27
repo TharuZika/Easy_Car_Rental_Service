@@ -37,12 +37,28 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public void saveDriver(UserDTO dto) {
-        userRepo.save(mapper.map(dto, User.class));
+    public void saveDriver(String userId, String userName, String password, String role) {
+        User user = new User();
+        user.setUserId(userId);
+        user.setUserName(userName);
+        user.setPassword(password);
+        user.setRole(role);
+        userRepo.save(user);
     }
 
     @Override
     public void saveAdmin(UserDTO dto) {
         userRepo.save(mapper.map(dto, User.class));
+    }
+
+    @Override
+    public User findUser(String userId) {
+        User byUserId = userRepo.findByUserId(userId);
+        return byUserId;
+    }
+
+    @Override
+    public void deleteUser(String userId) {
+        userRepo.deleteById(userId);
     }
 }

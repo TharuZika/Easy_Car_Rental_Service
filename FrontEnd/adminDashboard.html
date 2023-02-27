@@ -493,19 +493,9 @@
               </select>
               </div>
             </div>
-            <div class="row mt-4">
-              <div class="col">
-                <label for="dr_username">Username</label>
-                <input type="text" class="form-control" id="dr_username" name="dr_username">
-              </div>
-              <div class="col">
-                <label for="dr_password">Password</label>
-                <input type="password" class="form-control" id="dr_password" name="dr_password">
-              </div>
-            </div>
             <div class="form-group row mt-4">
               <div class="col">
-                <button class="btn btn-success" type="button" id="btnSaveDr" >Save</button>
+                <button class="btn btn-success" type="button" id="btnSaveDr" data-toggle="modal" data-target=".bd-example-modal-sm">Save</button>
                 <button class="btn btn-warning" type="button" id="btnUpdateDr" >Update</button>
                 <button class="btn btn-danger" type="button" id="btnDeleteDr" >Delete</button>
               </div>
@@ -536,6 +526,29 @@
   </div>
 </div>
 
+<!--Modal For Login Details-->
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content bg-dark rounded-lg">
+      <div class="login-form p-lg-4 border border-warning rounded-lg">
+        <form id="formCusLogin">
+          <p class="text-center text-warning"><Strong>Saved!</Strong><br>Now Enter Login Details</p>
+          <h2 class="text-center">SignUp</h2>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+          </div>
+          <button type="button" class="btn btn-warning font-weight-bold" id="btnSaveDrWithLogin" >Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 
@@ -543,10 +556,6 @@
 
   let baseURL = "http://localhost:8080/BackEnd_war/"
   let projectPath = "C:\\Users\\ASUS\\Documents\\GDSE60\\Advanced API\\AAD CourseWork\\Easy_car_rental_private_limited\\BackEnd\\src\\main\\resources\\static\\Images";
-  var carCount = 0;
-  var customerCount = 0;
-  var driverCount = 0;
-  var bookingCount = 0;
 
   getCusCount();
   getDrCount()
@@ -671,20 +680,30 @@
 
   // Driver - Done
 
-    $("#btnSaveDr").click(function () {
-      let driverDataObj={
-        dr_lic: $("#dr_lic").val(),
-        dr_name: $("#dr_name").val(),
-        dr_contact: $("#dr_contact").val(),
-        dr_avail: $("#dr_avail").val()
-      }
+  let tempDriverUserName;
+  let tempDriverName;
+  let tempDriverLic;
+
+    $("#btnSaveDrWithLogin").click(function () {
+      let driverFormData = $("#formDriver").serialize();
+
+      tempDriverLic = $("#dr_lic").val();
+      tempDriverName = $("#dr_name").val();
+
+      // let driverDataObj={
+      //   dr_lic: $("#dr_lic").val(),
+      //   dr_name: $("#dr_name").val(),
+      //   dr_contact: $("#dr_contact").val(),
+      //   dr_avail: $("#dr_avail").val()
+      // }
 
       $.ajax({
         url: baseURL + "driver/save",
         method: "post",
-        data: driverDataObj,
+        data: driverFormData,
         dataType: "json",
         success: function (res) {
+
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(res.message);
@@ -692,6 +711,33 @@
           getDrCount()
         },
         error: function (err) {
+          let message = JSON.parse(err.responseText).message;
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Error");
+          $("#txtWarning").text(message);
+        }
+      });
+
+      let driverLoginObj = {
+        userId: $("#dr_lic").val(),
+        userName: $("#username").val(),
+        password: $("#password").val(),
+        role: "Driver"
+      }
+
+      tempDriverUserName = $("#username").val();
+
+      $.ajax({
+        url: baseURL + "register/driver",
+        method: "post",
+        data: driverLoginObj,
+        dataType: "json",
+        success: function (res) {
+          $("#warningModal").modal();
+          $("#txtWarningHeader").text("Success");
+          $("#txtWarning").text(res.message);
+        },
+        error: function (err){
           let message = JSON.parse(err.responseText).message;
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Error");
@@ -736,6 +782,17 @@
         url: baseURL + "driver/delete?dr_lic=" + dr_lic,
         method: "delete",
         success: function (res) {
+          $.ajax({
+            url: baseURL + "register/deletedriver?userName=" + tempDriverUserName,
+            method: "delete",
+            success: function (resp) {
+              console.log("Customer Login info deleted");
+            },
+            error: function (error) {
+              let message = JSON.parse(error.responseText).message;
+              console.log(message)
+            }
+          });
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(res.message);
@@ -805,6 +862,8 @@
 
 
   //Customer - Done
+
+  let tempUserName;
 
     $("#btnSaveCus").click(function () {
       let formCusData = $("#fromCustomer").serialize();
@@ -880,9 +939,11 @@
         url: baseURL + "customer/delete?cus_nic=" + cus_nic,
         method: "delete",
         success: function (resp) {
+
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(resp.message);
+
 
           getAllCustomers();
           setCusTxtField("", "", "", "", "")
@@ -897,12 +958,26 @@
       });
     });
 
-  $(document).on('click', '.btnDeleteCus', function () {
+    $(document).on('click', '.btnDeleteCus', function () {
     let cus_nic = $(this).closest('tr').find('td:first').text();
     $.ajax({
       url: baseURL + "customer/delete?cus_nic=" + cus_nic,
       method: "delete",
       success: function (resp) {
+
+        $.ajax({
+          url: baseURL + "register/getuser?userId="+cus_nic,
+          method: "get",
+          success: function (resp) {
+            tempUserName =  resp.data.userName;
+            console.log("Found : "+tempUserName);
+            deleteCustomerLogin(resp.data.userName);
+
+          }
+        });
+
+
+
         $("#warningModal").modal();
         $("#txtWarningHeader").text("Success");
         $("#txtWarning").text(resp.message);
@@ -920,6 +995,19 @@
     });
   });
 
+    function deleteCustomerLogin(userName){
+      $.ajax({//Not working because we need userName. not cus_nic for delete this login info from user table
+        url: baseURL + "register/deletecustomer?userName=" + userName,
+        method: "delete",
+        success: function (resp) {
+          console.log("Customer Login info deleted");
+        },
+        error: function (error) {
+          let message = JSON.parse(error.responseText).message;
+          console.log(message)
+        }
+      });
+    }
 
     function getAllCustomers() {
       $("#tblCustomer").empty();

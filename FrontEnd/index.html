@@ -114,6 +114,10 @@
         }
 
         #driverDashboardContext{
+            height: 85vh;
+            background-image: url("assets/images/bg.jpg");
+            background-size: cover;
+            color: white;
             display: none;
         }
 
@@ -121,466 +125,310 @@
 
 </head>
 <body>
-<script src="assets/js/jquery-3.6.1.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+
+<!--HomePage-->
 <div id="homePageContext">
 
-<!--navBar-->
-<nav class="navbar navbar-expand-lg navbar-light bg-warning">
-    <div class="container">
-        <a class="navbar-brand" href="#"><img src="assets/images/LogoBlack.png" width="200" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact Us</a>
-                </li>
-                <li class="nav-item dropdown profile-link">
-                    <button type="button" class="btn btn-dark" id="btnProfile" data-toggle="modal" data-target=".bd-settings-modal-lg">:UserName:</button>
-                </li>
-            </ul>
-            <span class="navbar-text">
-                <i class="fa-solid fa-phone-volume"></i>
-                011-2332331<br>
-                <i class="fa-solid fa-envelope"></i>
-                contact@easycar.lk
-            </span>
-        </div>
-    </div>
-</nav>
-
-<!--Warning Box-->
-<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="txtWarningHeader">Warning!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="txtWarning">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!--Profile Modal-->
-<div class=" modal fade bd-settings-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="settings-content modal-content">
-            <div class="container">
-                <div class="mt-lg-4 mb-lg-4">
-                    <h1 class="text-warning">Settings</h1>
-                    <form action="#" method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="cus_name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="cus_name" name="cus_name" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="cus_nic" class="form-label">NIC Number</label>
-                                    <input type="text" class="form-control" id="cus_nic" name="cus_nic" disabled>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="cus_address" class="form-label">Address</label>
-                                    <textarea class="form-control" id="cus_address" name="cus_address" rows="3" required></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="cus_contact" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="cus_contact" name="cus_contact" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="cus_email" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="cus_email" name="cus_email" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="set-username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="set-username" name="set-username" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="set-password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="set-password" name="set-password" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="nic_photo" class="form-label">NIC Photo</label>
-                                    <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>
-                                    <small class="form-text text-muted">Please upload a photo of your NIC or Driving License.</small>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-warning font-weight-bold" id="btnCusSettingsSave">Save</button>
-                        <a class="btn btn-danger" href="index.html">Logout</a>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Booking Modal-->
-<div class="modal fade bd-booking-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="booking-content modal-content">
-            <div class="container">
-                <div class="mt-lg-4 mb-lg-4">
-            <h1 class="text-warning">Booking</h1>
-            <form action="#" method="post" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="bk_id" class="form-label">Booking ID</label>
-                            <input type="text" class="form-control" id="bk_id" name="bk_id" required>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="bk_cusNic" class="form-label">Customer NIC</label>
-                            <input type="text" class="form-control" id="bk_cusNic" name="bk_cusNic" required>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label for="bk_cus" class="form-label">Customer Name</label>
-                            <input type="text" class="form-control" id="bk_cus" name="bk_cus" required>
-                        </div>
-                    </div>
-                    </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="bk_car" class="form-label">Car</label>
-                            <input class="form-control" id="bk_car" name="bk_car" required></input>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="bk_date" class="form-label">Rent Date</label>
-                            <input type="date" class="form-control" id="bk_date" name="bk_date" required>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="bk_ndate" class="form-label">End Date</label>
-                            <input type="date" class="form-control" id="bk_ndate" name="bk_ndate" required>
-                        </div>
-                    </div>
-                    </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="bk_total" class="form-label">Total Rent for Days - RS:</label>
-                            <input type="text" class="form-control" id="bk_total" name="bk_total" required placeholder="0.00">
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-warning font-weight-bold" id="btnBookingSubmit">Submit</button>
-            </form>
-            </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Welcome Screen-->
-<div id="welcomeScreen" >
-    <div class="jumbotron">
+    <!--navBar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
         <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1 class="display-4">Rent Your Dream Car Today</h1>
-                    <p class="lead">
-                        We offer a hassle free car rental service. Book your car online.
-                    </p>
-                    <hr class="my-4" />
-                    <p>Choose from our wide range of cars and start your journey today.</p>
-                    <a class="btn btn-outline-warning btn-lg" href="#cars" role="button">Book Now</a>
+            <a class="navbar-brand" href="#"><img src="assets/images/LogoBlack.png" width="200" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Us</a>
+                    </li>
+                    <li class="nav-item dropdown profile-link">
+                        <button type="button" class="btn btn-dark" id="btnProfile" data-toggle="modal" data-target=".bd-settings-modal-lg">:UserName:</button>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    011-2332331<br>
+                    <i class="fa-solid fa-envelope"></i>
+                    contact@easycar.lk
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!--Warning Box-->
+    <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="txtWarningHeader">Warning!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-<!--Login Form-->
-                <div class="col-md-4 login-box">
-                    <div class="login-form p-lg-4 border border-warning">
-                    <form>
-                        <h2 class="text-center">Login</h2>
-                        <div class="form-group">
-                            <label for="email">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Nic/Lic">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                        </div>
-                        <button type="button" class="btn btn-warning" id="btnLogin">Login</button>
-                        <small>Don't have an account? <a href="register.html" class="text-warning">Register</a></small>
-                    </form>
-                    </div>
+                <div class="modal-body" id="txtWarning">
+
                 </div>
-                <div class="col-md-4 profile-box">
-                    <div class="login-form p-lg-4 border border-warning text-sm-center">
-                        <h3 class="font-weight-bold text-warning">Username</h3>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
                 </div>
             </div>
-
-
         </div>
     </div>
-</div>
 
-<!--CarList-->
-<div class="container-fluid d-flex justify-content-center" id="cars">
-    <div class="mt-4 car-cards" id="cardCars">
-        <div class=" mb-4">
-            <div class="card" id="KL-1234">
-                <img src="assets/images/Genaral/alto-m/1.png" class="card-img-top" width="100%">
-                <div class="card-body pt-0 px-0">
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3 mt-1">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per Day:<br><small class="text-muted">100KM</small></span></span></div>
-                        <h6>Rs2,500</h6>
+    <!--Profile Modal-->
+    <div class=" modal fade bd-settings-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="settings-content modal-content">
+                <div class="container">
+                    <div class="mt-lg-4 mb-lg-4">
+                        <h1 class="text-warning">Settings</h1>
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="cus_name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="cus_name" name="cus_name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cus_nic" class="form-label">NIC Number</label>
+                                        <input type="text" class="form-control" id="cus_nic" name="cus_nic" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cus_address" class="form-label">Address</label>
+                                        <textarea class="form-control" id="cus_address" name="cus_address" rows="3" required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cus_contact" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="cus_contact" name="cus_contact" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cus_email" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="cus_email" name="cus_email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="set-username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="set-username" name="set-username" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="set-password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="set-password" name="set-password" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nic_photo" class="form-label">NIC Photo</label>
+                                        <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>
+                                        <small class="form-text text-muted">Please upload a photo of your NIC or Driving License.</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-warning font-weight-bold" id="btnCusSettingsSave">Save</button>
+                            <a class="btn btn-danger" href="index.html">Logout</a>
+                        </form>
+
                     </div>
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per Month:<br><small class="text-muted">2400KM</small></span></div>
-                        <h6>Rs64,350</h6>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per extra KM:</span></div>
-                        <h6>Rs30</h6>
-                    </div>
-                    <hr class="mt-2 mx-3">
-                    <div class="d-flex flex-row justify-content-between px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Brand:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Suzuki</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Model:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Alto</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">No of passengers:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">4</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Transmission type:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Auto</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Fuel type:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Petrol</h5></div>
-                    </div>
-<!--                    <div class="d-flex flex-row justify-content-between p-3 mid">-->
-<!--                        <div class="d-flex flex-column"><small class="text-muted mb-1">Daily Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/iPtsG7I.png" width="35px" height="25px"><div class="d-flex flex-column ml-1"><small class="ghj">1.4L MultiAir</small><small class="ghj">16V I-4 Turbo</small></div></div></div>-->
-<!--                        <div class="d-flex flex-column"><small class="text-muted mb-2">Monthly Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/J11mEBq.png"><h6 class="ml-1">135 hp&ast;</h6></div></div>-->
-<!--                    </div>-->
-<!--                    <small class="text-muted key pl-3">Standard key Features</small>-->
-                    <div class="mx-3 mt-3 mb-2"><button type="submit" class="btnRent btn btn-warning btn-block"><small>Rent</small></button></div>
-<!--                    <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>-->
                 </div>
             </div>
-
-        </div>
-
-<!--        Card 2-->
-
-        <div class=" mb-4">
-            <div class="card" id="KA-3232">
-                <img src="assets/images/Genaral/alto-m/2.png" class="card-img-top" width="100%">
-                <div class="card-body pt-0 px-0">
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3 mt-1">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per Day:<br><small class="text-muted">100KM</small></span></span></div>
-                        <h6>Rs2,500</h6>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per Month:<br><small class="text-muted">2400KM</small></span></div>
-                        <h6>Rs64,350</h6>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per extra KM:</span></div>
-                        <h6>Rs30</h6>
-                    </div>
-                    <hr class="mt-2 mx-3">
-                    <div class="d-flex flex-row justify-content-between px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Brand:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Suzuki</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Model:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Alto</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">No of passengers:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">4</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Transmission type:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Auto</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Fuel type:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Petrol</h5></div>
-                    </div>
-                    <!--                    <div class="d-flex flex-row justify-content-between p-3 mid">-->
-                    <!--                        <div class="d-flex flex-column"><small class="text-muted mb-1">Daily Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/iPtsG7I.png" width="35px" height="25px"><div class="d-flex flex-column ml-1"><small class="ghj">1.4L MultiAir</small><small class="ghj">16V I-4 Turbo</small></div></div></div>-->
-                    <!--                        <div class="d-flex flex-column"><small class="text-muted mb-2">Monthly Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/J11mEBq.png"><h6 class="ml-1">135 hp&ast;</h6></div></div>-->
-                    <!--                    </div>-->
-                    <!--                    <small class="text-muted key pl-3">Standard key Features</small>-->
-                    <div class="mx-3 mt-3 mb-2"><button type="button" class="btnRent btn btn-warning btn-block"><small>Rent</small></button></div>
-                    <!--                    <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>-->
-                </div>
-            </div>
-
-        </div>
-
-<!--        card 3-->
-        <div class=" mb-4">
-            <div class="card" id="ABC-7754">
-                <img src="assets/images/Genaral/alto-m/3.png" class="card-img-top" width="100%">
-                <div class="card-body pt-0 px-0">
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3 mt-1">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per Day:<br><small class="text-muted">100KM</small></span></span></div>
-                        <h6>Rs2,500</h6>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per Month:<br><small class="text-muted">2400KM</small></span></div>
-                        <h6>Rs64,350</h6>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per extra KM:</span></div>
-                        <h6>Rs30</h6>
-                    </div>
-                    <hr class="mt-2 mx-3">
-                    <div class="d-flex flex-row justify-content-between px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Brand:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Suzuki</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Model:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Alto</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">No of passengers:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">4</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Transmission type:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Auto</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Fuel type:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Petrol</h5></div>
-                    </div>
-                    <!--                    <div class="d-flex flex-row justify-content-between p-3 mid">-->
-                    <!--                        <div class="d-flex flex-column"><small class="text-muted mb-1">Daily Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/iPtsG7I.png" width="35px" height="25px"><div class="d-flex flex-column ml-1"><small class="ghj">1.4L MultiAir</small><small class="ghj">16V I-4 Turbo</small></div></div></div>-->
-                    <!--                        <div class="d-flex flex-column"><small class="text-muted mb-2">Monthly Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/J11mEBq.png"><h6 class="ml-1">135 hp&ast;</h6></div></div>-->
-                    <!--                    </div>-->
-                    <!--                    <small class="text-muted key pl-3">Standard key Features</small>-->
-                    <div class="mx-3 mt-3 mb-2"><button type="button" class="btnRent btn btn-warning btn-block"><small>Rent</small></button></div>
-                    <!--                    <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>-->
-                </div>
-            </div>
-
-        </div>
-
-<!--        Card 4-->
-        <div class=" mb-4">
-            <div class="card">
-                <img src="assets/images/Genaral/alto-m/4.png" class="card-img-top" width="100%">
-                <div class="card-body pt-0 px-0">
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3 mt-1">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per Day:<br><small class="text-muted">100KM</small></span></span></div>
-                        <h6>Rs2,500</h6>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per Month:<br><small class="text-muted">2400KM</small></span></div>
-                        <h6>Rs64,350</h6>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between mb-0 px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Price Per extra KM:</span></div>
-                        <h6>Rs30</h6>
-                    </div>
-                    <hr class="mt-2 mx-3">
-                    <div class="d-flex flex-row justify-content-between px-3">
-                        <div class="d-flex flex-column"><span class="text-muted">Brand:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Suzuki</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Model:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Alto</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">No of passengers:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">4</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Transmission type:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Auto</h5></div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between px-3 ">
-                        <div class="d-flex flex-column"><span class="text-muted">Fuel type:</span></div>
-                        <div class="d-flex flex-column"><h5 class="mb-0">Petrol</h5></div>
-                    </div>
-                    <div class="mx-3 mt-3 mb-2"><button type="button" class="btnRent btn btn-warning btn-block"><small>Rent</small></button></div>
-                </div>
-            </div>
-                </div>
-
-        </div>
-            </div>
-
-
         </div>
     </div>
-</div>
 
-<section id="contact" class="py-5 bg-dark">
-    <div class="container">
-        <h2 class="text-center text-light">Contact Us</h2>
-        <hr />
-        <div class="row">
-            <div class="col-md-6">
-                <form>
-                    <div class="form-group">
-                        <label for="name" class="text-light">Name</label>
-                        <input type="text" class="form-control" id="name" />
+    <!--Booking Modal-->
+    <div class="modal fade bd-booking-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="booking-content modal-content">
+                <div class="container">
+                    <div class="mt-lg-4 mb-lg-4">
+                <h1 class="text-warning">Booking</h1>
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="bk_id" class="form-label">Booking ID</label>
+                                <input type="text" class="form-control" id="bk_id" name="bk_id" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="bk_cusNic" class="form-label">Customer NIC</label>
+                                <input type="text" class="form-control" id="bk_cusNic" name="bk_cusNic" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="bk_cus" class="form-label">Customer Name</label>
+                                <input type="text" class="form-control" id="bk_cus" name="bk_cus" required>
+                            </div>
+                        </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="bk_car" class="form-label">Car</label>
+                                <input class="form-control" id="bk_car" name="bk_car" required></input>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="bk_date" class="form-label">Rent Date</label>
+                                <input type="date" class="form-control" id="bk_date" name="bk_date" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="bk_ndate" class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="bk_ndate" name="bk_ndate" required>
+                            </div>
+                        </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="bk_total" class="form-label">Total Rent for Days - RS:</label>
+                                <input type="text" class="form-control" id="bk_total" name="bk_total" required placeholder="0.00">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email" class="text-light">Email</label>
-                        <input type="email" class="form-control" id="email" />
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="text-light">Message</label>
-                        <textarea class="form-control" id="message" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-warning">Submit</button>
+                    <button type="button" class="btn btn-warning font-weight-bold" id="btnBookingSubmit">Submit</button>
                 </form>
-            </div>
-            <div class="col-md-6">
-                <iframe
-                        src="https://maps.google.com/maps?q=easy car rental&t=&z=10&ie=UTF8&iwloc=&output=embed"frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                        class="h-100 w-100" style="border:0;" allowfullscreen="" loading="lazy">
-
-                </iframe>
+                </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+
+    <!--Welcome Screen-->
+    <div id="welcomeScreen" >
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h1 class="display-4">Rent Your Dream Car Today</h1>
+                        <p class="lead">
+                            We offer a hassle free car rental service. Book your car online.
+                        </p>
+                        <hr class="my-4" />
+                        <p>Choose from our wide range of cars and start your journey today.</p>
+                        <a class="btn btn-outline-warning btn-lg" href="#cars" role="button">Book Now</a>
+                    </div>
+    <!--Login Form-->
+                    <div class="col-md-4 login-box">
+                        <div class="login-form p-lg-4 border border-warning">
+                        <form>
+                            <h2 class="text-center">Login</h2>
+                            <div class="form-group">
+                                <label for="email">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Nic/Lic">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                            <button type="button" class="btn btn-warning" id="btnLogin">Login</button>
+                            <small>Don't have an account? <a href="register.html" class="text-warning">Register</a></small>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!--CarList-->
+    <div class="container-fluid d-flex justify-content-center" id="cars">
+        <div class="mt-4 car-cards" id="cardCars">
+            <div class=" mb-4">
+                <div class="card" id="KL-1234">
+                    <img src="assets/images/Genaral/alto-m/1.png" class="card-img-top" width="100%">
+                    <div class="card-body pt-0 px-0">
+                        <div class="d-flex flex-row justify-content-between mb-0 px-3 mt-1">
+                            <div class="d-flex flex-column"><span class="text-muted">Price Per Day:<br><small class="text-muted">100KM</small></span></span></div>
+                            <h6>Rs2,500</h6>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between mb-0 px-3">
+                            <div class="d-flex flex-column"><span class="text-muted">Price Per Month:<br><small class="text-muted">2400KM</small></span></div>
+                            <h6>Rs64,350</h6>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between mb-0 px-3">
+                            <div class="d-flex flex-column"><span class="text-muted">Price Per extra KM:</span></div>
+                            <h6>Rs30</h6>
+                        </div>
+                        <hr class="mt-2 mx-3">
+                        <div class="d-flex flex-row justify-content-between px-3">
+                            <div class="d-flex flex-column"><span class="text-muted">Brand:</span></div>
+                            <div class="d-flex flex-column"><h5 class="mb-0">Suzuki</h5></div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between px-3 ">
+                            <div class="d-flex flex-column"><span class="text-muted">Model:</span></div>
+                            <div class="d-flex flex-column"><h5 class="mb-0">Alto</h5></div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between px-3 ">
+                            <div class="d-flex flex-column"><span class="text-muted">No of passengers:</span></div>
+                            <div class="d-flex flex-column"><h5 class="mb-0">4</h5></div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between px-3 ">
+                            <div class="d-flex flex-column"><span class="text-muted">Transmission type:</span></div>
+                            <div class="d-flex flex-column"><h5 class="mb-0">Auto</h5></div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between px-3 ">
+                            <div class="d-flex flex-column"><span class="text-muted">Fuel type:</span></div>
+                            <div class="d-flex flex-column"><h5 class="mb-0">Petrol</h5></div>
+                        </div>
+    <!--                    <div class="d-flex flex-row justify-content-between p-3 mid">-->
+    <!--                        <div class="d-flex flex-column"><small class="text-muted mb-1">Daily Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/iPtsG7I.png" width="35px" height="25px"><div class="d-flex flex-column ml-1"><small class="ghj">1.4L MultiAir</small><small class="ghj">16V I-4 Turbo</small></div></div></div>-->
+    <!--                        <div class="d-flex flex-column"><small class="text-muted mb-2">Monthly Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/J11mEBq.png"><h6 class="ml-1">135 hp&ast;</h6></div></div>-->
+    <!--                    </div>-->
+    <!--                    <small class="text-muted key pl-3">Standard key Features</small>-->
+                        <div class="mx-3 mt-3 mb-2"><button type="submit" class="btnRent btn btn-warning btn-block"><small>Rent</small></button></div>
+    <!--                    <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>-->
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+                </div>
+
+    <section id="contact" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center text-light">Contact Us</h2>
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="text-light">Name</label>
+                            <input type="text" class="form-control" id="name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="text-light">Email</label>
+                            <input type="email" class="form-control" id="email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="text-light">Message</label>
+                            <textarea class="form-control" id="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-warning">Submit</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <iframe
+                            src="https://maps.google.com/maps?q=easy car rental&t=&z=10&ie=UTF8&iwloc=&output=embed"frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                            class="h-100 w-100" style="border:0;" allowfullscreen="" loading="lazy">
+
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <!--Driver Dashboard-->
-
- <div id="driverDashboardContext">
+ <div id="driverDashboardContext" class="bg-light">
     <nav class="navbar shadow-sm navbar-expand-lg navbar-light bg-warning">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="assets/images/LogoBlack.png" width="200" alt=""></a>
@@ -600,8 +448,8 @@
 
     <div class="container">
         <div class="mt-md-4 mb-md-4">
-            <h1>Driver Dashboard</h1>
-            <table class="table shadow">
+            <h1 class="text-warning font-weight-bold">Driver Dashboard</h1>
+            <table class="table shadow table-light">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Booking ID</th>
@@ -627,6 +475,7 @@
     </div>
 </div>
 
+<!--Footer-->
 <footer class="bg-warning py-3">
     <div class="container">
         <div class="row">
@@ -647,10 +496,8 @@
     </div>
 </footer>
 
-
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-
 
 <script>
     let baseURL = "http://localhost:8080/BackEnd_war/"
@@ -692,7 +539,7 @@
 
                             $("#warningModal").modal();
                             $("#txtWarningHeader").text("Success");
-                            $("#txtWarning").text(res.message+" Welcome "+res.data.cus_name);
+                            $("#txtWarning").text(res.message+"! Welcome "+res.data.cus_name);
 
                             console.log("Success : " + res.data.cus_name);
 
@@ -709,9 +556,6 @@
                             $("#set-password").val(loginObj.password);
 
                             $(".login-box").css('display', 'none');
-                            $("#warningModal").modal();
-                            $("#txtWarningHeader").text("Success");
-                            $("#txtWarning").text("Login Successfully");
                         },
                         error: function (err){
                             let message = JSON.parse(err.responseText).message;
@@ -723,17 +567,34 @@
                         }
                     });
                 }if (res.data.role == "Driver"){
+
                     $("#driverDashboardContext").css('display' , 'block');
                     $("#homePageContext").css('display' , 'none');
 
                 }if (res.data.role == "Admin"){
-                    $(location).attr('href', 'adminDashboard.html');
+                    $.ajax({
+                        url: baseURL + "login/admin?userId=" + res.data.userId,
+                        method: "post",
+                        success: function (res) {
+
+                            console.log("Success : " + res.data.adminName);
+
+                            $("#warningModal").modal();
+                            $("#txtWarningHeader").text("Success");
+                            $("#txtWarning").text("Welcome "+res.data.adminName);
+
+                            $(location).attr('href', 'adminDashboard.html');
+                        },
+                        error: function (err){
+                            let message = JSON.parse(err.responseText).message;
+                            $("#warningModal").modal();
+                            $("#txtWarningHeader").text("Error");
+                            $("#txtWarning").text(message);
+
+                            console.log("Error : " + message)
+                        }
+                    });
                 }
-
-
-
-                //methanata thawa ajax ekk danna oona customer da driver da admin da kiyala balanna. response eka widiyta userdto enna oona
-
 
             },
             error: function (err) {

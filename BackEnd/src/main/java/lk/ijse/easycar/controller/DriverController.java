@@ -23,7 +23,7 @@ public class DriverController {
     private DriverService service;
 
     @PostMapping(path = "/save")
-    public ResponseUtil saveDriver(@RequestBody DriverDTO dto){
+    public ResponseUtil saveDriver(DriverDTO dto){
        service.saveDriver(dto);
        return new ResponseUtil("OK", "Successfully Registered..!", null);
     }
