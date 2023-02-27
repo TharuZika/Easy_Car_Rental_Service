@@ -483,15 +483,24 @@
             <div class="row mt-4">
               <div class="col">
                 <label for="dr_contact">Contact Number</label>
-                <input type="text" class="form-control" id="dr_contact" name="dr_contact" placeholder="0712345678">
+                <input type="tel" class="form-control" id="dr_contact" name="dr_contact" placeholder="0712345678">
               </div>
               <div class="col">
                 <label for="dr_avail">Availability</label>
                 <select class="form-control" id="dr_avail" name="dr_avail">
-                <option value="Yes">Yes</option>
+                <option value="Yes" selected>Yes</option>
                 <option value="No">No</option>
               </select>
-
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <label for="dr_username">Username</label>
+                <input type="text" class="form-control" id="dr_username" name="dr_username">
+              </div>
+              <div class="col">
+                <label for="dr_password">Password</label>
+                <input type="password" class="form-control" id="dr_password" name="dr_password">
               </div>
             </div>
             <div class="form-group row mt-4">
@@ -663,12 +672,17 @@
   // Driver - Done
 
     $("#btnSaveDr").click(function () {
-      let formDrData = $("#formDriver").serialize();
+      let driverDataObj={
+        dr_lic: $("#dr_lic").val(),
+        dr_name: $("#dr_name").val(),
+        dr_contact: $("#dr_contact").val(),
+        dr_avail: $("#dr_avail").val()
+      }
 
       $.ajax({
         url: baseURL + "driver/save",
         method: "post",
-        data: formDrData,
+        data: driverDataObj,
         dataType: "json",
         success: function (res) {
           $("#warningModal").modal();

@@ -10,18 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8ba8c90-bc6b-4824-af07-b4d92039fe9e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/DriverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/DriverController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/DriverServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/DriverServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/RegisterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/service/impl/RegisterServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/controller/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontEnd/adminDashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/adminDashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/driverDashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/driverDashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +212,7 @@
       <workItem from="1677384732575" duration="23289000" />
       <workItem from="1677431984842" duration="4879000" />
       <workItem from="1677474829021" duration="1911000" />
-      <workItem from="1677481186782" duration="5061000" />
+      <workItem from="1677481186782" duration="5624000" />
     </task>
     <servers />
   </component>
