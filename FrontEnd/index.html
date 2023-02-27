@@ -241,54 +241,68 @@
             <div class="booking-content modal-content">
                 <div class="container">
                     <div class="mt-lg-4 mb-lg-4">
-                <h1 class="text-warning">Booking</h1>
+                <h1 class="text-warning font-weight-bold">Booking</h1>
                 <form action="#" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label for="bk_id" class="form-label">Booking ID</label>
+                                <label for="bk_id" class="form-label">Booking ID:</label>
                                 <input type="text" class="form-control" id="bk_id" name="bk_id" required>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label for="bk_cusNic" class="form-label">Customer NIC</label>
-                                <input type="text" class="form-control" id="bk_cusNic" name="bk_cusNic" required>
+                                <label for="bk_cusNic" class="form-label">Customer NIC:</label>
+                                <input type="text" class="form-control" id="bk_cusNic" name="bk_cusNic" disabled required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="bk_cus" class="form-label">Customer Name</label>
-                                <input type="text" class="form-control" id="bk_cus" name="bk_cus" required>
+                                <label for="bk_cus" class="form-label">Customer Name:</label>
+                                <input type="text" class="form-control" id="bk_cus" name="bk_cus" disabled required>
                             </div>
                         </div>
                         </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label for="bk_car" class="form-label">Car</label>
-                                <input class="form-control" id="bk_car" name="bk_car" required></input>
+                                <label for="bk_carreg" class="form-label">Car Registration:</label>
+                                <input class="form-control" id="bk_carreg" name="bk_carreg" disabled required></input>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label for="bk_date" class="form-label">Rent Date</label>
-                                <input type="date" class="form-control" id="bk_date" name="bk_date" required>
+                                <label for="bk_carmake" class="form-label">Brand:</label>
+                                <input class="form-control" id="bk_carmake" name="bk_carmake" disabled required></input>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
-                                <label for="bk_ndate" class="form-label">End Date</label>
-                                <input type="date" class="form-control" id="bk_ndate" name="bk_ndate" required>
+                                <label for="bk_carmodel" class="form-label">Model:</label>
+                                <input class="form-control" id="bk_carmodel" name="bk_carmodel" disabled required></input>
                             </div>
                         </div>
                         </div>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="mb-3">
-                                <label for="bk_total" class="form-label">Total Rent for Days - RS:</label>
-                                <input type="text" class="form-control" id="bk_total" name="bk_total" required placeholder="0.00">
+                                <label for="bk_date" class="form-label">Rent Date:</label>
+                                <input type="date" class="form-control" id="bk_date" name="bk_date" required>
                             </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="bk_ndate" class="form-label">End Date:</label>
+                                <input type="date" class="form-control" id="bk_ndate" name="bk_ndate" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="bk_total" class="form-label">Total Rental/Rs:</label>
+                                    <input type="text" class="form-control bg-dark text-light font-weight-bold" id="bk_total" name="bk_total" required placeholder="0.00">
+                                    <small>Without Extra KM</small>
+                                </div>
                         </div>
                     </div>
                     <button type="button" class="btn btn-warning font-weight-bold" id="btnBookingSubmit">Submit</button>
@@ -342,7 +356,7 @@
     <div class="container-fluid d-flex justify-content-center" id="cars">
         <div class="mt-4 car-cards" id="cardCars">
             <div class=" mb-4">
-                <div class="card" id="KL-1234">
+                <div class="card">
                     <img src="assets/images/Genaral/alto-m/1.png" class="card-img-top" width="100%">
                     <div class="card-body pt-0 px-0">
                         <div class="d-flex flex-row justify-content-between mb-0 px-3 mt-1">
@@ -378,13 +392,12 @@
                             <div class="d-flex flex-column"><span class="text-muted">Fuel type:</span></div>
                             <div class="d-flex flex-column"><h5 class="mb-0">Petrol</h5></div>
                         </div>
-    <!--                    <div class="d-flex flex-row justify-content-between p-3 mid">-->
-    <!--                        <div class="d-flex flex-column"><small class="text-muted mb-1">Daily Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/iPtsG7I.png" width="35px" height="25px"><div class="d-flex flex-column ml-1"><small class="ghj">1.4L MultiAir</small><small class="ghj">16V I-4 Turbo</small></div></div></div>-->
-    <!--                        <div class="d-flex flex-column"><small class="text-muted mb-2">Monthly Range:</small><div class="d-flex flex-row"><img src="https://imgur.com/J11mEBq.png"><h6 class="ml-1">135 hp&ast;</h6></div></div>-->
-    <!--                    </div>-->
-    <!--                    <small class="text-muted key pl-3">Standard key Features</small>-->
-                        <div class="mx-3 mt-3 mb-2"><button type="submit" class="btnRent btn btn-warning btn-block"><small>Rent</small></button></div>
-    <!--                    <small class="d-flex justify-content-center text-muted">*Legal Disclaimer</small>-->
+                        <section>
+                        <div class="mx-3 mt-3 mb-2">
+                            <button type="submit" class="btnRent btn btn-warning btn-block">Rent</button>
+                        </div>
+                        <small class="d-flex justify-content-center text-muted">KL-1234</small>
+                        </section>
                     </div>
                 </div>
 
@@ -503,12 +516,31 @@
     let baseURL = "http://localhost:8080/BackEnd_war/"
     let originUserId = null;
 
-    getCarsForCards();
+    // getCarsForCards();
     rentModalOpen();
+
 
 
     function rentModalOpen(){
         $(".btnRent").click(function (){
+            let car_regno = $(this).closest('section').find('small:first').text();
+
+
+            $.ajax({
+                url: baseURL+"car/getcar?cr_reg="+car_regno,
+                method: "get",
+                dataType:"json",
+                success:function (res){
+                    $("#bk_carreg").val(car_regno);
+                    $("#bk_carmake").val(res.data.cr_make);
+                    $("#bk_carmodel").val(res.data.cr_model);
+                    $("#bk_carmake").val(res.data.cr_make);
+                    $("#bk_carmake").val(res.data.cr_make);
+                    $("#bk_carmake").val(res.data.cr_make);
+                    $("#bk_carmake").val(res.data.cr_make);
+                }
+            })
+
             $('.bd-booking-modal-lg').modal();
         });
     }

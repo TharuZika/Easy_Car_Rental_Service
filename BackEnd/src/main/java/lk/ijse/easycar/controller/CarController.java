@@ -56,5 +56,11 @@ public class CarController {
         return new ResponseUtil("OK", "Successfully Counted!", count);
     }
 
+    @GetMapping(path = "/getcar")
+    public ResponseUtil getCar(String cr_reg){
+        CarDTO carDto = service.findCar(cr_reg);
+        return new ResponseUtil("OK", "Successfully Counted!", carDto);
+    }
+
 
 }

@@ -18,4 +18,6 @@ public interface CarService {
 
     public int countCars();
 
+    public CarDTO findCar(String cr_reg);
+
 }

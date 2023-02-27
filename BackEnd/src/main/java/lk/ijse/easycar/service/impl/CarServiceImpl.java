@@ -1,6 +1,7 @@
 package lk.ijse.easycar.service.impl;
 
 import lk.ijse.easycar.dto.CarDTO;
+import lk.ijse.easycar.dto.DriverDTO;
 import lk.ijse.easycar.entity.Car;
 import lk.ijse.easycar.repo.CarRepo;
 import lk.ijse.easycar.service.CarService;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -60,6 +62,12 @@ public class CarServiceImpl implements CarService {
     @Override
     public int countCars() {
         return repo.countCar();
+    }
+
+    @Override
+    public CarDTO findCar(String cr_reg) {
+        Optional<Car> byId = repo.findById(cr_reg);
+        return mapper.map(byId, CarDTO.class);
     }
 
 }
