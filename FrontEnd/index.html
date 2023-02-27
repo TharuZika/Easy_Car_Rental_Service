@@ -438,7 +438,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                 </ul>
-                <span class="navbar-text">
+                <span class="navbar-text" id="lblDriverName">
                 <i class="fa-solid fa-user"></i>
                 Driver
             </span>
@@ -567,6 +567,14 @@
                         }
                     });
                 }if (res.data.role == "Driver"){
+
+                    $.ajax({
+                       url: baseURL+"login/driverinfo?userId="+res.data.userId,
+                        method: "get",
+                        success: function (res) {
+                           $("#lblDriverName").text(res.data.dr_name);
+                        }
+                    });
 
                     $("#driverDashboardContext").css('display' , 'block');
                     $("#homePageContext").css('display' , 'none');

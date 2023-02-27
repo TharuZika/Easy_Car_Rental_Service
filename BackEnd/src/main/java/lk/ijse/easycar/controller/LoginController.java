@@ -77,6 +77,15 @@ public class LoginController {
         return new ResponseUtil("Ok", "Successfully Login", customerDTO);
     }
 
+    @GetMapping(path = "/driverinfo")
+    public ResponseUtil loginDriverInfo(String userId){
+        Optional<Driver> driver = driverRepo.findById(userId);
+        DriverDTO driverDTO = mapper.map(driver, DriverDTO.class);
+        System.out.println(driverDTO.getDr_name());
+
+        return new ResponseUtil("Ok", "Successfully Login", driverDTO);
+    }
+
     @PostMapping(path = "/driver")
     public ResponseUtil loginDriver(String userId){
         Optional<Driver> driver = driverRepo.findById(userId);
