@@ -12,9 +12,12 @@
     <list default="true" id="b8ba8c90-bc6b-4824-af07-b4d92039fe9e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/CustomerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/CustomerRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/repo/UserRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/repo/CustomerRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT/WEB-INF/classes/lk/ijse/easycar/repo/CustomerRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/repo/CustomerRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/classes/lk/ijse/easycar/repo/CustomerRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +57,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/BackEnd/src/main/java/lk/ijse/easycar/util" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.20762154" />
     <property name="project.structure.side.proportion" value="0.21860462" />
@@ -69,17 +72,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="FrontEnd" />
       <method v="2">
@@ -213,7 +205,8 @@
       <workItem from="1677261106506" duration="5000" />
       <workItem from="1677299779122" duration="29582000" />
       <workItem from="1677384732575" duration="23289000" />
-      <workItem from="1677431984842" duration="4746000" />
+      <workItem from="1677431984842" duration="4879000" />
+      <workItem from="1677474829021" duration="1570000" />
     </task>
     <servers />
   </component>

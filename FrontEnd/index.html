@@ -205,11 +205,11 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="set-username" class="form-label">Username</label>
-                                    <input type="email" class="form-control" id="set-username" name="email" required>
+                                    <input type="text" class="form-control" id="set-username" name="set-username" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="set-password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="set-password" name="password" required>
+                                    <input type="password" class="form-control" id="set-password" name="set-password" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nic_photo" class="form-label">NIC Photo</label>
@@ -628,6 +628,9 @@
             contentType: "application/json",
             dataType: "json",
             success: function (res) {
+
+                //methanata thawa ajax ekk danna oona customer da driver da admin da kiyala balanna. response eka widiyta userdto enna oona
+
                 $("#warningModal").modal();
                 $("#txtWarningHeader").text("Success");
                 $("#txtWarning").text(res.message+" Welcome "+res.data.cus_name);
@@ -635,6 +638,17 @@
                 console.log("Success : " + res.data.cus_name);
 
                 $("#btnProfile").css('display', 'block');
+                $("#btnProfile").text(res.data.cus_name);
+
+                $("#cus_nic").val(res.data.cus_nic);
+                $("#cus_name").val(res.data.cus_name);
+                $("#cus_address").val(res.data.cus_address);
+                $("#cus_contact").val(res.data.cus_contact);
+                $("#cus_email").val(res.data.cus_email);
+
+                $("#set-username").val(loginObj.userName);
+                $("#set-password").val(loginObj.password);
+
                 $(".login-box").css('display', 'none');
                 $("#warningModal").modal();
                 $("#txtWarningHeader").text("Success");

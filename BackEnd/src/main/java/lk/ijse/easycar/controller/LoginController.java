@@ -41,9 +41,10 @@ public class LoginController {
         }
         if (map.getRole().equals("Customer")){
             System.out.println("This is Customer");
-            Customer customer = customerRepo.findByUserNic(userDto.getUserId());
+            Optional<Customer> customer = customerRepo.findById(map.getUserId());
             CustomerDTO customerDTO = mapper.map(customer, CustomerDTO.class);
             System.out.println(customerDTO.getCus_name());
+
             return new ResponseUtil("Ok", "Successfully Login", customerDTO);
         }if (map.getRole().equals("Driver")){
             System.out.println("This is Driver");
