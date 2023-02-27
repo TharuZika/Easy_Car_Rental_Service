@@ -7,14 +7,13 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 @ToString
-public class Booking {
+@AllArgsConstructor
+@NoArgsConstructor
+public class BookingDriverQueue {
 
     @Id
     private String bk_id;
@@ -23,8 +22,6 @@ public class Booking {
     private String bk_carreg;
     private String bk_carmake;
     private String bk_model;
-    private String bk_drlic;
-    private String bk_drname;
     private String bk_date;
     private String bk_ndate;
     private Double bk_total;

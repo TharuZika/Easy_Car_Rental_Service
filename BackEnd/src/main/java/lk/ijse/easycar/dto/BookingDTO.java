@@ -1,22 +1,15 @@
-package lk.ijse.easycar.entity;
+package lk.ijse.easycar.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.math.BigDecimal;
-
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @ToString
-public class Booking {
-
-    @Id
+public class BookingDTO {
     private String bk_id;
     private String bk_cusnic;
     private String bk_cusname;
