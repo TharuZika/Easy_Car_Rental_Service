@@ -44,6 +44,10 @@
       width: 100%;
     }
 
+    #returnForm{
+      display: none;
+    }
+
 
   </style>
 
@@ -71,6 +75,9 @@
           <a class="nav-link" href="#" id="driversNav">Drivers</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="#" id="returnNav">Return</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link btn btn-outline-danger" data-toggle="modal" data-target=".bd-all-booking-modal-lg" href="#">View All Bookings</a>
         </li>
       </ul>
@@ -83,7 +90,7 @@
 </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="warningModal" style="z-index: 999" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -130,6 +137,75 @@
     </div>
   </div>
 </div>
+
+<!--Return Form-->
+<!--<div id="returnForm">-->
+<!--<div class="container">-->
+<!--  <div class="mt-md-4 mb-md-4">-->
+<!--    <h1>Return</h1>-->
+<!--            <form id="fromReturn">-->
+<!--              <div class="row">-->
+<!--              <div class="form-group col-md-3">-->
+<!--                <label for="fn_bkid">Booking ID:</label>-->
+<!--                <select class="form-control" id="fn_bkid" name="fn_bkid">-->
+<!--                  <option value="BK00-001">BK00-001</option>-->
+<!--                  <option value="BK00-002">BK00-002</option>-->
+<!--                  <option value="BK00-003">BK00-003</option>-->
+<!--                  <option value="BK00-004">BK00-004</option>-->
+<!--                </select>-->
+<!--              </div>-->
+<!--              <div class="form-group col-md-3">-->
+<!--                <label for="fn_cus">Customer:</label>-->
+<!--                <input type="text" class="form-control" id="fn_cus" name="fn_cus" disabled required>-->
+<!--              </div>-->
+<!--                <div class="form-group col-md-3">-->
+<!--                  <label for="fn_cusnic">Customer NIC:</label>-->
+<!--                  <input type="text" class="form-control" id="fn_cusnic" name="fn_cusnic" disabled required>-->
+<!--                </div>-->
+
+<!--              <div class="form-group col-md-3">-->
+<!--                <label for="fn_car">Car:</label>-->
+<!--                <input type="text" class="form-control" id="fn_car" name="fn_car" disabled required>-->
+<!--              </div>-->
+<!--              </div>-->
+<!--              <div class="row">-->
+<!--                <div class="form-group col-md-4">-->
+<!--                  <label for="fn_driver">Driver:</label>-->
+<!--                  <input type="text" class="form-control" id="fn_driver" name="fn_driver" disabled required>-->
+<!--                </div>-->
+<!--                <div class="form-group col-md-4">-->
+<!--                  <label for="fn_drlic">Driver LIC:</label>-->
+<!--                  <input type="text" class="form-control" id="fn_drlic" name="fn_drlic" disabled required>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--                <div class="dropdown-divider"></div>-->
+
+<!--                <div class="row">-->
+<!--                  <div class="form-group col-md-4">-->
+<!--                    <label for="fn_rental">Rental:</label>-->
+<!--                    <input type="text" class="form-control" id="fn_rental" name="fn_rental" disabled required>-->
+<!--                  </div>-->
+<!--                  <div class="form-group col-md-4">-->
+<!--                    <label for="fn_exkm">Extra KM:</label>-->
+<!--                    <input type="text" class="form-control" id="fn_exkm" name="fn_exkm" required>-->
+<!--                  </div>-->
+<!--                  <div class="form-group col-md-4">-->
+<!--                    <label for="fn_ldw">Loss Damage Waiver:</label>-->
+<!--                    <input type="text" class="form-control" id="fn_ldw" name="fn_ldw" required>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="row d-flex justify-content-end">-->
+<!--                  <div class="form-group col-md-3">-->
+<!--                    <label for="fn_subtotal">SubTotal:</label>-->
+<!--                    <input type="text" class="form-control border-danger" id="fn_subtotal" name="fn_subtotal" disabled required>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              <button type="button" class="btn btn-success" id="btnSubmitReturn">Submit</button>-->
+<!--            </form>-->
+<!--          </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 <!--Dashboard-->
 <div id="dashboardPage">
@@ -1259,6 +1335,7 @@
   function getAllBooking(){
     $("#tblPendingBooking").empty();
     $("#tblAllBookings").empty();
+    $("#fn_bkid").empty();
     $.ajax({
       url: baseURL + "booking/getall",
       method: 'get',
@@ -1278,17 +1355,18 @@
           let bkNdate = c.bk_ndate;
           let bkTotal = c.bk_total;
           let bkAdminstatus = c.bk_adminstatus;
+
+          if (bkAdminstatus == "Approved" && bkWithdriver=="With Driver" && !bkDrname=="Pending"){
+            $("#fn_bkid").append(c.bk_id);
+          }
+
           if (bkAdminstatus == "Pending"){
             let rowPending = "<tr><td>" + bkId + "</td><td>" + bkCusnic + "</td><td>" + bkCusname + "</td><td>" + bkCarreg + "</td><td>" + bkCarmake + "</td><td>" + bkModel + "</td><td>" + bkWithdriver + "</td><td>" + bkDrlic + "</td><td>" + bkDrname + "</td><td>" + bkDate + "</td><td>" + bkNdate + "</td><td>" + bkTotal + "</td><td><button class='btn-sm btn-danger btnReject mr-1'>Reject</button><button class='btn-sm btn-success btnApprove'>Approve</button></td></tr>";
             $("#tblPendingBooking").append(rowPending);
           }
 
-          let rowPending = "<tr><td>" + bkId + "</td><td>" + bkCusnic + "</td><td>" + bkCusname + "</td><td>" + bkCarreg + "</td><td>" + bkCarmake + "</td><td>" + bkModel + "</td><td>" + bkWithdriver + "</td><td>" + bkDrlic + "</td><td>" + bkDrname + "</td><td>" + bkDate + "</td><td>" + bkNdate + "</td><td>" + bkTotal + "</td><td>"+bkAdminstatus+"</td></tr>";
-          $("#tblAllBookings").append(rowPending);
-
-
-
-
+          let rowAll = "<tr><td>" + bkId + "</td><td>" + bkCusnic + "</td><td>" + bkCusname + "</td><td>" + bkCarreg + "</td><td>" + bkCarmake + "</td><td>" + bkModel + "</td><td>" + bkWithdriver + "</td><td>" + bkDrlic + "</td><td>" + bkDrname + "</td><td>" + bkDate + "</td><td>" + bkNdate + "</td><td>" + bkTotal + "</td><td>"+bkAdminstatus+"</td></tr>";
+          $("#tblAllBookings").append(rowAll);
 
         }
 
@@ -1371,6 +1449,7 @@
       }
     });
   });
+
 
 
 
