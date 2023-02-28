@@ -90,7 +90,7 @@
 </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="warningModal" style="z-index: 999" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -1403,19 +1403,56 @@
         }
 
 
-
         $.ajax({
           url: baseURL + "booking/update",
           method: "PUT",
           data: JSON.stringify(aprovedBookingObj),
           contentType: "application/json",
           dataType: "json",
-          success: function (resp) {
-            console.log(resp.message);
+          success: function (respond) {
+            console.log(respond.message);
             getAllBooking();
             $("#warningModal").modal();
             $("#txtWarningHeader").text("Success");
-            $("#txtWarning").text(resp.message);
+            $("#txtWarning").text(respond.message);
+          }
+        });
+
+        $.ajax({
+          url: baseURL+"car/getcar?cr_reg="+resp.data.bk_carreg,
+          method: 'get',
+          success: function (res){
+
+            var carDataObj = {
+              cr_reg: res.data.cr_reg,
+              cr_make: res.data.cr_make,
+              cr_model: res.data.cr_model,
+              cr_fuel: res.data.cr_fuel,
+              cr_type: res.data.cr_type,
+              cr_nfp: res.data.cr_nfp,
+              cr_day: res.data.cr_day,
+              cr_month: res.data.cr_month,
+              cr_km: res.data.cr_km,
+              cr_avail: "No"
+            };
+
+            $.ajax({
+              url: baseURL + "car/update",
+              method: "PUT",
+              data: JSON.stringify(carDataObj),
+              contentType: "application/json",
+              dataType: "json",
+              success: function (re) {
+                getAllCars();
+                getCarCount();
+
+              },
+              error: function (er) {
+                let message = JSON.parse(er.responseText).message;
+                console.log(message)
+              }
+            });
+            getAllCars();
           }
         });
 
