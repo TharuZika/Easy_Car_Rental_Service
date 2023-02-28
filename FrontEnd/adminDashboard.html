@@ -1111,6 +1111,33 @@
         data: formCarData,
         dataType: "json",
         success: function (res) {
+
+          let carImgFormData = new FormData();
+
+          let file1 = $("#cr_img")[0].files[0];
+          let fileName1 = $("#cr_img")[0].files[0].name;
+
+          carImgFormData.append("imageId", $("#cr_reg").val());
+          carImgFormData.append("imageType", "car");
+          carImgFormData.append("imageFile" ,file1, fileName1);
+
+          $.ajax({
+            url: baseURL + "image/save",
+            method: "post",
+            data: carImgFormData,
+            dataType: "json",
+            async: true,
+            contentType: false,
+            processData: false,
+            enctype: "multipart/form-data",
+            success: function (res) {
+              console.log(res.message);
+            },
+            error: function (err){
+              console.log("Can't Save Image : "+JSON.parse(err.responseText).message);
+            }
+          });
+
           getAllCars();
           getCarCount();
           $("#warningModal").modal();
@@ -1170,6 +1197,19 @@
         url: baseURL + "car/delete?cr_reg=" + cr_reg,
         method: "delete",
         success: function (resp) {
+
+          $.ajax({
+            url: baseURL + "image/delete?imageId=" + cr_reg,
+            method: "delete",
+            success:function (res){
+              console.log(res.message);
+            },
+            error: function (err){
+              let message = JSON.parse(err.responseText).message;
+              console.log(err);
+            }
+          });
+
           getAllCars();
           getCarCount();
           $("#warningModal").modal();
@@ -1191,7 +1231,6 @@
     $.ajax({
       url: baseURL + "car/allcar",
       method: 'get',
-      dataType: 'json',
       success: function (res) {
         for (let c of res.data) {
           let carReg = c.cr_reg;
@@ -1205,12 +1244,19 @@
           let carKm = c.cr_km;
           let carAvail = c.cr_avail;
 
-
-          let row = "<tr><td>" + carReg + "</td><td>" + carMake + "</td><td>" + carModel + "</td><td>" + carType + "</td><td>" + carFuel + "</td><td>" + carNfp + "</td><td>" + carDay + "</td><td>" + carMonth + "</td><td>" + carKm + "</td><td>" + carAvail + "</td><td><img src='assets/images/Genaral/alto-m/2.png' width='100'></td></tr>";
-
-          $("#tblCar").append(row);
-
-          carBindRowClickEvents();
+          $.ajax({
+            url: baseURL + "image/findimage?imageId="+c.cr_reg,
+            method: 'get',
+            dataType: 'json',
+            success: function (res){
+              let row = "<tr><td>" + carReg + "</td><td>" + carMake + "</td><td>" + carModel + "</td><td>" + carType + "</td><td>" + carFuel + "</td><td>" + carNfp + "</td><td>" + carDay + "</td><td>" + carMonth + "</td><td>" + carKm + "</td><td>" + carAvail + "</td><td><img src="+baseURL+res.data.imageUrl+" width='100'></td></tr>";
+              $("#tblCar").append(row);
+              carBindRowClickEvents();
+            },
+            error: function (err){
+              console.log("Can't Load Image : "+JSON.parse(err.responseText).message);
+            }
+        });
           setCarTextField("", "", "", "", "","", "", "", "", "","","");
         }
 
