@@ -74,10 +74,10 @@
           <a class="nav-link btn btn-outline-danger" data-toggle="modal" data-target=".bd-all-booking-modal-lg" href="#">View All Bookings</a>
         </li>
       </ul>
-      <span class="navbar-text">
+      <button class="btn btn-outline-light navbar-text" id="adminProfile">
                 <i class="fa-solid fa-user"></i>
                 Administrator
-            </span>
+            </button>
     </div>
   </div>
 </nav>
@@ -305,6 +305,7 @@
 
 
   <div class="row">
+
     <!--  Car table-->
     <div class="col">
       <table class="table shadow">
@@ -324,84 +325,6 @@
         </tr>
         </thead>
         <tbody id="tblCar">
-<!--        <tr>-->
-<!--          <td>KL-1234</td>-->
-<!--          <td><img src="assets/images/Genaral/alto-m/1.png" width="100" alt="1234"></td>-->
-<!--          <td>Suzuki</td>-->
-<!--          <td>Alto</td>-->
-<!--          <td>Luxury</td>-->
-<!--          <td>Petrol</td>-->
-<!--          <td>4</td>-->
-<!--          <td>2400</td>-->
-<!--          <td>62000</td>-->
-<!--          <td>100</td>-->
-<!--          <td class="text-success">Yes</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>KL-6245</td>-->
-<!--          <td><img src="assets/images/Genaral/alto-m/2.png" width="100"  alt="1234"></td>-->
-<!--          <td>Suzuki</td>-->
-<!--          <td>Alto</td>-->
-<!--          <td>Premium</td>-->
-<!--          <td>Diesel</td>-->
-<!--          <td>4</td>-->
-<!--          <td>2400</td>-->
-<!--          <td>62000</td>-->
-<!--          <td>100</td>-->
-<!--          <td class="text-success">Yes</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>KL-3244</td>-->
-<!--          <td><img src="assets/images/Genaral/alto-m/3.png" width="100"  alt="1234"></td>-->
-<!--          <td>Suzuki</td>-->
-<!--          <td>Alto</td>-->
-<!--          <td>General</td>-->
-<!--          <td>Petrol</td>-->
-<!--          <td>4</td>-->
-<!--          <td>2400</td>-->
-<!--          <td>62000</td>-->
-<!--          <td>100</td>-->
-<!--          <td class="text-danger">No</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>KL-3244</td>-->
-<!--          <td><img src="assets/images/Genaral/alto-m/4.png" width="100"  alt="1234"></td>-->
-<!--          <td>Bmw</td>-->
-<!--          <td>Alto</td>-->
-<!--          <td>General</td>-->
-<!--          <td>Petrol</td>-->
-<!--          <td>4</td>-->
-<!--          <td>2400</td>-->
-<!--          <td>62000</td>-->
-<!--          <td>100</td>-->
-<!--          <td class="text-success">Yes</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>KL-3244</td>-->
-<!--          <td><img src="assets/images/Genaral/alto-m/5.png" width="100"  alt="1234"></td>-->
-<!--          <td>Suzuki</td>-->
-<!--          <td>Alto</td>-->
-<!--          <td>General</td>-->
-<!--          <td>Petrol</td>-->
-<!--          <td>4</td>-->
-<!--          <td>2400</td>-->
-<!--          <td>62000</td>-->
-<!--          <td>100</td>-->
-<!--          <td class="text-success">Yes</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>KL-3244</td>-->
-<!--          <td><img src="assets/images/Genaral/alto-m/6.png" width="100"  alt="1234"></td>-->
-<!--          <td>Suzuki</td>-->
-<!--          <td>Alto</td>-->
-<!--          <td>General</td>-->
-<!--          <td>Petrol</td>-->
-<!--          <td>4</td>-->
-<!--          <td>2400</td>-->
-<!--          <td>62000</td>-->
-<!--          <td>100</td>-->
-<!--          <td class="text-success">Yes</td>-->
-<!--        </tr>-->
         </tbody>
       </table>
     </div>
@@ -1060,11 +983,21 @@
             let cusContact = c.cus_contact;
             let cusEmail = c.cus_email;
 
-            let row = "<tr><td>" + cusNic + "</td><td>" + cusName + "</td><td>" + cusAddress + "</td><td>" + cusContact + "</td><td>" + cusEmail + "</td><td><img src='assets/images/download.jpg' width='100'></td><td><button type=\"button\" class=\"btn btn-sm btn-danger btnDeleteCus\" >Remove</button></td></tr>";
+            $.ajax({
+              url: baseURL + "image/findimage?imageId="+c.cus_nic,
+              method: 'get',
+              dataType: 'json',
+              success: function (res){
+                let row = "<tr><td>" + cusNic + "</td><td>" + cusName + "</td><td>" + cusAddress + "</td><td>" + cusContact + "</td><td>" + cusEmail + "</td><td><img src="+baseURL+res.data.imageUrl+" width='100'></td><td><button type='button' class='btn btn-sm btn-danger btnDeleteCus'>Remove</button></td></tr>";
 
-            $("#tblCustomer").append(row);
+                $("#tblCustomer").append(row);
 
-            cusBindRowClickEvents();
+                cusBindRowClickEvents();
+              },
+              error: function (err){
+                console.log("Can't Load Image : "+JSON.parse(err.responseText).message);
+              }
+            });
             setCusTxtField("", "", "", "", "");
           }
 

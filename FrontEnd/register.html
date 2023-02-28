@@ -150,9 +150,35 @@
       dataType: "json",
       success: function (res) {
 
+        let cusImgFormData = new FormData();
+
+        let file1 = $("#cus_img")[0].files[0];
+        let fileName1 = $("#cus_img")[0].files[0].name;
+
+        cusImgFormData.append("imageId", $("#cus_nic").val());
+        cusImgFormData.append("imageType", "nic");
+        cusImgFormData.append("imageFile" ,file1, fileName1);
+
+        $.ajax({
+          url: baseURL + "image/save",
+          method: "post",
+          data: cusImgFormData,
+          dataType: "json",
+          async: true,
+          contentType: false,
+          processData: false,
+          enctype: "multipart/form-data",
+          success: function (res) {
+            console.log(res.message);
+          },
+          error: function (err){
+            console.log("Can't Save Image : "+JSON.parse(err.responseText).message);
+          }
+        });
+
         alert(res.message);
 
-        console.log("Success : " + res.message);
+        console.log("Successfully Registered! Now Login Again");
         setCusTxtField("", "", "", "", "");
       },
       error: function (err) {
@@ -176,8 +202,6 @@
       contentType: "application/json",
       dataType: "json",
       success: function (res) {
-        alert(res.message);
-        console.log("Success : " + res.message);
         $(location).attr('href', 'index.html');
       },
       error: function (err) {
