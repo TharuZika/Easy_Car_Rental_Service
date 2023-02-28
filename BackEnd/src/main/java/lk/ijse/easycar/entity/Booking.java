@@ -23,6 +23,7 @@ public class Booking {
     private String bk_carreg;
     private String bk_carmake;
     private String bk_model;
+    private String bk_withdriver;
     private String bk_drlic;
     private String bk_drname;
     private String bk_date;

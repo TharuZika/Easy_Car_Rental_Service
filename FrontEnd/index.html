@@ -121,6 +121,10 @@
             display: none;
         }
 
+        .btnRent{
+            display: none;
+        }
+
     </style>
 
 </head>
@@ -298,11 +302,21 @@
                         </div>
                         <div class="col-md-3"></div>
                         <div class="col-md-3">
-                                <div class="mb-3">
+                                <div>
                                     <label for="bk_total" class="form-label">Total Rental/Rs:</label>
                                     <input type="text" class="form-control bg-dark text-light border-danger font-weight-bold" id="bk_total" name="bk_total" required placeholder="0.00">
                                     <small>Without Extra KM</small>
                                 </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-check mb-5">
+                                <input class="form-check-input" type="checkbox" name="bk_withdriver" value="withdriver" id="bk_withdriver">
+                                <label class="form-check-label" for="bk_withdriver">
+                                    With Driver
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <button type="button" class="btn btn-warning font-weight-bold" id="btnBookingSubmit">Submit</button>
@@ -585,6 +599,7 @@
                             console.log("Success : " + res.data.cus_name);
 
                             $("#btnProfile").css('display', 'block');
+                            $(".btnRent").css('display', 'block');
                             $("#btnProfile").text(res.data.cus_name);
 
                             $("#cus_nic").val(res.data.cus_nic);
@@ -592,6 +607,9 @@
                             $("#cus_address").val(res.data.cus_address);
                             $("#cus_contact").val(res.data.cus_contact);
                             $("#cus_email").val(res.data.cus_email);
+
+                            $("#bk_cusNic").val(res.data.cus_nic);
+                            $("#bk_cus").val(res.data.cus_name);
 
                             $("#set-username").val(loginObj.userName);
                             $("#set-password").val(loginObj.password);
@@ -706,6 +724,12 @@
         var days = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
 
         console.log('Number of days between the two dates: ' + days);
+
+        var withdriver = null;
+
+        withdriver = $("input[name='bk_withdriver']:checked").val();
+
+        console.log(withdriver);
     });
 
     $("#btnCusSettingsSave").click(function (){
