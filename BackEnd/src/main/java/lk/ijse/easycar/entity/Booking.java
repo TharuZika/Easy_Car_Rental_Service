@@ -29,4 +29,5 @@ public class Booking {
     private String bk_date;
     private String bk_ndate;
     private Double bk_total;
+    private String bk_adminstatus;
 }
