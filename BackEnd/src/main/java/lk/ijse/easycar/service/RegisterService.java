@@ -10,7 +10,7 @@ public interface RegisterService {
     public void saveCustomer(UserDTO dto);
     public void saveDriver(String userId, String userName, String password, String role);
     public void saveAdmin(UserDTO dto);
-    public User findUser(String userId);
+    public UserDTO findUser(String userId);
 
     public void deleteUser(String userId);
 }

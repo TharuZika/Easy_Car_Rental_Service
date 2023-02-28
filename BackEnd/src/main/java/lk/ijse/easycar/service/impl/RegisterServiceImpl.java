@@ -52,9 +52,10 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public User findUser(String userId) {
+    public UserDTO findUser(String userId) {
         User byUserId = userRepo.findByUserId(userId);
-        return byUserId;
+        UserDTO map = mapper.map(byUserId, UserDTO.class);
+        return map;
     }
 
     @Override

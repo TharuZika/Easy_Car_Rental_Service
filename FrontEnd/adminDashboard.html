@@ -40,6 +40,10 @@
       font-size: 15px;
     }
 
+    .bd-all-booking-modal-lg{
+      width: 100%;
+    }
+
 
   </style>
 
@@ -67,7 +71,7 @@
           <a class="nav-link" href="#" id="driversNav">Drivers</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Income</a>
+          <a class="nav-link btn btn-outline-danger" data-toggle="modal" data-target=".bd-all-booking-modal-lg" href="#">View All Bookings</a>
         </li>
       </ul>
       <span class="navbar-text">
@@ -94,6 +98,35 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!--  All Booking Table Modal-->
+<div class="modal fade bd-all-booking-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <table class="table shadow tablePendingBooking bg-light">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Cus-NIC</th>
+          <th scope="col">Cus-Name</th>
+          <th scope="col">Car-No</th>
+          <th scope="col">Car-Brand</th>
+          <th scope="col">Model</th>
+          <th scope="col">With Driver</th>
+          <th scope="col">Driver-LIC</th>
+          <th scope="col">Driver-Name</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Rental</th>
+          <th scope="col">Admin Status</th>
+        </tr>
+        </thead>
+        <tbody id="tblAllBookings">
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
@@ -143,6 +176,7 @@
 </div>
   </div>
 
+
 <!--  booking table-->
   <div>
     <table class="table shadow tablePendingBooking">
@@ -164,30 +198,6 @@
       </tr>
       </thead>
       <tbody id="tblPendingBooking">
-<!--      <tr>-->
-<!--        <th scope="row">BK001</th>-->
-<!--        <td>Saman</td>-->
-<!--        <td>2023-02-15</td>-->
-<!--        <td>2023-03-15</td>-->
-<!--        <td>34000</td>-->
-<!--        <td><button class="btn-sm btn-danger mr-1">Cancel</button><button class="btn-sm btn-success">Approve</button></td>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <th scope="row">BK002</th>-->
-<!--        <td>Kamal</td>-->
-<!--        <td>2023-02-16</td>-->
-<!--        <td>2023-03-15</td>-->
-<!--        <td>34000</td>-->
-<!--        <td><button class="btn-sm btn-danger mr-1">Cancel</button><button class="btn-sm btn-success">Approve</button></td>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <th scope="row">BK003</th>-->
-<!--        <td>Yomal</td>-->
-<!--        <td>2023-02-17</td>-->
-<!--        <td>2023-03-15</td>-->
-<!--        <td>34000</td>-->
-<!--        <td><button class="btn-sm btn-danger mr-1">Cancel</button><button class="btn-sm btn-success">Approve</button></td>-->
-<!--      </tr>-->
       </tbody>
     </table>
   </div>
@@ -654,12 +664,13 @@
       let carReg = $(this).find("td:eq(0)").text();
       let carMake = $(this).find("td:eq(1)").text();
       let carModel = $(this).find("td:eq(2)").text();
-      let carType = $(this).find("td:eq(4)").text();
-      let carFuel = $(this).find("td:eq(3)").text();
+      let carType = $(this).find("td:eq(3)").text();
+      let carFuel = $(this).find("td:eq(4)").text();
       let carPas = $(this).find("td:eq(5)").text();
       let carDay = $(this).find("td:eq(6)").text();
       let carMonth = $(this).find("td:eq(7)").text();
       let carKm = $(this).find("td:eq(8)").text();
+      let carAvail = $(this).find("td:eq(9)").text();
 
       $('#cr_reg').val(carReg);
       $('#cr_make').val(carMake);
@@ -670,6 +681,7 @@
       $('#cr_month').val(carMonth);
       $('#cr_km').val(carKm);
       $('#cr_nfp').val(carPas);
+      $('#cr_avail').val(carAvail);
 
       console.log(carType);
     });
@@ -759,6 +771,7 @@
       });
     });
 
+
     $("#btnUpdateDr").click(function () {
 
       let driverDataObj={
@@ -796,14 +809,12 @@
         method: "delete",
         success: function (res) {
           $.ajax({
-            url: baseURL + "register/deletedriver?userName=" + tempDriverUserName,
-            method: "delete",
+            url: baseURL + "register/getuser?userId="+dr_lic,
+            method: "get",
             success: function (resp) {
-              console.log("Customer Login info deleted");
-            },
-            error: function (error) {
-              let message = JSON.parse(error.responseText).message;
-              console.log(message)
+              console.log("Found : "+resp.data.userName);
+              deleteDriverLogin(resp.data.userName);
+
             }
           });
           $("#warningModal").modal();
@@ -820,6 +831,20 @@
         }
       });
     });
+
+  function deleteDriverLogin(userName){
+    $.ajax({//Not working because we need userName. not cus_nic for delete this login info from user table
+      url: baseURL + "register/deletedriver?userName=" + userName,
+      method: "delete",
+      success: function (resp) {
+        console.log("Customer Login info deleted");
+      },
+      error: function (error) {
+        let message = JSON.parse(error.responseText).message;
+        console.log(message)
+      }
+    });
+  }
 
   function getAllDrivers() {
     $("#tblDriver").empty();
@@ -982,8 +1007,7 @@
           url: baseURL + "register/getuser?userId="+cus_nic,
           method: "get",
           success: function (resp) {
-            tempUserName =  resp.data.userName;
-            console.log("Found : "+tempUserName);
+            console.log("Found : "+resp.data.userName);
             deleteCustomerLogin(resp.data.userName);
 
           }
@@ -1113,7 +1137,8 @@
         cr_nfp: $("#cr_nfp").val(),
         cr_day: $("#cr_day").val(),
         cr_month: $("#cr_month").val(),
-        cr_km: $("#cr_km").val()
+        cr_km: $("#cr_km").val(),
+        cr_avail: $("#cr_avail").val()
       };
 
       $.ajax({
@@ -1254,6 +1279,7 @@
 
   function getAllBooking(){
     $("#tblPendingBooking").empty();
+    $("#tblAllBookings").empty();
     $.ajax({
       url: baseURL + "booking/getall",
       method: 'get',
@@ -1274,9 +1300,16 @@
           let bkTotal = c.bk_total;
           let bkAdminstatus = c.bk_adminstatus;
           if (bkAdminstatus == "Pending"){
-            let row = "<tr><td>" + bkId + "</td><td>" + bkCusnic + "</td><td>" + bkCusname + "</td><td>" + bkCarreg + "</td><td>" + bkCarmake + "</td><td>" + bkModel + "</td><td>" + bkWithdriver + "</td><td>" + bkDrlic + "</td><td>" + bkDrname + "</td><td>" + bkDate + "</td><td>" + bkNdate + "</td><td>" + bkTotal + "</td><td><button class='btn-sm btn-danger btnReject mr-1'>Reject</button><button class='btn-sm btn-success btnApprove'>Approve</button></td></tr>";
-            $("#tblPendingBooking").append(row);
+            let rowPending = "<tr><td>" + bkId + "</td><td>" + bkCusnic + "</td><td>" + bkCusname + "</td><td>" + bkCarreg + "</td><td>" + bkCarmake + "</td><td>" + bkModel + "</td><td>" + bkWithdriver + "</td><td>" + bkDrlic + "</td><td>" + bkDrname + "</td><td>" + bkDate + "</td><td>" + bkNdate + "</td><td>" + bkTotal + "</td><td><button class='btn-sm btn-danger btnReject mr-1'>Reject</button><button class='btn-sm btn-success btnApprove'>Approve</button></td></tr>";
+            $("#tblPendingBooking").append(rowPending);
           }
+
+          let rowPending = "<tr><td>" + bkId + "</td><td>" + bkCusnic + "</td><td>" + bkCusname + "</td><td>" + bkCarreg + "</td><td>" + bkCarmake + "</td><td>" + bkModel + "</td><td>" + bkWithdriver + "</td><td>" + bkDrlic + "</td><td>" + bkDrname + "</td><td>" + bkDate + "</td><td>" + bkNdate + "</td><td>" + bkTotal + "</td><td>"+bkAdminstatus+"</td></tr>";
+          $("#tblAllBookings").append(rowPending);
+
+
+
+
 
         }
 

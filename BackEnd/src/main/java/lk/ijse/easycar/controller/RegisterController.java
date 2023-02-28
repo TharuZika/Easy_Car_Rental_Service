@@ -37,9 +37,9 @@ public class RegisterController {
     }
 
     @GetMapping(path = "/getuser")
-    public ResponseUtil getUser(String userName){
-        User user = service.findUser(userName);
-        return new ResponseUtil("OK", "Successfully Found : "+userName, user);
+    public ResponseUtil getUser(String userId){
+        UserDTO user = service.findUser(userId);
+        return new ResponseUtil("OK", "Successfully Found : "+userId, user);
     }
 
     @PostMapping(path = "/admin")
