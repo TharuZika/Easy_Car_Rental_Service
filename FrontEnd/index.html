@@ -251,7 +251,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <label for="bk_id" class="form-label">Booking ID:</label>
-                                <input type="text" class="form-control" id="bk_id" name="bk_id" required>
+                                <input type="text" class="form-control" id="bk_id" name="bk_id" disabled required>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -541,10 +541,15 @@
     getCarsForCards();
     rentModalOpen();
 
+    var tempCarRentDay;
+    var tempCarRentMonth;
 
 
     function rentModalOpen(){
         $(".btnRent").click(function (){
+
+            generateId();
+
             let car_regno = $(this).closest('section').find('small:first').text();
 
 
@@ -557,9 +562,8 @@
                     $("#bk_carmake").val(res.data.cr_make);
                     $("#bk_carmodel").val(res.data.cr_model);
                     $("#bk_carmake").val(res.data.cr_make);
-                    $("#bk_carmake").val(res.data.cr_make);
-                    $("#bk_carmake").val(res.data.cr_make);
-                    $("#bk_carmake").val(res.data.cr_make);
+                    tempCarRentDay = res.data.cr_day;
+                    tempCarRentMonth = res.data.cr_month;
                 }
             })
 
@@ -720,16 +724,115 @@
     $("#btnBookingSubmit").click(function (){
         var startDate = new Date($('#bk_date').val());
         var endDate = new Date($('#bk_ndate').val());
-
         var days = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+        var totalRent = 0;
+        if (days<20){
+            totalRent = tempCarRentDay*days;
+        }else if(days>20){
+            totalRent = tempCarRentMonth*days/20;
+        }
+        console.log(totalRent);
+        console.log('Total Days: ' + days);
 
-        console.log('Number of days between the two dates: ' + days);
+        var withdriver = "Without Driver";
+        var driverdetails = "No Driver"
 
-        var withdriver = null;
+        if ($("input[name='bk_withdriver']:checked").val() == "withdriver"){
+            withdriver = "With Driver";
+            driverdetails = "Pending";
+        }
 
-        withdriver = $("input[name='bk_withdriver']:checked").val();
+        var bookingInfoObj = {
+            bk_id: $("#bk_id").val(),
+            bk_cusnic: $("#bk_cusNic").val(),
+            bk_cusname: $("#bk_cus").val(),
+            bk_carreg: $("#bk_carreg").val(),
+            bk_carmake: $("#bk_carmake").val(),
+            bk_model: $("#bk_carmodel").val(),
+            bk_withdriver: withdriver,
+            bk_drlic: driverdetails,
+            bk_drname: driverdetails,
+            bk_date: $("#bk_date").val(),
+            bk_ndate: $("#bk_ndate").val(),
+            bk_total: $("#bk_total").val(),
+            bk_adminstatus: "Pending"
+        }
 
-        console.log(withdriver);
+        $.ajax({
+            url: baseURL+"booking/save",
+            method: 'post',
+            data: JSON.stringify(bookingInfoObj),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (res) {
+                 $("#warningModal").modal();
+                 $("#txtWarningHeader").text("Success");
+                 $("#txtWarning").text(res.message);
+            },
+            error: function (err) {
+                    let message = JSON.parse(err.responseText).message;
+                    $("#warningModal").modal();
+                    $("#txtWarningHeader").text("Error");
+                    $("#txtWarning").text(message);
+                }
+            });
+
+        console.log(bookingInfoObj);
+    });
+
+    function generateId(){
+
+        $.ajax({
+            url: baseURL+"booking/generateid",
+            method: 'get',
+            dataType: 'json',
+            success: function (res){
+                $("#bk_id").val(res.data);
+            },
+            error: function (err){
+                let message = JSON.parse(error.responseText).message;
+                console.log("Cant Generate ID : "+message);
+            }
+        })
+
+
+    }
+
+    $(document).keypress(function (e){
+        if (e.which == 13){
+            var startDate = new Date($('#bk_date').val());
+            var endDate = new Date($('#bk_ndate').val());
+            var days = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+            var totalRent = 0;
+            if (days<20){
+                totalRent = tempCarRentDay*days;
+            }else if(days>20){
+                totalRent = tempCarRentMonth*days/20;
+            }
+            console.log(totalRent);
+            if ($("input[name='bk_withdriver']:checked").val() == "withdriver"){
+                totalRent=totalRent+days*1000;
+            }
+            $("#bk_total").val(totalRent);
+        }
+    });
+
+    $("#bk_withdriver").click(function (){
+        var startDate = new Date($('#bk_date').val());
+        var endDate = new Date($('#bk_ndate').val());
+        var days = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+        var totalRent = 0;
+        if (days<20){
+            totalRent = tempCarRentDay*days;
+        }else if(days>20){
+            totalRent = tempCarRentMonth*days/20;
+        }
+        console.log(totalRent);
+        if ($("input[name='bk_withdriver']:checked").val() == "withdriver"){
+            totalRent=totalRent+days*1000;
+        }
+        $("#bk_total").val(totalRent);
+
     });
 
     $("#btnCusSettingsSave").click(function (){
@@ -802,6 +905,11 @@
             }
         });
     });
+
+    //Driver Configure
+    function getAllBookingsDriver(){
+
+    }
 
 
 </script>
