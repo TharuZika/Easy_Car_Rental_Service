@@ -130,6 +130,171 @@
 </head>
 <body>
 
+<!--Warning Box-->
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="txtWarningHeader">Warning!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="txtWarning">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Profile Modal-->
+<div class=" modal fade bd-settings-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="settings-content modal-content">
+            <div class="container">
+                <div class="mt-lg-4 mb-lg-4">
+                    <h1 class="text-warning">Settings</h1>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="cus_name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="cus_name" name="cus_name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cus_nic" class="form-label">NIC Number</label>
+                                    <input type="text" class="form-control" id="cus_nic" name="cus_nic" disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cus_address" class="form-label">Address</label>
+                                    <textarea class="form-control" id="cus_address" name="cus_address" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cus_contact" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="cus_contact" name="cus_contact" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cus_email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="cus_email" name="cus_email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="set-username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="set-username" name="set-username" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="set-password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="set-password" name="set-password" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nic_photo" class="form-label">NIC Photo</label>
+                                    <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>
+                                    <small class="form-text text-muted">Please upload a photo of your NIC or Driving License.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-warning font-weight-bold" id="btnCusSettingsSave">Save</button>
+                        <a class="btn btn-danger" href="index.html">Logout</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Booking Modal-->
+<div class="modal fade bd-booking-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="booking-content modal-content">
+            <div class="container">
+                <div class="mt-lg-4 mb-lg-4">
+                    <h1 class="text-warning font-weight-bold">Booking</h1>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="bk_id" class="form-label">Booking ID:</label>
+                                    <input type="text" class="form-control" id="bk_id" name="bk_id" disabled required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="bk_cusNic" class="form-label">Customer NIC:</label>
+                                    <input type="text" class="form-control" id="bk_cusNic" name="bk_cusNic" disabled required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="bk_cus" class="form-label">Customer Name:</label>
+                                    <input type="text" class="form-control" id="bk_cus" name="bk_cus" disabled required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="bk_carreg" class="form-label">Car Registration:</label>
+                                    <input class="form-control" id="bk_carreg" name="bk_carreg" disabled required></input>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="bk_carmake" class="form-label">Brand:</label>
+                                    <input class="form-control" id="bk_carmake" name="bk_carmake" disabled required></input>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="bk_carmodel" class="form-label">Model:</label>
+                                    <input class="form-control" id="bk_carmodel" name="bk_carmodel" disabled required></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="bk_date" class="form-label">Rent Date:</label>
+                                    <input type="date" class="form-control" id="bk_date" name="bk_date" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="bk_ndate" class="form-label">End Date:</label>
+                                    <input type="date" class="form-control" id="bk_ndate" name="bk_ndate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3">
+                                <div>
+                                    <label for="bk_total" class="form-label">Total Rental/Rs:</label>
+                                    <input type="text" class="form-control bg-dark text-light border-danger font-weight-bold" id="bk_total" name="bk_total" required placeholder="0.00">
+                                    <small>Without Extra KM</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-check mb-5">
+                                    <input class="form-check-input" type="checkbox" name="bk_withdriver" value="withdriver" id="bk_withdriver">
+                                    <label class="form-check-label" for="bk_withdriver">
+                                        With Driver
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-warning font-weight-bold" id="btnBookingSubmit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--HomePage-->
 <div id="homePageContext">
 
@@ -161,171 +326,6 @@
             </div>
         </div>
     </nav>
-
-    <!--Warning Box-->
-    <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="txtWarningHeader">Warning!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="txtWarning">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Profile Modal-->
-    <div class=" modal fade bd-settings-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="settings-content modal-content">
-                <div class="container">
-                    <div class="mt-lg-4 mb-lg-4">
-                        <h1 class="text-warning">Settings</h1>
-                        <form action="#" method="post" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="cus_name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="cus_name" name="cus_name" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="cus_nic" class="form-label">NIC Number</label>
-                                        <input type="text" class="form-control" id="cus_nic" name="cus_nic" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="cus_address" class="form-label">Address</label>
-                                        <textarea class="form-control" id="cus_address" name="cus_address" rows="3" required></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="cus_contact" class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control" id="cus_contact" name="cus_contact" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="cus_email" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" id="cus_email" name="cus_email" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="set-username" class="form-label">Username</label>
-                                        <input type="text" class="form-control" id="set-username" name="set-username" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="set-password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="set-password" name="set-password" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="nic_photo" class="form-label">NIC Photo</label>
-                                        <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>
-                                        <small class="form-text text-muted">Please upload a photo of your NIC or Driving License.</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-warning font-weight-bold" id="btnCusSettingsSave">Save</button>
-                            <a class="btn btn-danger" href="index.html">Logout</a>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Booking Modal-->
-    <div class="modal fade bd-booking-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="booking-content modal-content">
-                <div class="container">
-                    <div class="mt-lg-4 mb-lg-4">
-                <h1 class="text-warning font-weight-bold">Booking</h1>
-                <form action="#" method="post" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="mb-3">
-                                <label for="bk_id" class="form-label">Booking ID:</label>
-                                <input type="text" class="form-control" id="bk_id" name="bk_id" disabled required>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="mb-3">
-                                <label for="bk_cusNic" class="form-label">Customer NIC:</label>
-                                <input type="text" class="form-control" id="bk_cusNic" name="bk_cusNic" disabled required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="bk_cus" class="form-label">Customer Name:</label>
-                                <input type="text" class="form-control" id="bk_cus" name="bk_cus" disabled required>
-                            </div>
-                        </div>
-                        </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="bk_carreg" class="form-label">Car Registration:</label>
-                                <input class="form-control" id="bk_carreg" name="bk_carreg" disabled required></input>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="bk_carmake" class="form-label">Brand:</label>
-                                <input class="form-control" id="bk_carmake" name="bk_carmake" disabled required></input>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="bk_carmodel" class="form-label">Model:</label>
-                                <input class="form-control" id="bk_carmodel" name="bk_carmodel" disabled required></input>
-                            </div>
-                        </div>
-                        </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="mb-3">
-                                <label for="bk_date" class="form-label">Rent Date:</label>
-                                <input type="date" class="form-control" id="bk_date" name="bk_date" required>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="mb-3">
-                                <label for="bk_ndate" class="form-label">End Date:</label>
-                                <input type="date" class="form-control" id="bk_ndate" name="bk_ndate" required>
-                            </div>
-                        </div>
-                        <div class="col-md-3"></div>
-                        <div class="col-md-3">
-                                <div>
-                                    <label for="bk_total" class="form-label">Total Rental/Rs:</label>
-                                    <input type="text" class="form-control bg-dark text-light border-danger font-weight-bold" id="bk_total" name="bk_total" required placeholder="0.00">
-                                    <small>Without Extra KM</small>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-check mb-5">
-                                <input class="form-check-input" type="checkbox" name="bk_withdriver" value="withdriver" id="bk_withdriver">
-                                <label class="form-check-label" for="bk_withdriver">
-                                    With Driver
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-warning font-weight-bold" id="btnBookingSubmit">Submit</button>
-                </form>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!--Welcome Screen-->
     <div id="welcomeScreen" >
@@ -465,10 +465,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                 </ul>
-                <span class="navbar-text" id="lblDriverName">
-                <i class="fa-solid fa-user"></i>
-                Driver
-            </span>
+                <span class="navbar-text">
+                    <i class="fa-solid fa-user"></i>
+                    <span id="lblDriverName">Driver</span>
+                    <br>
+                    <i class="fa-solid fa-key"></i>
+                    <span id="lblDriverLic">B12345678</span>
+                </span>
             </div>
         </div>
     </nav>
@@ -476,6 +479,7 @@
     <div class="container">
         <div class="mt-md-4 mb-md-4">
             <h1 class="text-warning font-weight-bold">Driver Dashboard</h1>
+            <button class="btn btn-outline-dark mb-3" type="button" id="reloadDriverTable">Reload Table</button>
             <table class="table shadow table-light">
                 <thead class="thead-dark">
                 <tr>
@@ -493,16 +497,16 @@
                 </thead>
                 <tbody id="tblDriverSchedule">
                 <tr>
-                    <td>BK-001</td>
-                    <td>200113203389</td>
-                    <td>Saman Kumara</td>
-                    <td>KL-1234</td>
-                    <td>BMW</td>
-                    <td>M5 / Auto</td>
-                    <td>2023-02-15</td>
-                    <td>2023-03-16</td>
-                    <td>186000</td>
-                    <td><button class="btn-sm btn-success btnGetJob">Get Job</button></td>
+<!--                    <td>BK-001</td>-->
+<!--                    <td>200113203389</td>-->
+<!--                    <td>Saman Kumara</td>-->
+<!--                    <td>KL-1234</td>-->
+<!--                    <td>BMW</td>-->
+<!--                    <td>M5 / Auto</td>-->
+<!--                    <td>2023-02-15</td>-->
+<!--                    <td>2023-03-16</td>-->
+<!--                    <td>186000</td>-->
+<!--                    <td><button class="btn-sm btn-success btnGetJob">Get Job</button></td>-->
                 </tr>
                 </tbody>
             </table>
@@ -631,11 +635,14 @@
                     });
                 }if (res.data.role == "Driver"){
 
+                    getAllBookingsDriver();
+
                     $.ajax({
                        url: baseURL+"login/driverinfo?userId="+res.data.userId,
                         method: "get",
                         success: function (res) {
                            $("#lblDriverName").text(res.data.dr_name);
+                           $("#lblDriverLic").text(res.data.dr_lic);
                         }
                     });
 
@@ -906,10 +913,100 @@
         });
     });
 
+
     //Driver Configure
     function getAllBookingsDriver(){
+        $("#tblDriverSchedule").empty();
+        $.ajax({
+            url: baseURL + "booking/getall",
+            method: 'get',
+            dataType: 'json',
+            success: function (res) {
+                for (let c of res.data) {
+                    let bkId = c.bk_id;
+                    let bkCusnic = c.bk_cusnic;
+                    let bkCusname = c.bk_cusname;
+                    let bkCarreg = c.bk_carreg;
+                    let bkCarmake = c.bk_carmake;
+                    let bkModel = c.bk_model;
+                    let bkWithdriver = c.bk_withdriver;
+                    let bkDrlic = c.bk_drlic;
+                    let bkDrname = c.bk_drname;
+                    let bkDate = c.bk_date;
+                    let bkNdate = c.bk_ndate;
+                    let bkTotal = c.bk_total;
+                    let bkAdminstatus = c.bk_adminstatus;
+                    if (bkAdminstatus == "Approved" && bkWithdriver=="With Driver" && bkDrname=="Pending"){
+                        let row = "<tr><td>" + bkId + "</td><td>" + bkCusnic + "</td><td>" + bkCusname + "</td><td>" + bkCarreg + "</td><td>" + bkCarmake + "</td><td>" + bkModel + "</td><td>" + bkDate + "</td><td>" + bkNdate + "</td><td>" + bkTotal + "</td><td><button class='btn-sm btn-success btnApproveDriver'>Get Job</button></td></tr>";
+                        $("#tblDriverSchedule").append(row);
+                    }
 
+                }
+
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
     }
+
+    $(document).on('click', '.btnApproveDriver', function () {
+        let bk_id = $(this).closest('tr').find('td:first').text();
+        console.log(bk_id)
+        $.ajax({
+            url: baseURL + "booking/findbooking?bk_id="+bk_id,
+            method: "get",
+            success: function (resp) {
+
+                aprovedBookingDriverObj = {
+                    bk_id: resp.data.bk_id,
+                    bk_cusnic: resp.data.bk_cusnic,
+                    bk_cusname: resp.data.bk_cusname,
+                    bk_carreg: resp.data.bk_carreg,
+                    bk_carmake: resp.data.bk_carmake,
+                    bk_model: resp.data.bk_model,
+                    bk_withdriver: resp.data.bk_withdriver,
+                    bk_drlic: $("#lblDriverLic").text(),
+                    bk_drname: $("#lblDriverName").text(),
+                    bk_date: resp.data.bk_date,
+                    bk_ndate: resp.data.bk_ndate,
+                    bk_total: resp.data.bk_total,
+                    bk_adminstatus: resp.data.bk_total
+                }
+
+
+
+                $.ajax({
+                    url: baseURL + "booking/update",
+                    method: "PUT",
+                    data: JSON.stringify(aprovedBookingDriverObj),
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (resp) {
+                        getAllBookingsDriver();
+
+                        console.log(resp.message);
+                        $("#warningModal").modal();
+                        $("#txtWarningHeader").text("Success");
+                        $("#txtWarning").text(resp.message);
+
+                    }
+                });
+
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                $("#warningModal").modal();
+                $("#txtWarningHeader").text("Error");
+                $("#txtWarning").text(message);
+            }
+        });
+    });
+
+    $("#reloadDriverTable").click(function (){
+       getAllBookingsDriver();
+    });
 
 
 </script>
