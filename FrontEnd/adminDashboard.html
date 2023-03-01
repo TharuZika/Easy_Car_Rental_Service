@@ -1141,14 +1141,14 @@
             enctype: "multipart/form-data",
             success: function (res) {
               console.log(res.message);
+              getAllCars();
+              getCarCount();
             },
             error: function (err){
               console.log("Can't Save Image : "+JSON.parse(err.responseText).message);
             }
           });
 
-          getAllCars();
-          getCarCount();
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(res.message);
@@ -1197,7 +1197,6 @@
           $("#txtWarning").text(message);
         }
       });
-      getAllCars();
     });
 
     $("#btnDeleteCar").click(function () {

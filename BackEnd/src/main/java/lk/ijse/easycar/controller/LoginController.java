@@ -39,15 +39,18 @@ public class LoginController {
     @Autowired
     private AdminRepo adminRepo;
 
-    @PostMapping(path = "/user")
-    public ResponseUtil loginUser(@RequestBody UserDTO userDto){
-        User map = mapper.map(userRepo.findByUserName(userDto.getUserName()), User.class);
-        if (!map.getPassword().equals(userDto.getPassword())){
+    @GetMapping(path = "/user")
+    public ResponseUtil loginUser(String userName, String password){
+        User map = mapper.map(userRepo.findByUserName(userName), User.class);
+
+        System.out.println("UserName : "+userName);
+
+        if (!map.getPassword().equals(password)){
             System.out.println("Password incorrect");
             return new ResponseUtil("Error", "Password or Username Incorrect", null);
         }
 
-        User user = userRepo.findByUserName(userDto.getUserName());
+        User user = userRepo.findByUserName(userName);
         UserDTO userDTO = mapper.map(user, UserDTO.class);
 
         return new ResponseUtil("Ok", "Successfully Login", userDTO);
@@ -95,7 +98,7 @@ public class LoginController {
         return new ResponseUtil("Ok", "Successfully Login", driverDTO);
     }
 
-    @PostMapping(path = "/admin")
+    @GetMapping(path = "/admin")
     public ResponseUtil loginAdmin(String userId){
         Optional<Admin> admin = adminRepo.findById(userId);
         AdminDTO adminDTO = mapper.map(admin, AdminDTO.class);

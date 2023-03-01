@@ -587,10 +587,10 @@
         }
 
         $.ajax({
-            url: baseURL + "login/user",
-            method: "post",
-            data: JSON.stringify(loginObj),
-            contentType: "application/json",
+            url: baseURL + "login/user?userName="+$("#username").val()+"&password="+$("#password").val(),
+            method: "get",
+            // data: JSON.stringify(loginObj),
+            // contentType: "application/json",
             dataType: "json",
             success: function (res) {
                 if (res.data.role == "Customer"){
@@ -652,7 +652,7 @@
                 }if (res.data.role == "Admin"){
                     $.ajax({
                         url: baseURL + "login/admin?userId=" + res.data.userId,
-                        method: "post",
+                        method: "get",
                         success: function (res) {
 
                             console.log("Success : " + res.data.adminName);
