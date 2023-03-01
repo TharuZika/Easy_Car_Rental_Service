@@ -11,10 +11,54 @@
   <component name="ChangeListManager">
     <list default="true" id="b8ba8c90-bc6b-4824-af07-b4d92039fe9e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/target/BackEnd-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/adminDashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/adminDashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Luxury/i8/306485813_5903961162988464_3031903378436628881_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Luxury/i8/316943101_2482426355229992_4423150095958776357_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-k10-a/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-k10-a/123.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-k10-a/13550_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-k10-a/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-k10-a/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-k10-a/327095819_5554746414634312_3977050082855246165_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-k10-a/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-k10-a/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-m/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-m/alto-m (1).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-m/alto-m (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-m/alto-m (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-m/alto-m (3).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-m/alto-m (4).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-m/alto-m (5).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/alto-m/alto-m (6).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/axia/2014_Perodua_Axia_SE_in_Cyberjaya,_Malaysia_(01).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/axia/gallery_used-car-carlist-perodua-axia-g-hatchback-malaysia_7026285_zujMC9ntT9PTXp44Dc5XZA.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/celerio/20220817_133632.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/celerio/Suzuki-Celerio-VXI-2016-for-sale-in-sri-lanka-011.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/celerio/suzuki-celerio-11162240851.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/celerio/suzuki-celerio-275722352.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/celerio/suzuki-celerio-sri-lanka.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/prius c aqua/2012_Toyota_Prius_c_--_05-23-2012_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/prius c aqua/2016_Prius_c_005_759FED2E688D101C7A41EB5084DCD7654D3E387B-1500x900.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/prius c aqua/323918387_3387627398192381_2445625414571567607_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/prius c aqua/324256634_1217799152468422_2316645307617394524_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/prius c aqua/327043280_5845618878807831_1464306954895983754_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/prius c aqua/329755645_578720704161104_1431545561293500568_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/prius c aqua/800px-2012_Toyota_Prius_c_(NHP10R)_hatchback_(2015-07-03)_01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Genaral/prius c aqua/ba05d73556ce0b330aacc2c0ad193ff7559f3c41.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Luxury/premio/321315071_6053825867972875_4504923671903050725_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Luxury/premio/327232215_3240137442964483_9151851744093787536_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/allion/311595032_5285134028263451_9169593381806946648_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/allion/329364031_1919137571757778_2698548099205329258_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/allion/330453055_8888224487884795_5954890158213306277_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/axio  NZE141/326245130_873392857231903_429704628246060477_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/axio  NZE141/326715875_1184060262481090_1967978213027366851_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/axio  NZE141/329295791_905444470486084_2659421368469741164_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/axio  NZE141/329469699_904952410952863_7309464966559080769_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/axio NKR165/318641980_5650266381749388_351451457976096207_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/axio NKR165/329914993_714358206824173_4619796801268092627_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/bezza - x4/313089373_5967074969970734_2834919875958360124_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/bezza - x4/315408402_437763971884524_1161098294624941465_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/bezza - x4/317906520_8523634067711891_1189581672852689706_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/bezza - x4/325780970_1227412314855546_1975078741801395117_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/assets/images/Premium/bezza - x4/Perodua-Bezza.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontEnd/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontEnd/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +252,8 @@
       <workItem from="1677525058593" duration="6054000" />
       <workItem from="1677553230579" duration="21403000" />
       <workItem from="1677593885951" duration="14729000" />
-      <workItem from="1677616241482" duration="1813000" />
+      <workItem from="1677616241482" duration="2224000" />
+      <workItem from="1677644700425" duration="1557000" />
     </task>
     <servers />
   </component>
