@@ -125,6 +125,23 @@
             display: none;
         }
 
+
+        .card:hover {
+            transform: scale(1.15);
+            border: 1px solid #ffc107;
+            box-shadow: 5px 5px 15px 0 black;
+            z-index: 10;
+        }
+
+        .card:hover .card-img-top{
+            transform: scale(1.03);
+            margin-bottom: 4px;
+            box-shadow: 1px 1px 20px 0 black;
+            border: 1px solid #ffc107;
+        }
+
+
+
     </style>
 
 </head>
@@ -339,7 +356,7 @@
                         </p>
                         <hr class="my-4" />
                         <p>Choose from our wide range of cars and start your journey today.</p>
-                        <a class="btn btn-outline-warning btn-lg" href="#cars" role="button">Book Now</a>
+                        <a class="btn btn-outline-warning btn-lg" href="#cardCars" role="button">Book Now</a>
                     </div>
     <!--Login Form-->
                     <div class="col-md-4 login-box">
@@ -519,7 +536,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <p>&copy; 2023 Car Rental Service</p>
+                <p>&copy; 2023 Car Rental Service@TharuZika</p>
             </div>
             <div class="col-md-6">
                 <ul class="list-inline float-md-right">

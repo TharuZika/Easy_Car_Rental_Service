@@ -35,6 +35,9 @@
     tr:hover{
       background: #ffc107;
     }
+    tr:hover img{
+      transform: scale(1.3);
+    }
 
     .tablePendingBooking{
       font-size: 15px;
@@ -46,6 +49,11 @@
 
     #returnForm{
       display: none;
+    }
+
+    .admin-modal{
+      background: #313131;
+      color: #ffc107;
     }
 
 
@@ -88,6 +96,69 @@
     </div>
   </div>
 </nav>
+
+<!--Admin Profile Modal-->
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-admin-modal-lg">Large modal</button>
+<div class="modal fade bd-admin-modal-lg" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content admin-modal">
+
+<!--      Add a admin-->
+      <div class="container p-3 modal-body add-admin">
+        <div class="modal-title"><h3>Add an Admin</h3></div>
+        <form>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="add_adminId">Admin Id:</label>
+                <input type="text" class="form-control" id="add_adminId" name="add_adminId" placeholder="Example input">
+              </div>
+              <div class="form-group">
+                <label for="add_adminName">Name:</label>
+                <input type="text" class="form-control" id="add_adminName" name="add_adminName" placeholder="Example input">
+              </div>
+              <div class="form-group">
+                <label for="add_adminusername">Username:</label>
+                <input type="text" class="form-control" id="add_adminusername" name="add_adminusername" placeholder="Example input">
+              </div>
+              <div class="form-group">
+                <label for="add_adminpassword">Password:</label>
+                <input type="password" class="form-control" id="add_adminpassword" name="add_adminpassword" placeholder="Example input">
+              </div>
+              <div class="form-group">
+                <button class="btn btn-outline-warning" type="button" id="btnSaveAdmin">Save</button>
+                <button class="btn btn-outline-warning" type="button" id="btnAllAdmins">All Admins</button>
+              </div>
+            </div>
+            <div class="col">
+              <div class="p-1 border border-warning rounded-lg"><img class="rounded-lg" src="assets/images/adminvector.jpg" width="100%"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+<!--      Admin Table-->
+      <div class="container p-3 modal-body all-admins">
+        <div class="modal-title"><h3>All Admins</h3></div>
+        <div>
+          <table class="table shadow tablePendingBooking">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Admin Name</th>
+              <th scope="col">Username</th>
+            </tr>
+            </thead>
+            <tbody id="tblAdmins">
+            </tbody>
+          </table>
+        </div>
+        <button class="btn btn-outline-warning" type="button" id="btnGetAdminForm">Add an Admins</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1484,6 +1555,10 @@
         $("#txtWarning").text(message);
       }
     });
+  });
+
+  $(document).on('click', '#adminProfile', function () {
+
   });
 
 
