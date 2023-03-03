@@ -134,10 +134,19 @@
         }
 
         .card:hover .card-img-top{
-            transform: scale(1.03);
+            transform: rotate(-5deg) scale(1.03);
             margin-bottom: 4px;
             box-shadow: 1px 1px 20px 0 black;
             border: 1px solid #ffc107;
+        }
+
+        .booking-car-img:hover img{
+            transform: scale(1.5);
+            z-index: 10;
+        }
+
+        .booking-car-img{
+            cursor: zoom-in;
         }
 
 
@@ -208,9 +217,12 @@
                                     <input type="password" class="form-control" id="set-password" name="set-password" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nic_photo" class="form-label">NIC Photo</label>
-                                    <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>
-                                    <small class="form-text text-muted">Please upload a photo of your NIC or Driving License.</small>
+                                    <label class="form-label">NIC Photo</label>
+<!--                                    <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>-->
+<!--                                    <small class="form-text text-muted">Please upload a photo of your NIC or Driving License.</small>-->
+                                </div>
+                                <div class="mb-3 profile-nic-image">
+
                                 </div>
                             </div>
                         </div>
@@ -229,85 +241,109 @@
     <div class="modal-dialog modal-lg">
         <div class="booking-content modal-content">
             <div class="container">
-                <div class="mt-lg-4 mb-lg-4">
-                    <h1 class="text-warning font-weight-bold">Booking</h1>
-                    <form action="#" method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="bk_id" class="form-label">Booking ID:</label>
-                                    <input type="text" class="form-control" id="bk_id" name="bk_id" disabled required>
+                <h1 class="text-warning font-weight-bold mt-3">Booking</h1>
+                <div class="row">
+                    <div class="col">
+                        <div class="mt-lg-4 mb-lg-4">
+                            <form action="#" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="bk_id" class="form-label">Booking ID:</label>
+                                            <input type="text" class="form-control" id="bk_id" name="bk_id" disabled required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="bk_cusNic" class="form-label">Customer NIC:</label>
+                                            <input type="text" class="form-control" id="bk_cusNic" name="bk_cusNic" disabled required>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="bk_cusNic" class="form-label">Customer NIC:</label>
-                                    <input type="text" class="form-control" id="bk_cusNic" name="bk_cusNic" disabled required>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="bk_cus" class="form-label">Customer Name:</label>
+                                            <input type="text" class="form-control" id="bk_cus" name="bk_cus" disabled required>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="bk_cus" class="form-label">Customer Name:</label>
-                                    <input type="text" class="form-control" id="bk_cus" name="bk_cus" disabled required>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div class="mb-3">
+                                            <label for="bk_date" class="form-label">Rent Date:</label>
+                                            <input type="date" class="form-control" id="bk_date" name="bk_date" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="mb-3">
+                                            <label for="bk_ndate" class="form-label">End Date:</label>
+                                            <input type="date" class="form-control" id="bk_ndate" name="bk_ndate" required>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="row car-details">
+                                    <div class="col-md">
+                                        <div class="mb-3">
+                                            <label for="bk_carreg" class="form-label">Car Registration:</label>
+                                            <input class="form-control" id="bk_carreg" name="bk_carreg" disabled required></input>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="mb-3">
+                                            <label for="bk_carmake" class="form-label">Brand:</label>
+                                            <input class="form-control" id="bk_carmake" name="bk_carmake" disabled required></input>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div class="form-check mb-5">
+                                            <input class="form-check-input" type="checkbox" name="bk_withdriver" value="withdriver" id="bk_withdriver">
+                                            <label class="form-check-label" for="bk_withdriver">
+                                                With Driver
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-warning font-weight-bold" id="btnBookingSubmit">Submit</button>
+                            </form>
+                        </div>
+
+
+                    </div>
+                    <div class="col">
+                        <div class="booking-car-img mb-3">
+
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="bk_carreg" class="form-label">Car Registration:</label>
-                                    <input class="form-control" id="bk_carreg" name="bk_carreg" disabled required></input>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="bk_carmake" class="form-label">Brand:</label>
-                                    <input class="form-control" id="bk_carmake" name="bk_carmake" disabled required></input>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md">
                                 <div class="mb-3">
                                     <label for="bk_carmodel" class="form-label">Model:</label>
                                     <input class="form-control" id="bk_carmodel" name="bk_carmodel" disabled required></input>
                                 </div>
-                            </div>
+                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="bk_date" class="form-label">Rent Date:</label>
-                                    <input type="date" class="form-control" id="bk_date" name="bk_date" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="bk_ndate" class="form-label">End Date:</label>
-                                    <input type="date" class="form-control" id="bk_ndate" name="bk_ndate" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3"></div>
-                            <div class="col-md-3">
-                                <div>
-                                    <label for="bk_total" class="form-label">Total Rental/Rs:</label>
-                                    <input type="text" class="form-control bg-dark text-light border-danger font-weight-bold" id="bk_total" name="bk_total" required placeholder="0.00">
-                                    <small>Without Extra KM</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-check mb-5">
-                                    <input class="form-check-input" type="checkbox" name="bk_withdriver" value="withdriver" id="bk_withdriver">
-                                    <label class="form-check-label" for="bk_withdriver">
-                                        With Driver
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-warning font-weight-bold" id="btnBookingSubmit">Submit</button>
-                    </form>
+                       <div class="row d-flex justify-content-end">
+                           <div class="col-md-5">
+                               <div>
+                                   <label for="bk_total" class="form-label">Total Rental/Rs:</label>
+                                   <input type="text" class="form-control bg-dark text-light border-danger font-weight-bold" id="bk_total" name="bk_total" required placeholder="0.00">
+                                   <small>Without Extra KM</small>
+                               </div>
+                           </div>
+                       </div>
+                    </div>
                 </div>
+
+
+
             </div>
+
+
         </div>
     </div>
 </div>
@@ -365,7 +401,7 @@
                             <h2 class="text-center">Login</h2>
                             <div class="form-group">
                                 <label for="email">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Nic/Lic">
+                                <input type="text" class="form-control" id="username" placeholder="Username">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
@@ -437,6 +473,7 @@
             </div>
                 </div>
 
+<!--    Contact Us-->
     <section id="contact" class="py-5 bg-dark">
         <div class="container">
             <h2 class="text-center text-light">Contact Us</h2>
@@ -568,10 +605,15 @@
 
     function rentModalOpen(){
         $(".btnRent").click(function (){
+            $(".booking-car-img").empty();
 
             generateId();
 
             let car_regno = $(this).closest('section').find('small:first').text();
+            var imagePath = $(this).closest('.card').find('.card-img-top').attr('src');
+
+            let img = "<img src='"+imagePath+"' width='100%' />"
+            $(".booking-car-img").append(img);
 
 
             $.ajax({
@@ -595,6 +637,8 @@
 
 
     $("#btnLogin").click(function (){
+
+        $(".profile-nic-image").empty();
 
         var loginObj = {
             userName: $("#username").val(),
@@ -639,6 +683,8 @@
                             $("#set-username").val(loginObj.userName);
                             $("#set-password").val(loginObj.password);
 
+
+
                             $(".login-box").css('display', 'none');
                         },
                         error: function (err){
@@ -650,6 +696,23 @@
                             console.log("Error : " + message)
                         }
                     });
+                    $.ajax({
+                        url: baseURL + "image/findimage?imageId="+res.data.userId,
+                        method: 'get',
+                        dataType: 'json',
+                        success: function (res){
+                            let card ="<img src="+baseURL+res.data.imageUrl+" width='100%'>";
+                            $(".profile-nic-image").append(card);
+
+
+                        },
+                        error: function (err){
+                            console.log("Can't Load Image : "+JSON.parse(err.responseText).message);
+                        }
+                    });
+
+
+
                 }if (res.data.role == "Driver"){
 
                     getAllBookingsDriver();
