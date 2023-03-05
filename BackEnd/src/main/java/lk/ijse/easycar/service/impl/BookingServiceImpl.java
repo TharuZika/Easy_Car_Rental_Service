@@ -76,14 +76,14 @@ public class BookingServiceImpl implements BookingService {
                     parseInt(id.split("-")[1]);
             tempId = tempId + 1;
             if (tempId <= 9) {
-                return "BK00-00" + tempId;
+                return "BK-00" + tempId;
             } else if (tempId <= 99) {
-                return "BK00-0" + tempId;
+                return "BK-0" + tempId;
             } else {
-                return "BK00-" + tempId;
+                return "BK-" + tempId;
             }
         } else {
-            return "BK00-001";
+            return "BK-001";
         }
     }
 }
