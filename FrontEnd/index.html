@@ -189,10 +189,9 @@
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Cus-Name</th>
-                        <th scope="col">Car-No</th>
-                        <th scope="col">Car Make</th>
-                        <th scope="col">Car Model</th>
+                        <th scope="col">Driver</th>
+                        <th scope="col">Car No</th>
+                        <th scope="col">Car</th>
                         <th scope="col">Start Date</th>
                         <th scope="col">End Date</th>
                         <th scope="col">Total</th>
@@ -200,25 +199,13 @@
                     </tr>
                     </thead>
                     <tbody id="tblCustomerBookingHistory">
-                    <tr>
-                        <!--                    <td>BK-001</td>-->
-                        <!--                    <td>200113203389</td>-->
-                        <!--                    <td>Saman Kumara</td>-->
-                        <!--                    <td>KL-1234</td>-->
-                        <!--                    <td>BMW</td>-->
-                        <!--                    <td>M5 / Auto</td>-->
-                        <!--                    <td>2023-02-15</td>-->
-                        <!--                    <td>2023-03-16</td>-->
-                        <!--                    <td>186000</td>-->
-                        <!--                    <td><button class="btn-sm btn-success btnGetJob">Get Job</button></td>-->
-                    </tr>
                     </tbody>
                 </table>
-                <button class="btn btn-outline-warning" data-toggle="collapse" data-target=".collapse" aria-expanded="false" aria-controls="booking-history settings-content">Settings</button>
+                <button class="btn btn-outline-dark m-3" data-toggle="collapse" data-target=".collapse" aria-expanded="false" aria-controls="booking-history settings-content">Settings</button>
             </div>
             <div class="settings-content collapse" id="settings-content">
                 <div class="container">
-                    <button class="btn btn-outline-light" data-toggle="collapse" data-target=".collapse" aria-expanded="false" aria-controls="booking-history settings-content">My History</button>
+                    <button class="btn btn-outline-light mt-3" data-toggle="collapse" data-target=".collapse" aria-expanded="false" aria-controls="booking-history settings-content">My History</button>
                     <div class="mt-lg-4 mb-lg-4">
                         <h1 class="text-warning">Settings</h1>
                         <form action="#" method="post" enctype="multipart/form-data">
@@ -1136,7 +1123,53 @@
         $("#booking-history").collapse({
             toggle: true
         });
+
+        $("#tblCustomerBookingHistory").empty();
+
+        $.ajax({
+            url: baseURL + "booking/getall",
+            method: 'get',
+            dataType: 'json',
+            success: function (res) {
+                for (let c of res.data) {
+                    let bkId = c.bk_id;
+                    let bkCusnic = c.bk_cusnic;
+                    let bkCusname = c.bk_cusname;
+                    let bkCarreg = c.bk_carreg;
+                    let bkCarmake = c.bk_carmake;
+                    let bkModel = c.bk_model;
+                    let bkWithdriver = c.bk_withdriver;
+                    let bkDrlic = c.bk_drlic;
+                    let bkDrname = c.bk_drname;
+                    let bkDate = c.bk_date;
+                    let bkNdate = c.bk_ndate;
+                    let bkTotal = c.bk_total;
+                    let bkAdminstatus = c.bk_adminstatus;
+
+                    if (bkCusnic == $("#cus_nic").val()){
+                        if (bkAdminstatus == "Approved"){
+                            let row =" <tr><td>"+bkId+"</td><td>"+bkDrname+"</td><td>"+bkCarreg+"</td><td>"+bkCarmake+" "+bkModel+"</td><td>"+bkDate+"</td><td>"+bkNdate+"</td><td>"+bkTotal+"</td><td><button class='btn btn-sm btn-success' disabled>"+bkAdminstatus+"</button></td></tr>"
+                            $("#tblCustomerBookingHistory").append(row);
+                        }else  if (bkAdminstatus == "Closed"){
+                            let row =" <tr><td>"+bkId+"</td><td>"+bkDrname+"</td><td>"+bkCarreg+"</td><td>"+bkCarmake+" "+bkModel+"</td><td>"+bkDate+"</td><td>"+bkNdate+"</td><td>"+bkTotal+"</td><td><button class='btn btn-sm btn-warning' disabled>"+bkAdminstatus+"</button></td></tr>"
+                            $("#tblCustomerBookingHistory").append(row);
+                        }else  {
+                            let row =" <tr><td>"+bkId+"</td><td>"+bkDrname+"</td><td>"+bkCarreg+"</td><td>"+bkCarmake+" "+bkModel+"</td><td>"+bkDate+"</td><td>"+bkNdate+"</td><td>"+bkTotal+"</td><td><button class='btn btn-sm btn-danger' disabled>"+bkAdminstatus+"</button></td></tr>"
+                            $("#tblCustomerBookingHistory").append(row);
+                        }
+
+                    }
+                }
+
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+
     });
+
 
 
 
