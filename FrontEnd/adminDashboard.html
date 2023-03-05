@@ -86,7 +86,7 @@
           <a class="nav-link" href="#" id="returnNav">Return</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn btn-outline-danger" data-toggle="modal" data-target=".bd-all-booking-modal-lg" href="#">View All Bookings</a>
+          <a class="nav-link btn btn-outline-danger" data-toggle="modal" data-target=".bd-all-booking-modal-lg" id="btnGetAllBookingTable" href="#">View All Bookings</a>
         </li>
       </ul>
       <button class="btn btn-outline-light navbar-text" id="adminProfile">
@@ -657,7 +657,6 @@
   getAllCustomers();
   getAllDrivers();
   getAllCars();
-  getAllBooking();
 
   cusBindRowClickEvents();
   carBindRowClickEvents();
@@ -1402,6 +1401,10 @@
     });
   }
 
+  $("#btnGetAllBookingTable").click(function (){
+    getAllBooking();
+  })
+
   function getAllBooking(){
     $("#tblPendingBooking").empty();
     $("#tblAllBookings").empty();
@@ -1539,22 +1542,67 @@
   $(document).on('click', '.btnReject', function () {
     let bk_id = $(this).closest('tr').find('td:first').text();
 
+    //Update Booking status as Rejected
     $.ajax({
-      url: baseURL + "booking/delete?bk_id=" + bk_id,
-      method: 'delete',
+      url: baseURL + "booking/findbooking?bk_id="+bk_id,
+      method: "get",
       success: function (resp) {
-        getAllBooking();
-        $("#warningModal").modal();
-        $("#txtWarningHeader").text("Success");
-        $("#txtWarning").text(resp.message);
+
+        aprovedBookingObj = {
+          bk_id: resp.data.bk_id,
+          bk_cusnic: resp.data.bk_cusnic,
+          bk_cusname: resp.data.bk_cusname,
+          bk_carreg: resp.data.bk_carreg,
+          bk_carmake: resp.data.bk_carmake,
+          bk_model: resp.data.bk_model,
+          bk_withdriver: resp.data.bk_withdriver,
+          bk_drlic: resp.data.bk_drlic,
+          bk_drname: resp.data.bk_drname,
+          bk_date: resp.data.bk_date,
+          bk_ndate: resp.data.bk_ndate,
+          bk_total: resp.data.bk_total,
+          bk_adminstatus: "Rejected"
+        }
+
+
+        $.ajax({
+          url: baseURL + "booking/update",
+          method: "PUT",
+          data: JSON.stringify(aprovedBookingObj),
+          contentType: "application/json",
+          dataType: "json",
+          success: function (respond) {
+            console.log(respond.message);
+            getAllBooking();
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Success");
+            $("#txtWarning").text(respond.message);
+          }
+        });
       },
-      error: function (error) {
-        let message = JSON.parse(error.responseText).message;
-        $("#warningModal").modal();
-        $("#txtWarningHeader").text("Error");
-        $("#txtWarning").text(message);
+      error: function (er) {
+        let message = JSON.parse(er.responseText).message;
+        console.log(message)
       }
     });
+
+    //Delete Booking if click reject
+    // $.ajax({
+    //   url: baseURL + "booking/delete?bk_id=" + bk_id,
+    //   method: 'delete',
+    //   success: function (resp) {
+    //     getAllBooking();
+    //     $("#warningModal").modal();
+    //     $("#txtWarningHeader").text("Success");
+    //     $("#txtWarning").text(resp.message);
+    //   },
+    //   error: function (error) {
+    //     let message = JSON.parse(error.responseText).message;
+    //     $("#warningModal").modal();
+    //     $("#txtWarningHeader").text("Error");
+    //     $("#txtWarning").text(message);
+    //   }
+    // });
   });
 
   $(document).on('click', '#adminProfile', function () {

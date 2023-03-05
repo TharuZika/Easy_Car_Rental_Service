@@ -125,20 +125,24 @@
             display: none;
         }
 
+        .card{
+            transition: all 1s;
+            cursor: pointer;
+        }
 
         .card:hover {
-            transform: scale(1.15);
-            border: 1px solid #ffc107;
+            transform: scale(1.01);
+            border: 2px solid #ffc107;
             box-shadow: 5px 5px 15px 0 black;
             z-index: 10;
         }
 
-        .card:hover .card-img-top{
-            transform: rotate(-5deg) scale(1.03);
-            margin-bottom: 4px;
-            box-shadow: 1px 1px 20px 0 black;
-            border: 1px solid #ffc107;
-        }
+        /*.card:hover .card-img-top{*/
+        /*    transform: rotate(-5deg) scale(1.03);*/
+        /*    margin-bottom: 4px;*/
+        /*    box-shadow: 1px 1px 20px 0 black;*/
+        /*    border: 1px solid #ffc107;*/
+        /*}*/
 
         .booking-car-img:hover img{
             transform: scale(1.5);
@@ -1055,7 +1059,7 @@
                     bk_date: resp.data.bk_date,
                     bk_ndate: resp.data.bk_ndate,
                     bk_total: resp.data.bk_total,
-                    bk_adminstatus: resp.data.bk_total
+                    bk_adminstatus: resp.data.bk_adminstatus
                 }
 
 
