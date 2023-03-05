@@ -183,60 +183,97 @@
 <!--Profile Modal-->
 <div class=" modal fade bd-settings-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="settings-content modal-content">
-            <div class="container">
-                <div class="mt-lg-4 mb-lg-4">
-                    <h1 class="text-warning">Settings</h1>
-                    <form action="#" method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="cus_name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="cus_name" name="cus_name" required>
+        <div class="modal-content">
+            <div class="booking-history collapse" id="booking-history">
+                <table class="table shadow table-light">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Cus-Name</th>
+                        <th scope="col">Car-No</th>
+                        <th scope="col">Car Make</th>
+                        <th scope="col">Car Model</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tblCustomerBookingHistory">
+                    <tr>
+                        <!--                    <td>BK-001</td>-->
+                        <!--                    <td>200113203389</td>-->
+                        <!--                    <td>Saman Kumara</td>-->
+                        <!--                    <td>KL-1234</td>-->
+                        <!--                    <td>BMW</td>-->
+                        <!--                    <td>M5 / Auto</td>-->
+                        <!--                    <td>2023-02-15</td>-->
+                        <!--                    <td>2023-03-16</td>-->
+                        <!--                    <td>186000</td>-->
+                        <!--                    <td><button class="btn-sm btn-success btnGetJob">Get Job</button></td>-->
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-outline-warning" data-toggle="collapse" data-target=".collapse" aria-expanded="false" aria-controls="booking-history settings-content">Settings</button>
+            </div>
+            <div class="settings-content collapse" id="settings-content">
+                <div class="container">
+                    <button class="btn btn-outline-light" data-toggle="collapse" data-target=".collapse" aria-expanded="false" aria-controls="booking-history settings-content">My History</button>
+                    <div class="mt-lg-4 mb-lg-4">
+                        <h1 class="text-warning">Settings</h1>
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="cus_name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="cus_name" name="cus_name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cus_nic" class="form-label">NIC Number</label>
+                                        <input type="text" class="form-control" id="cus_nic" name="cus_nic" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cus_address" class="form-label">Address</label>
+                                        <textarea class="form-control" id="cus_address" name="cus_address" rows="3" required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cus_contact" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="cus_contact" name="cus_contact" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cus_email" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="cus_email" name="cus_email" required>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="cus_nic" class="form-label">NIC Number</label>
-                                    <input type="text" class="form-control" id="cus_nic" name="cus_nic" disabled>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="cus_address" class="form-label">Address</label>
-                                    <textarea class="form-control" id="cus_address" name="cus_address" rows="3" required></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="cus_contact" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="cus_contact" name="cus_contact" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="cus_email" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="cus_email" name="cus_email" required>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="set-username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="set-username" name="set-username" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="set-password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="set-password" name="set-password" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">NIC Photo</label>
+                                        <!--                                    <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>-->
+                                        <!--                                    <small class="form-text text-muted">Please upload a photo of your NIC or Driving License.</small>-->
+                                    </div>
+                                    <div class="mb-3 profile-nic-image">
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="set-username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="set-username" name="set-username" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="set-password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="set-password" name="set-password" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">NIC Photo</label>
-<!--                                    <input class="form-control" type="file" id="nic_photo" name="nic_photo" accept="image/*" required>-->
-<!--                                    <small class="form-text text-muted">Please upload a photo of your NIC or Driving License.</small>-->
-                                </div>
-                                <div class="mb-3 profile-nic-image">
+                            <button type="button" class="btn btn-warning font-weight-bold" id="btnCusSettingsSave">Save</button>
+                            <a class="btn btn-danger" href="index.html">Logout</a>
+                        </form>
 
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-warning font-weight-bold" id="btnCusSettingsSave">Save</button>
-                        <a class="btn btn-danger" href="index.html">Logout</a>
-                    </form>
-
+                    </div>
                 </div>
             </div>
+
         </div>
+
     </div>
 </div>
 
@@ -1094,6 +1131,13 @@
     $("#reloadDriverTable").click(function (){
        getAllBookingsDriver();
     });
+
+    $("#btnProfile").click(function (){
+        $("#booking-history").collapse({
+            toggle: true
+        });
+    });
+
 
 
 </script>

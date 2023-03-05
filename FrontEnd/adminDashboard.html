@@ -89,7 +89,7 @@
           <a class="nav-link btn btn-outline-danger" data-toggle="modal" data-target=".bd-all-booking-modal-lg" id="btnGetAllBookingTable" href="#">View All Bookings</a>
         </li>
       </ul>
-      <button class="btn btn-outline-light navbar-text" id="adminProfile">
+      <button class="btn btn-outline-light navbar-text" id="adminProfile" data-toggle="modal" data-target=".bd-admin-modal-lg">
                 <i class="fa-solid fa-user"></i>
                 Administrator
             </button>
@@ -98,8 +98,6 @@
 </nav>
 
 <!--Admin Profile Modal-->
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-admin-modal-lg">Large modal</button>
 <div class="modal fade bd-admin-modal-lg" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content admin-modal">
@@ -128,7 +126,7 @@
               </div>
               <div class="form-group">
                 <button class="btn btn-outline-warning" type="button" id="btnSaveAdmin">Save</button>
-                <button class="btn btn-outline-warning" type="button" id="btnAllAdmins">All Admins</button>
+                <button class="btn btn-outline-warning" type="button" data-toggle="collapse" data-target="#adminTableContent" aria-expanded="false" aria-controls="adminTableContent" id="btnAllAdmins">All Admins</button>
               </div>
             </div>
             <div class="col">
@@ -139,7 +137,7 @@
       </div>
 
 <!--      Admin Table-->
-      <div class="container p-3 modal-body all-admins">
+      <div class="container p-3 modal-body all-admins collapse" id="adminTableContent">
         <div class="modal-title"><h3>All Admins</h3></div>
         <div>
           <table class="table shadow tablePendingBooking">
@@ -148,13 +146,13 @@
               <th scope="col">ID</th>
               <th scope="col">Admin Name</th>
               <th scope="col">Username</th>
+              <th scope="col">Option</th>
             </tr>
             </thead>
             <tbody id="tblAdmins">
             </tbody>
           </table>
         </div>
-        <button class="btn btn-outline-warning" type="button" id="btnGetAdminForm">Add an Admins</button>
       </div>
     </div>
   </div>
