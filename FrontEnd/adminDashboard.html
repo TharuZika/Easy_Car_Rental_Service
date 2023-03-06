@@ -257,11 +257,11 @@
                   </div>
                   <div class="form-group col-md-4">
                     <label for="fn_exkm">Extra KM:</label>
-                    <input type="text" class="form-control" id="fn_exkm" name="fn_exkm" required>
+                    <input type="number" class="form-control" id="fn_exkm" name="fn_exkm" value="0" required>
                   </div>
                   <div class="form-group col-md-4">
                     <label for="fn_ldw">Loss Damage Waiver:</label>
-                    <input type="text" class="form-control" id="fn_ldw" name="fn_ldw" required>
+                    <input type="number" class="form-control" id="fn_ldw" name="fn_ldw" value="0" required>
                   </div>
                 </div>
                 <div class="row d-flex justify-content-end">
@@ -1780,12 +1780,124 @@
 
   $("#fn_bkid").change(function (){
 
-    $("#fn_bkid").val();
+    $.ajax({
+      url: baseURL+"booking/findbooking?bk_id="+$("#fn_bkid").val(),
+      method: 'get',
+      success: function (res){
+        $("#fn_cus").val(res.data.bk_cusname);
+        $("#fn_cusnic").val(res.data.bk_cusnic);
+        $("#fn_car").val(res.data.bk_carreg);
+        $("#fn_driver").val(res.data.bk_drname);
+        $("#fn_drlic").val(res.data.bk_drlic);
+        $("#fn_rental").val(res.data.bk_total);
+
+
+
+        $("#fn_subtotal").val(res.data.bk_total+parseFloat($("#fn_exkm").val())+parseFloat($("#fn_ldw").val()));
+      }
+    });
+
+
+  });
+
+  $("#btnSubmitReturn").click(function (){
 
     $.ajax({
-      url: baseURL+"booking/"
-    })
+      url: baseURL+"booking/findbooking?bk_id="+$("#fn_bkid").val(),
+      method: 'get',
+      success: function (res){
+        var returnObj = {
+          bk_id: res.data.bk_id,
+          bk_cusnic: res.data.bk_cusnic,
+          bk_cusname: res.data.bk_cusname,
+          bk_carreg: res.data.bk_carreg,
+          bk_carmake: res.data.bk_carmake,
+          bk_model: res.data.bk_model,
+          bk_withdriver: res.data.bk_withdriver,
+          bk_drlic: res.data.bk_drlic,
+          bk_drname: res.data.bk_drname,
+          bk_date: res.data.bk_date,
+          bk_ndate: res.data.bk_ndate,
+          bk_total: $("#fn_subtotal").val(),
+          bk_adminstatus: "Closed"
+        }
 
+        $.ajax({
+          url: baseURL + "booking/update",
+          method: "PUT",
+          data: JSON.stringify(returnObj),
+          contentType: "application/json",
+          dataType: "json",
+          success: function (respond) {
+            console.log(respond.message);
+            getAllBooking();
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Success");
+            $("#txtWarning").text(respond.message);
+          },
+          error: function (err){
+            let message = JSON.parse(err.responseText).message;
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Error");
+            $("#txtWarning").text(message);
+          }
+        });
+
+
+
+
+
+        $.ajax({
+          url: baseURL + "car/getcar?cr_reg=" + res.data.bk_carreg,
+          method: 'get',
+          success: function (resp) {
+
+            var carDataObj = {
+              cr_reg: resp.data.cr_reg,
+              cr_make: resp.data.cr_make,
+              cr_model: resp.data.cr_model,
+              cr_fuel: resp.data.cr_fuel,
+              cr_type: resp.data.cr_type,
+              cr_nfp: resp.data.cr_nfp,
+              cr_day: resp.data.cr_day,
+              cr_month: resp.data.cr_month,
+              cr_km: resp.data.cr_km,
+              cr_avail: "Yes"
+            };
+
+            $.ajax({
+              url: baseURL + "car/update",
+              method: "PUT",
+              data: JSON.stringify(carDataObj),
+              contentType: "application/json",
+              dataType: "json",
+              success: function (res) {
+                getAllCars();
+                getCarCount();
+                $("#warningModal").modal();
+                $("#txtWarningHeader").text("Success");
+                $("#txtWarning").text(res.message);
+              },
+              error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                $("#warningModal").modal();
+                $("#txtWarningHeader").text("Error");
+                $("#txtWarning").text(message);
+              }
+            });
+          }
+        });
+
+
+        $("#fn_subtotal").val(res.data.bk_total+parseFloat($("#fn_exkm").val())+parseFloat($("#fn_ldw").val()));
+      },
+      error: function (err){
+        let message = JSON.parse(err.responseText).message;
+        $("#warningModal").modal();
+        $("#txtWarningHeader").text("Error");
+        $("#txtWarning").text(message);
+      }
+    });
 
   });
 
