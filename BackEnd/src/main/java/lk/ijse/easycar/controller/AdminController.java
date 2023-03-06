@@ -18,8 +18,8 @@ public class AdminController {
     private AdminService service;
 
     @PostMapping(path = "/save")
-    public ResponseUtil saveAdmin(@RequestParam String adminId, @RequestParam String adminName){
-        service.saveAdmin(adminId, adminName);
+    public ResponseUtil saveAdmin(@RequestParam String adminId, @RequestParam String adminName, @RequestParam String user_userName){
+        service.saveAdmin(adminId, adminName, user_userName);
         return new ResponseUtil("Ok", "Successfully Saved!", null);
     }
 

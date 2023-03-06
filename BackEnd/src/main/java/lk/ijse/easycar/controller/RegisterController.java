@@ -43,8 +43,8 @@ public class RegisterController {
     }
 
     @PostMapping(path = "/admin")
-    public ResponseUtil saveAdmin(UserDTO dto){
-        service.saveAdmin(dto);
+    public ResponseUtil saveAdmin(String userId, String userName, String password, String role){
+        service.saveAdmin( userId,  userName,  password,  role);
         return new ResponseUtil("OK", "Success", null);
     }
 

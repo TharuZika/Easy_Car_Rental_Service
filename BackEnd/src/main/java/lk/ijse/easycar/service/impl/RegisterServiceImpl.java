@@ -47,8 +47,13 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public void saveAdmin(UserDTO dto) {
-        userRepo.save(mapper.map(dto, User.class));
+    public void saveAdmin(String userId, String userName, String password, String role) {
+        User user = new User();
+        user.setUserId(userId);
+        user.setUserName(userName);
+        user.setPassword(password);
+        user.setRole(role);
+        userRepo.save(user);
     }
 
     @Override

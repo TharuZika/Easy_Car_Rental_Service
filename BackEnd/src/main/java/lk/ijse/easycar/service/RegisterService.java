@@ -9,7 +9,7 @@ import lk.ijse.easycar.entity.User;
 public interface RegisterService {
     public void saveCustomer(UserDTO dto);
     public void saveDriver(String userId, String userName, String password, String role);
-    public void saveAdmin(UserDTO dto);
+    public void saveAdmin(String userId, String userName, String password, String role);
     public UserDTO findUser(String userId);
 
     public void deleteUser(String userId);

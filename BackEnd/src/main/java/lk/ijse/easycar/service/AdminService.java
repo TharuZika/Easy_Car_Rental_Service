@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public interface AdminService {
 
-    public void saveAdmin(String adminId, String adminName);
+    public void saveAdmin(String adminId, String adminName , String user_userName);
 
     public void updateAdmin(AdminDTO dto);
 

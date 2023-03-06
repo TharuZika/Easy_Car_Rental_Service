@@ -28,7 +28,7 @@ public class AdminServiceImpl implements AdminService {
     private AdminRepo repo;
 
     @Override
-    public void saveAdmin(String adminId, String adminName) {
+    public void saveAdmin(String adminId, String adminName, String user_userName) {
         if (repo.existsById(adminId)){
             throw new RuntimeException("Admin Already Exists!");
         }
