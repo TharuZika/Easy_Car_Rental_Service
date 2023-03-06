@@ -60,4 +60,14 @@ public class RegisterController {
         return new ResponseUtil("OK", "Success", null);
     }
 
+    @GetMapping("/getall")
+    public ResponseUtil getAllUsers(){
+        return new ResponseUtil("Ok", "Successfully Updated!", service.getAllUsers());
+    }
+
+    @GetMapping("/find")
+    public ResponseUtil findUserByUserId(String userId){
+        return new ResponseUtil("Ok", "Successfully Updated!", service.findUserByUseId(userId));
+    }
+
 }

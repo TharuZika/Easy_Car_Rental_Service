@@ -149,7 +149,7 @@
               <th scope="col">Option</th>
             </tr>
             </thead>
-            <tbody id="tblAdmins">
+            <tbody class="bg-light" id="tblAdmins">
             </tbody>
           </table>
         </div>
@@ -208,73 +208,73 @@
 </div>
 
 <!--Return Form-->
-<!--<div id="returnForm">-->
-<!--<div class="container">-->
-<!--  <div class="mt-md-4 mb-md-4">-->
-<!--    <h1>Return</h1>-->
-<!--            <form id="fromReturn">-->
-<!--              <div class="row">-->
-<!--              <div class="form-group col-md-3">-->
-<!--                <label for="fn_bkid">Booking ID:</label>-->
-<!--                <select class="form-control" id="fn_bkid" name="fn_bkid">-->
-<!--                  <option value="BK00-001">BK00-001</option>-->
-<!--                  <option value="BK00-002">BK00-002</option>-->
-<!--                  <option value="BK00-003">BK00-003</option>-->
-<!--                  <option value="BK00-004">BK00-004</option>-->
-<!--                </select>-->
-<!--              </div>-->
-<!--              <div class="form-group col-md-3">-->
-<!--                <label for="fn_cus">Customer:</label>-->
-<!--                <input type="text" class="form-control" id="fn_cus" name="fn_cus" disabled required>-->
-<!--              </div>-->
-<!--                <div class="form-group col-md-3">-->
-<!--                  <label for="fn_cusnic">Customer NIC:</label>-->
-<!--                  <input type="text" class="form-control" id="fn_cusnic" name="fn_cusnic" disabled required>-->
-<!--                </div>-->
+<div id="returnForm">
+<div class="container">
+  <div class="mt-md-4 mb-md-4">
+    <h1>Return</h1>
+            <form id="fromReturn">
+              <div class="row">
+              <div class="form-group col-md-3">
+                <label for="fn_bkid">Booking ID:</label>
+                <select class="form-control" id="fn_bkid" name="fn_bkid">
+                  <option value="BK00-001">BK00-001</option>
+                  <option value="BK00-002">BK00-002</option>
+                  <option value="BK00-003">BK00-003</option>
+                  <option value="BK00-004">BK00-004</option>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="fn_cus">Customer:</label>
+                <input type="text" class="form-control" id="fn_cus" name="fn_cus" disabled required>
+              </div>
+                <div class="form-group col-md-3">
+                  <label for="fn_cusnic">Customer NIC:</label>
+                  <input type="text" class="form-control" id="fn_cusnic" name="fn_cusnic" disabled required>
+                </div>
 
-<!--              <div class="form-group col-md-3">-->
-<!--                <label for="fn_car">Car:</label>-->
-<!--                <input type="text" class="form-control" id="fn_car" name="fn_car" disabled required>-->
-<!--              </div>-->
-<!--              </div>-->
-<!--              <div class="row">-->
-<!--                <div class="form-group col-md-4">-->
-<!--                  <label for="fn_driver">Driver:</label>-->
-<!--                  <input type="text" class="form-control" id="fn_driver" name="fn_driver" disabled required>-->
-<!--                </div>-->
-<!--                <div class="form-group col-md-4">-->
-<!--                  <label for="fn_drlic">Driver LIC:</label>-->
-<!--                  <input type="text" class="form-control" id="fn_drlic" name="fn_drlic" disabled required>-->
-<!--                </div>-->
-<!--              </div>-->
+              <div class="form-group col-md-3">
+                <label for="fn_car">Car:</label>
+                <input type="text" class="form-control" id="fn_car" name="fn_car" disabled required>
+              </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="fn_driver">Driver:</label>
+                  <input type="text" class="form-control" id="fn_driver" name="fn_driver" disabled required>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="fn_drlic">Driver LIC:</label>
+                  <input type="text" class="form-control" id="fn_drlic" name="fn_drlic" disabled required>
+                </div>
+              </div>
 
-<!--                <div class="dropdown-divider"></div>-->
+                <div class="dropdown-divider"></div>
 
-<!--                <div class="row">-->
-<!--                  <div class="form-group col-md-4">-->
-<!--                    <label for="fn_rental">Rental:</label>-->
-<!--                    <input type="text" class="form-control" id="fn_rental" name="fn_rental" disabled required>-->
-<!--                  </div>-->
-<!--                  <div class="form-group col-md-4">-->
-<!--                    <label for="fn_exkm">Extra KM:</label>-->
-<!--                    <input type="text" class="form-control" id="fn_exkm" name="fn_exkm" required>-->
-<!--                  </div>-->
-<!--                  <div class="form-group col-md-4">-->
-<!--                    <label for="fn_ldw">Loss Damage Waiver:</label>-->
-<!--                    <input type="text" class="form-control" id="fn_ldw" name="fn_ldw" required>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="row d-flex justify-content-end">-->
-<!--                  <div class="form-group col-md-3">-->
-<!--                    <label for="fn_subtotal">SubTotal:</label>-->
-<!--                    <input type="text" class="form-control border-danger" id="fn_subtotal" name="fn_subtotal" disabled required>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              <button type="button" class="btn btn-success" id="btnSubmitReturn">Submit</button>-->
-<!--            </form>-->
-<!--          </div>-->
-<!--  </div>-->
-<!--</div>-->
+                <div class="row">
+                  <div class="form-group col-md-4">
+                    <label for="fn_rental">Rental:</label>
+                    <input type="text" class="form-control" id="fn_rental" name="fn_rental" disabled required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="fn_exkm">Extra KM:</label>
+                    <input type="text" class="form-control" id="fn_exkm" name="fn_exkm" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="fn_ldw">Loss Damage Waiver:</label>
+                    <input type="text" class="form-control" id="fn_ldw" name="fn_ldw" required>
+                  </div>
+                </div>
+                <div class="row d-flex justify-content-end">
+                  <div class="form-group col-md-3">
+                    <label for="fn_subtotal">SubTotal:</label>
+                    <input type="text" class="form-control border-danger" id="fn_subtotal" name="fn_subtotal" disabled required>
+                  </div>
+                </div>
+              <button type="button" class="btn btn-success" id="btnSubmitReturn">Submit</button>
+            </form>
+          </div>
+  </div>
+</div>
 
 <!--Dashboard-->
 <div id="dashboardPage">
@@ -650,7 +650,6 @@
   getCarCount();
   getBookingCount();
 
-
   getAllCustomers();
   getAllDrivers();
   getAllCars();
@@ -672,6 +671,7 @@
     $("#carPage").css("display", "none");
     $("#customerPage").css("display", "none");
     $("#driverPage").css("display", "none");
+    $("#returnForm").css("display", "none");
   });
 
   $("#carsNav").click(function (){
@@ -679,6 +679,7 @@
     $("#carPage").css("display", "block");
     $("#customerPage").css("display", "none");
     $("#driverPage").css("display", "none");
+    $("#returnForm").css("display", "none");
   });
 
   $("#customersNav").click(function (){
@@ -686,6 +687,7 @@
     $("#carPage").css("display", "none");
     $("#customerPage").css("display", "block");
     $("#driverPage").css("display", "none");
+    $("#returnForm").css("display", "none");
   });
 
   $("#driversNav").click(function (){
@@ -693,6 +695,15 @@
     $("#carPage").css("display", "none");
     $("#customerPage").css("display", "none");
     $("#driverPage").css("display", "block");
+    $("#returnForm").css("display", "none");
+  });
+
+  $("#returnNav").click(function (){
+    $("#dashboardPage").css("display" , "none");
+    $("#carPage").css("display", "none");
+    $("#customerPage").css("display", "none");
+    $("#driverPage").css("display", "none");
+    $("#returnForm").css("display", "block");
   });
 
   function setCusTxtField(cus_nic, cus_name, cus_address, cus_contact, cus_email){
@@ -770,8 +781,8 @@
     });
   }
 
-  // Driver - Done
 
+  // Driver - Done
   let tempDriverUserName;
   let tempDriverName;
   let tempDriverLic;
@@ -966,8 +977,8 @@
   }
 
 
-  //Customer - Done
 
+  //Customer - Done
   let tempUserName;
 
     $("#btnSaveCus").click(function () {
@@ -1378,6 +1389,7 @@
 
   }
 
+
   // Booking
   function getBookingCount() {
     $.ajax({
@@ -1403,7 +1415,6 @@
     getAllBooking();
   });
 
-
   function getAllBooking(){
     $("#tblPendingBooking").empty();
     $("#tblAllBookings").empty();
@@ -1428,8 +1439,9 @@
           let bkTotal = c.bk_total;
           let bkAdminstatus = c.bk_adminstatus;
 
-          if (bkAdminstatus == "Approved" && bkWithdriver=="With Driver" && !bkDrname=="Pending"){
-            $("#fn_bkid").append(c.bk_id);
+          if (bkAdminstatus == "Approved" && bkWithdriver=="With Driver" && bkDrname!="Pending"){
+            let option = "<option value="+bkId+">"+bkId+"</option>"
+            $("#fn_bkid").append(option);
           }
 
           if (bkAdminstatus == "Pending"){
@@ -1609,6 +1621,7 @@
   });
 
 
+  //Admin Configuration
   function generateId() {
     $.ajax({
       url: baseURL + "admin/generateid",
@@ -1675,6 +1688,7 @@
           $("#warningModal").modal();
           $("#txtWarningHeader").text("Success");
           $("#txtWarning").text(res.message);
+          getAllAdmins();
         },
         error: function (err){
           let message = JSON.parse(err.responseText).message;
@@ -1683,7 +1697,97 @@
           $("#txtWarning").text(message);
         }
       });
+
     });
+
+  $("#btnAllAdmins").click(function (){
+    getAllAdmins();
+  });
+
+  function getAllAdmins() {
+    $("#tblAdmins").empty();
+    $.ajax({
+      url: baseURL + "admin/getall",
+      method: 'get',
+      success: function (res) {
+        for (let ad of res.data){
+          let adminId = ad.adminId;
+          let adminName = ad.adminName;
+
+          $.ajax({
+            url: baseURL + "register/find?userId="+adminId,
+            method: 'get',
+            success: function (resp) {
+              let adminUsername = resp.data.userName;
+              let row = "<tr><td>" + adminId + "</td><td>" + adminName + "</td><td>" + adminUsername + "</td><td><button class='btn-sm btn-danger btn-remove-admin'>Remove</button></td></tr>"
+              $("#tblAdmins").append(row);
+
+            }
+          });
+        }
+      }
+    });
+  }
+
+  $(document).on('click', '.btn-remove-admin', function () {
+    let adminId = $(this).closest('tr').find('td:first').text();
+    $.ajax({
+      url: baseURL + "admin/delete?adminId=" + adminId,
+      method: "delete",
+      success: function (resp) {
+
+        $.ajax({
+          url: baseURL + "register/getuser?userId="+adminId,
+          method: "get",
+          success: function (resp) {
+            console.log("Found : "+resp.data.userName);
+
+            $.ajax({
+              url: baseURL + "register/deletecustomer?userName=" + resp.data.userName,
+              method: "delete",
+              success: function (resp) {
+                console.log("Admin Login info deleted");
+              },
+              error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                console.log(message)
+              }
+            });
+
+
+          }
+        });
+
+        $("#warningModal").modal();
+        $("#txtWarningHeader").text("Success");
+        $("#txtWarning").text(resp.message);
+
+        getAllAdmins();
+        generateId();
+
+      },
+      error: function (error) {
+        let message = JSON.parse(error.responseText).message;
+        $("#warningModal").modal();
+        $("#txtWarningHeader").text("Error");
+        $("#txtWarning").text(message);
+      }
+    });
+  });
+
+
+  //Returning
+
+  $("#fn_bkid").change(function (){
+
+    $("#fn_bkid").val();
+
+    $.ajax({
+      url: baseURL+"booking/"
+    })
+
+
+  });
 
 
 </script>
