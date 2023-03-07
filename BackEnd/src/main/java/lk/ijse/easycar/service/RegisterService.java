@@ -14,6 +14,8 @@ public interface RegisterService {
     public void saveAdmin(String userId, String userName, String password, String role);
     public UserDTO findUser(String userId);
 
+    public void updateUser(String userId, String userName, String password, String role);
+
     public void deleteUser(String userId);
 
     public ArrayList<UserDTO> getAllUsers();

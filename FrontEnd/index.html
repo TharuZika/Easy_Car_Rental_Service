@@ -984,22 +984,28 @@
             dataType: "json",
             success: function (res) {
 
-                // Customer Username Password Update
-                // $.ajax({
-                //     url: baseURL + "register/updatecus",
-                //     method: "PUT",
-                //     data: JSON.stringify(cusLoginDataObj),
-                //     contentType: "application/json",
-                //     dataType: "json",
-                //     error: function (err) {
-                //         let message = JSON.parse(err.responseText).message;
-                //         $("#warningModal").modal();
-                //         $("#txtWarningHeader").text("Error");
-                //         $("#txtWarning").text(message);
-                //
-                //         console.log("Error : " + message)
-                //     }
-                // });
+                let customerUpdateLoginObj = {
+                    userId: $("#cus_nic").val(),
+                    userName: $("#set-username").val(),
+                    password: $("#set-password").val(),
+                    role: "Customer"
+                }
+
+                tempDriverUserName = $("#username").val();
+
+                $.ajax({
+                    url: baseURL + "register/updatecus",
+                    method: "put",
+                    data: customerUpdateLoginObj,
+                    dataType: "json",
+                    success: function (respond){
+                        console.log(respond.message);
+                    },
+                    error: function (error){
+                        console.log(JSON.parse(error.responseText).message);
+                    }
+                });
+
 
                 $("#btnProfile").css('display', 'block');
                 $("#btnProfile").text(cusDataObj.cus_name);

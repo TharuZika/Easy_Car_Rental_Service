@@ -69,6 +69,16 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
+    public void updateUser(String userId, String userName, String password, String role) {
+        User user = new User();
+        user.setUserId(userId);
+        user.setUserName(userName);
+        user.setPassword(password);
+        user.setRole(role);
+        userRepo.save(user);
+    }
+
+    @Override
     public void deleteUser(String userId) {
         userRepo.deleteById(userId);
     }

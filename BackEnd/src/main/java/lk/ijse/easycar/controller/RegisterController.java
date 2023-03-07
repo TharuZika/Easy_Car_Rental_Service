@@ -23,9 +23,9 @@ public class RegisterController {
     }
 
     @PutMapping("/updatecus")
-    public ResponseUtil updateCusLogin(@RequestBody UserDTO dto){
-        System.out.println("Customer Login Save Method Invoked");
-        service.saveCustomer(dto);
+    public ResponseUtil updateCusLogin(String userId, String userName, String password, String role){
+        System.out.println("Customer Login Update Method Invoked");
+        service.updateUser(userId, userName, password, role);
         return new ResponseUtil("OK", "Success", null);
     }
 
