@@ -260,8 +260,8 @@
                     <input type="number" class="form-control" id="fn_exkm" name="fn_exkm" value="0" required>
                   </div>
                   <div class="form-group col-md-4">
-                    <label for="fn_ldw">Loss Damage Waiver:</label>
-                    <input type="number" class="form-control" id="fn_ldw" name="fn_ldw" value="0" required>
+                    <label class="form-check-label" for="fn_ldw">Loss Damage Waiver:</label>
+                    <input type="checkbox" class="form-control form-check-input" id="fn_ldw" name="fn_ldw" value="0" required>
                   </div>
                 </div>
                 <div class="row d-flex justify-content-end">
@@ -404,25 +404,25 @@
         <div class="form-group row mt-4">
           <div class="col">
             <label for="cr_day">Price per Day</label>
-            <input type="text" class="form-control" id="cr_day" name="cr_day" placeholder="Rs:">
+            <input type="number" class="form-control" id="cr_day" name="cr_day" placeholder="Rs:">
           </div>
           <div class="col">
             <label for="cr_month">Month</label>
-            <input type="text" class="form-control" id="cr_month" name="cr_month" placeholder="Rs:">
+            <input type="number" class="form-control" id="cr_month" name="cr_month" placeholder="Rs:">
           </div>
           <div class="col">
             <label for="cr_km">Extra Km</label>
-            <input type="text" class="form-control" id="cr_km" name="cr_km" placeholder="Rs:">
+            <input type="number" class="form-control" id="cr_km" name="cr_km" placeholder="Rs:">
           </div>
         </div>
         <div class="form-group row mt-4">
           <div class="col">
             <label for="txtCar_rangeDay">Range per Day</label>
-            <input type="text" class="form-control" id="txtCar_rangeDay" placeholder="Km:">
+            <input type="number" class="form-control" id="txtCar_rangeDay" placeholder="Km:">
           </div>
           <div class="col">
             <label for="cr_rangeMonth">Range per Month</label>
-            <input type="text" class="form-control" id="cr_rangeMonth" placeholder="Km:">
+            <input type="number" class="form-control" id="cr_rangeMonth" placeholder="Km:">
           </div>
           <div class="col">
             <label for="cr_avail">Availability</label>
@@ -787,97 +787,127 @@
   let tempDriverName;
   let tempDriverLic;
 
+  function validationDriver(){
+    if (!/^[B]\d{8}$/.test($("#dr_lic").val())) {
+      $("#warningModal").modal();
+      $("#txtWarningHeader").text("Warning!");
+      $("#txtWarning").text("Please enter a valid license number.");
+      return false;
+    }
+
+    if (!/^[a-zA-Z\s]{3,}$/.test($("#dr_name").val())) {
+      $("#warningModal").modal();
+      $("#txtWarningHeader").text("Warning!");
+      $("#txtWarning").text("Please enter a valid name.");
+      return false;
+    }
+
+    if (!/^\+?\d{10}$/.test($("#dr_contact").val())) {
+      $("#warningModal").modal();
+      $("#txtWarningHeader").text("Warning!");
+      $("#txtWarning").text("Please enter a valid contact number.");
+      return false;
+    }
+
+    return true;
+  }
+
     $("#btnSaveDrWithLogin").click(function () {
-      let driverFormData = $("#formDriver").serialize();
 
-      tempDriverLic = $("#dr_lic").val();
-      tempDriverName = $("#dr_name").val();
+      if (validationDriver()){
+        let driverFormData = $("#formDriver").serialize();
 
-      // let driverDataObj={
-      //   dr_lic: $("#dr_lic").val(),
-      //   dr_name: $("#dr_name").val(),
-      //   dr_contact: $("#dr_contact").val(),
-      //   dr_avail: $("#dr_avail").val()
-      // }
+        tempDriverLic = $("#dr_lic").val();
+        tempDriverName = $("#dr_name").val();
 
-      $.ajax({
-        url: baseURL + "driver/save",
-        method: "post",
-        data: driverFormData,
-        dataType: "json",
-        success: function (res) {
+        // let driverDataObj={
+        //   dr_lic: $("#dr_lic").val(),
+        //   dr_name: $("#dr_name").val(),
+        //   dr_contact: $("#dr_contact").val(),
+        //   dr_avail: $("#dr_avail").val()
+        // }
 
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Success");
-          $("#txtWarning").text(res.message);
-          getAllDrivers();
-          getDrCount()
-        },
-        error: function (err) {
-          let message = JSON.parse(err.responseText).message;
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Error");
-          $("#txtWarning").text(message);
+        $.ajax({
+          url: baseURL + "driver/save",
+          method: "post",
+          data: driverFormData,
+          dataType: "json",
+          success: function (res) {
+
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Success");
+            $("#txtWarning").text(res.message);
+            getAllDrivers();
+            getDrCount()
+          },
+          error: function (err) {
+            let message = JSON.parse(err.responseText).message;
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Error");
+            $("#txtWarning").text(message);
+          }
+        });
+
+        let driverLoginObj = {
+          userId: $("#dr_lic").val(),
+          userName: $("#username").val(),
+          password: $("#password").val(),
+          role: "Driver"
         }
-      });
 
-      let driverLoginObj = {
-        userId: $("#dr_lic").val(),
-        userName: $("#username").val(),
-        password: $("#password").val(),
-        role: "Driver"
+        tempDriverUserName = $("#username").val();
+
+        $.ajax({
+          url: baseURL + "register/driver",
+          method: "post",
+          data: driverLoginObj,
+          dataType: "json",
+          success: function (res) {
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Success");
+            $("#txtWarning").text(res.message);
+          },
+          error: function (err){
+            let message = JSON.parse(err.responseText).message;
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Error");
+            $("#txtWarning").text(message);
+          }
+        });
       }
 
-      tempDriverUserName = $("#username").val();
 
-      $.ajax({
-        url: baseURL + "register/driver",
-        method: "post",
-        data: driverLoginObj,
-        dataType: "json",
-        success: function (res) {
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Success");
-          $("#txtWarning").text(res.message);
-        },
-        error: function (err){
-          let message = JSON.parse(err.responseText).message;
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Error");
-          $("#txtWarning").text(message);
-        }
-      });
     });
 
-
     $("#btnUpdateDr").click(function () {
-
-      let driverDataObj={
-        dr_lic: $("#dr_lic").val(),
-        dr_name: $("#dr_name").val(),
-        dr_contact: $("#dr_contact").val(),
-        dr_avail: $("#dr_avail").val()
-      }
-
-      $.ajax({
-        url: baseURL + "driver/update",
-        method: "PUT",
-        data: JSON.stringify(driverDataObj),
-        contentType: "application/json",
-        dataType: "json",
-        success: function (res) {
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Success");
-          $("#txtWarning").text(res.message);
-          getAllDrivers();
-        },
-        error: function (err) {
-          let message = JSON.parse(err.responseText).message;
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Error");
-          $("#txtWarning").text(message);
+      if (validationDriver()){
+        let driverDataObj={
+          dr_lic: $("#dr_lic").val(),
+          dr_name: $("#dr_name").val(),
+          dr_contact: $("#dr_contact").val(),
+          dr_avail: $("#dr_avail").val()
         }
-      });
+
+        $.ajax({
+          url: baseURL + "driver/update",
+          method: "PUT",
+          data: JSON.stringify(driverDataObj),
+          contentType: "application/json",
+          dataType: "json",
+          success: function (res) {
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Success");
+            $("#txtWarning").text(res.message);
+            getAllDrivers();
+          },
+          error: function (err) {
+            let message = JSON.parse(err.responseText).message;
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Error");
+            $("#txtWarning").text(message);
+          }
+        });
+      }
     });
 
     $("#btnDeleteDr").click(function () {
@@ -981,98 +1011,98 @@
   //Customer - Done
   let tempUserName;
 
-    $("#btnSaveCus").click(function () {
-      let formCusData = $("#fromCustomer").serialize();
-
-      // let file = $("#cus_img")[0].files[0];
-
-      $.ajax({
-        url: baseURL + "customer/save",
-        method: "post",
-        data: formCusData,
-        dataType: "json",
-        success: function (res) {
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Success");
-          $("#txtWarning").text(res.message);
-
-          console.log("Success : " + res.message);
-          getAllCustomers();
-          setCusTxtField("", "", "", "", "");
-          getCusCount();
-        },
-        error: function (err) {
-          let message = JSON.parse(err.responseText).message;
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Error");
-          $("#txtWarning").text(message);
-          console.log("Error : " + message)
-        }
-      });
-    });
-
-    $("#btnUpdateCus").click(function () {
-      let cusDataObj = {
-        cus_nic: $("#cus_nic").val(),
-        cus_name: $("#cus_name").val(),
-        cus_address: $("#cus_address").val(),
-        cus_contact: $("#cus_contact").val(),
-        cus_email: $("#cus_email").val()
-      };
-
-      $.ajax({
-        url: baseURL + "customer/update",
-        method: "PUT",
-        data: JSON.stringify(cusDataObj),
-        contentType: "application/json",
-        dataType: "json",
-        success: function (res) {
-          let message = res.message;
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Success");
-          $("#txtWarning").text(res.message);
-
-          console.log("Success : " + message);
-          setCusTxtField("", "", "", "", "")
-          getAllCustomers();
-          getCusCount();
-        },
-        error: function (err) {
-          let message = JSON.parse(err.responseText).message;
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Error");
-          $("#txtWarning").text(message);
-
-          console.log("Error : " + message)
-        }
-      });
-    });
-
-    $(".btnDeleteCus").click(function () {
-      let cus_nic = $("#cus_nic").val();
-
-      $.ajax({
-        url: baseURL + "customer/delete?cus_nic=" + cus_nic,
-        method: "delete",
-        success: function (resp) {
-
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Success");
-          $("#txtWarning").text(resp.message);
-
-
-          getAllCustomers();
-          setCusTxtField("", "", "", "", "")
-          getCusCount();
-        },
-        error: function (error) {
-          let message = JSON.parse(error.responseText).message;
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Error");
-          $("#txtWarning").text(message);
-        }
-      });
-    });
+    // $("#btnSaveCus").click(function () {
+    //   let formCusData = $("#fromCustomer").serialize();
+    //
+    //   // let file = $("#cus_img")[0].files[0];
+    //
+    //   $.ajax({
+    //     url: baseURL + "customer/save",
+    //     method: "post",
+    //     data: formCusData,
+    //     dataType: "json",
+    //     success: function (res) {
+    //       $("#warningModal").modal();
+    //       $("#txtWarningHeader").text("Success");
+    //       $("#txtWarning").text(res.message);
+    //
+    //       console.log("Success : " + res.message);
+    //       getAllCustomers();
+    //       setCusTxtField("", "", "", "", "");
+    //       getCusCount();
+    //     },
+    //     error: function (err) {
+    //       let message = JSON.parse(err.responseText).message;
+    //       $("#warningModal").modal();
+    //       $("#txtWarningHeader").text("Error");
+    //       $("#txtWarning").text(message);
+    //       console.log("Error : " + message)
+    //     }
+    //   });
+    // });
+    //
+    // $("#btnUpdateCus").click(function () {
+    //   let cusDataObj = {
+    //     cus_nic: $("#cus_nic").val(),
+    //     cus_name: $("#cus_name").val(),
+    //     cus_address: $("#cus_address").val(),
+    //     cus_contact: $("#cus_contact").val(),
+    //     cus_email: $("#cus_email").val()
+    //   };
+    //
+    //   $.ajax({
+    //     url: baseURL + "customer/update",
+    //     method: "PUT",
+    //     data: JSON.stringify(cusDataObj),
+    //     contentType: "application/json",
+    //     dataType: "json",
+    //     success: function (res) {
+    //       let message = res.message;
+    //       $("#warningModal").modal();
+    //       $("#txtWarningHeader").text("Success");
+    //       $("#txtWarning").text(res.message);
+    //
+    //       console.log("Success : " + message);
+    //       setCusTxtField("", "", "", "", "")
+    //       getAllCustomers();
+    //       getCusCount();
+    //     },
+    //     error: function (err) {
+    //       let message = JSON.parse(err.responseText).message;
+    //       $("#warningModal").modal();
+    //       $("#txtWarningHeader").text("Error");
+    //       $("#txtWarning").text(message);
+    //
+    //       console.log("Error : " + message)
+    //     }
+    //   });
+    // });
+    //
+    // $(".btnDeleteCus").click(function () {
+    //   let cus_nic = $("#cus_nic").val();
+    //
+    //   $.ajax({
+    //     url: baseURL + "customer/delete?cus_nic=" + cus_nic,
+    //     method: "delete",
+    //     success: function (resp) {
+    //
+    //       $("#warningModal").modal();
+    //       $("#txtWarningHeader").text("Success");
+    //       $("#txtWarning").text(resp.message);
+    //
+    //
+    //       getAllCustomers();
+    //       setCusTxtField("", "", "", "", "")
+    //       getCusCount();
+    //     },
+    //     error: function (error) {
+    //       let message = JSON.parse(error.responseText).message;
+    //       $("#warningModal").modal();
+    //       $("#txtWarningHeader").text("Error");
+    //       $("#txtWarning").text(message);
+    //     }
+    //   });
+    // });
 
     $(document).on('click', '.btnDeleteCus', function () {
     let cus_nic = $(this).closest('tr').find('td:first').text();
@@ -1190,55 +1220,80 @@
 
 
   //Car
+  function validationCar(){
+    if (!/^[A-Z]{2,3}-\d{4}$/.test($("#cr_reg").val())) {
+      $("#warningModal").modal();
+      $("#txtWarningHeader").text("Warning!");
+      $("#txtWarning").text("Please enter a valid registered number.");
+      return false;
+    }
+
+    if (!/^[a-zA-Z\s]{3,}$/.test($("#cr_make").val())) {
+      $("#warningModal").modal();
+      $("#txtWarningHeader").text("Warning!");
+      $("#txtWarning").text("Please enter a car manufacture name.");
+      return false;
+    }
+
+
+
+
+    return true;
+  }
+
     $("#btnSaveCar").click(function () {
-      var formCarData = $("#formCar").serialize();
 
-      $.ajax({
-        url: baseURL + "car/save",
-        method: "post",
-        data: formCarData,
-        dataType: "json",
-        success: function (res) {
+      if (validationCar()){
+        var formCarData = $("#formCar").serialize();
 
-          let carImgFormData = new FormData();
+        $.ajax({
+          url: baseURL + "car/save",
+          method: "post",
+          data: formCarData,
+          dataType: "json",
+          success: function (res) {
 
-          let file1 = $("#cr_img")[0].files[0];
-          let fileName1 = $("#cr_img")[0].files[0].name;
+            let carImgFormData = new FormData();
 
-          carImgFormData.append("imageId", $("#cr_reg").val());
-          carImgFormData.append("imageType", "car");
-          carImgFormData.append("imageFile" ,file1, fileName1);
+            let file1 = $("#cr_img")[0].files[0];
+            let fileName1 = $("#cr_img")[0].files[0].name;
 
-          $.ajax({
-            url: baseURL + "image/save",
-            method: "post",
-            data: carImgFormData,
-            dataType: "json",
-            async: true,
-            contentType: false,
-            processData: false,
-            enctype: "multipart/form-data",
-            success: function (res) {
-              console.log(res.message);
-              getAllCars();
-              getCarCount();
-            },
-            error: function (err){
-              console.log("Can't Save Image : "+JSON.parse(err.responseText).message);
-            }
-          });
+            carImgFormData.append("imageId", $("#cr_reg").val());
+            carImgFormData.append("imageType", "car");
+            carImgFormData.append("imageFile" ,file1, fileName1);
 
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Success");
-          $("#txtWarning").text(res.message);
-        },
-        error: function (err) {
-          let message = JSON.parse(err.responseText).message;
-          $("#warningModal").modal();
-          $("#txtWarningHeader").text("Error");
-          $("#txtWarning").text(message);
-        }
-      });
+            $.ajax({
+              url: baseURL + "image/save",
+              method: "post",
+              data: carImgFormData,
+              dataType: "json",
+              async: true,
+              contentType: false,
+              processData: false,
+              enctype: "multipart/form-data",
+              success: function (res) {
+                console.log(res.message);
+                getAllCars();
+                getCarCount();
+              },
+              error: function (err){
+                console.log("Can't Save Image : "+JSON.parse(err.responseText).message);
+              }
+            });
+
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Success");
+            $("#txtWarning").text(res.message);
+          },
+          error: function (err) {
+            let message = JSON.parse(err.responseText).message;
+            $("#warningModal").modal();
+            $("#txtWarningHeader").text("Error");
+            $("#txtWarning").text(message);
+          }
+        });
+      }
+
     });
 
     $("#btnUpdateCar").click(function () {
