@@ -922,6 +922,23 @@
 
     }
 
+    $("#bk_ndate").change(function (){
+        var startDate = new Date($('#bk_date').val());
+        var endDate = new Date($('#bk_ndate').val());
+        var days = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+        var totalRent = 0;
+        if (days<20){
+            totalRent = tempCarRentDay*days;
+        }else if(days>20){
+            totalRent = tempCarRentMonth*days/20;
+        }
+        console.log(totalRent);
+        if ($("input[name='bk_withdriver']:checked").val() == "withdriver"){
+            totalRent=totalRent+days*1000;
+        }
+        $("#bk_total").val(totalRent);
+    });
+
     $(document).keypress(function (e){
         if (e.which == 13){
             var startDate = new Date($('#bk_date').val());
@@ -1181,6 +1198,8 @@
         });
 
     });
+
+
 
 
 

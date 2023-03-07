@@ -1832,7 +1832,6 @@
 
 
   //Returning
-
   $("#fn_bkid").change(function (){
 
     $.ajax({
@@ -1854,9 +1853,69 @@
 
 
   });
+  $("#fn_bkid").click(function (){
+
+    $.ajax({
+      url: baseURL+"booking/findbooking?bk_id="+$("#fn_bkid").val(),
+      method: 'get',
+      success: function (res){
+        $("#fn_cus").val(res.data.bk_cusname);
+        $("#fn_cusnic").val(res.data.bk_cusnic);
+        $("#fn_car").val(res.data.bk_carreg);
+        $("#fn_driver").val(res.data.bk_drname);
+        $("#fn_drlic").val(res.data.bk_drlic);
+        $("#fn_rental").val(res.data.bk_total);
+
+
+
+        $("#fn_subtotal").val(res.data.bk_total+parseFloat($("#fn_exkm").val())+parseFloat($("#fn_ldw").val()));
+      }
+    });
+
+
+  });
+
+  $("#fn_ldw").click(function (){
+      $.ajax({
+        url: baseURL + "car/getcar?cr_reg=" + $("#fn_car").val(),
+        method: 'get',
+        success: function (resp) {
+          if ($("#fn_ldw")[0].checked) {
+            if (resp.data.cr_type == "General") {
+              $("#fn_subtotal").val(parseFloat($("#fn_rental").val()) + (parseFloat($("#fn_exkm").val()) * resp.data.cr_km) + 10000);
+            } else if (resp.data.cr_type == "Premium") {
+              $("#fn_subtotal").val(parseFloat($("#fn_rental").val()) + (parseFloat($("#fn_exkm").val()) * resp.data.cr_km) + 15000);
+            } else if (resp.data.cr_type == "Luxury") {
+              $("#fn_subtotal").val(parseFloat($("#fn_rental").val()) + (parseFloat($("#fn_exkm").val()) * resp.data.cr_km) + 20000);
+            }
+          } else {
+            $("#fn_subtotal").val(parseFloat($("#fn_rental").val()) + (parseFloat($("#fn_exkm").val()) * resp.data.cr_km));
+          }
+        }
+      });
+  });
+
+  $("#fn_exkm").change(function (){
+    $.ajax({
+      url: baseURL + "car/getcar?cr_reg=" + $("#fn_car").val(),
+      method: 'get',
+      success: function (resp) {
+        if ($("#fn_ldw")[0].checked) {
+          if (resp.data.cr_type == "General") {
+            $("#fn_subtotal").val(parseFloat($("#fn_rental").val()) + (parseFloat($("#fn_exkm").val()) * resp.data.cr_km) + 10000);
+          } else if (resp.data.cr_type == "Premium") {
+            $("#fn_subtotal").val(parseFloat($("#fn_rental").val()) + (parseFloat($("#fn_exkm").val()) * resp.data.cr_km) + 15000);
+          } else if (resp.data.cr_type == "Luxury") {
+            $("#fn_subtotal").val(parseFloat($("#fn_rental").val()) + (parseFloat($("#fn_exkm").val()) * resp.data.cr_km) + 20000);
+          }
+        } else {
+          $("#fn_subtotal").val(parseFloat($("#fn_rental").val()) + (parseFloat($("#fn_exkm").val()) * resp.data.cr_km));
+        }
+      }
+    });
+  });
 
   $("#btnSubmitReturn").click(function (){
-
     $.ajax({
       url: baseURL+"booking/findbooking?bk_id="+$("#fn_bkid").val(),
       method: 'get',
@@ -1897,10 +1956,6 @@
             $("#txtWarning").text(message);
           }
         });
-
-
-
-
 
         $.ajax({
           url: baseURL + "car/getcar?cr_reg=" + res.data.bk_carreg,
@@ -1943,8 +1998,8 @@
           }
         });
 
+        returnFormEmpty();
 
-        $("#fn_subtotal").val(res.data.bk_total+parseFloat($("#fn_exkm").val())+parseFloat($("#fn_ldw").val()));
       },
       error: function (err){
         let message = JSON.parse(err.responseText).message;
@@ -1955,6 +2010,18 @@
     });
 
   });
+
+  function returnFormEmpty(){
+    $("#fn_cus").val("");
+    $("#fn_cusnic").val("");
+    $("#fn_car").val("");
+    $("#fn_driver").val("");
+    $("#fn_drlic").val("");
+    $("#fn_rental").val("0");
+    $("#fn_exkm").val("0");
+    $("#fn_ldw").val("0");
+    $("#fn_subtotal").val("0");
+  }
 
 
 </script>
