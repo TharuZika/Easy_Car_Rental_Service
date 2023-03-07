@@ -49,6 +49,26 @@
   </div>
 </nav>
 
+<!--Warning Modal-->
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" id="txtWarningHeader">Warning!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-dark" id="txtWarning">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--RegisterForm-->
 
 <div class="container content">
@@ -140,76 +160,124 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script>
   let baseURL = "http://localhost:8080/BackEnd_war/"
-  $("#btnSaveCusWithLogin").click(function (){
-    let formCusData = $("#formCustomer").serialize();
 
-    $.ajax({
-      url: baseURL + "customer/save",
-      method: "post",
-      data: formCusData,
-      dataType: "json",
-      success: function (res) {
-
-        let cusImgFormData = new FormData();
-
-        let file1 = $("#cus_img")[0].files[0];
-        let fileName1 = $("#cus_img")[0].files[0].name;
-
-        cusImgFormData.append("imageId", $("#cus_nic").val());
-        cusImgFormData.append("imageType", "nic");
-        cusImgFormData.append("imageFile" ,file1, fileName1);
-
-        $.ajax({
-          url: baseURL + "image/save",
-          method: "post",
-          data: cusImgFormData,
-          dataType: "json",
-          async: true,
-          contentType: false,
-          processData: false,
-          enctype: "multipart/form-data",
-          success: function (res) {
-            console.log(res.message);
-          },
-          error: function (err){
-            console.log("Can't Save Image : "+JSON.parse(err.responseText).message);
-          }
-        });
-
-        alert(res.message);
-
-        console.log("Successfully Registered! Now Login Again");
-        setCusTxtField("", "", "", "", "");
-      },
-      error: function (err) {
-        let message = JSON.parse(err.responseText).message;
-        alert(message);
-        console.log("Error : " + message)
-      }
-    });
-
-    var cusLogObj = {
-      userId: $("#cus_nic").val(),
-      userName : $("#username").val(),
-      password : $("#password").val(),
-      role  : "Customer"
+  function validationCustomer(){
+    if (!/^(\d{9}[vV]|\d{12})$/.test($("#cus_nic").val())) {
+      $(".bd-example-modal-sm").modal('hide');
+      $("#warningModal").modal();
+      $("#txtWarningHeader").text("Warning!");
+      $("#txtWarning").text("Please enter a valid NIC number.");
+      return false;
     }
 
-    $.ajax({
-      url: baseURL + "register/customer",
-      method: "post",
-      data: JSON.stringify(cusLogObj),
-      contentType: "application/json",
-      dataType: "json",
-      success: function (res) {
-        $(location).attr('href', 'index.html');
-      },
-      error: function (err) {
-        let message = JSON.parse(err.responseText).message;
-        alert(message);
-        console.log("Error : " + message)
+    if (!/^[a-zA-Z\s]{3,}$/.test($("#cus_name").val())) {
+      $(".bd-example-modal-sm").modal('hide');
+      $("#warningModal").modal();
+      $("#txtWarningHeader").text("Warning!");
+      $("#txtWarning").text("Please enter a valid name.");
+      return false;
+    }
+
+    if (!/^[a-zA-Z\s]{3,}$/.test($("#cus_address").val())) {
+      $(".bd-example-modal-sm").modal('hide');
+      $("#warningModal").modal();
+      $("#txtWarningHeader").text("Warning!");
+      $("#txtWarning").text("Please enter a valid address.");
+      return false;
+    }
+
+    if (!/^[0-9]{10}$/.test($("#cus_contact").val())) {
+      $(".bd-example-modal-sm").modal('hide');
+      $("#warningModal").modal();
+      $("#txtWarningHeader").text("Warning!");
+      $("#txtWarning").text("Please enter a valid contact number.");
+      return false;
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test($("#cus_email").val())) {
+      $(".bd-example-modal-sm").modal('hide');
+      $("#warningModal").modal();
+      $("#txtWarningHeader").text("Warning!");
+      $("#txtWarning").text("Please enter a valid email.");
+      return false;
+    }
+    return true;
+  }
+
+
+  $("#btnSaveCusWithLogin").click(function (){
+
+    if (validationCustomer()){
+      let formCusData = $("#formCustomer").serialize();
+
+      $.ajax({
+        url: baseURL + "customer/save",
+        method: "post",
+        data: formCusData,
+        dataType: "json",
+        success: function (res) {
+
+          let cusImgFormData = new FormData();
+
+          let file1 = $("#cus_img")[0].files[0];
+          let fileName1 = $("#cus_img")[0].files[0].name;
+
+          cusImgFormData.append("imageId", $("#cus_nic").val());
+          cusImgFormData.append("imageType", "nic");
+          cusImgFormData.append("imageFile" ,file1, fileName1);
+
+          $.ajax({
+            url: baseURL + "image/save",
+            method: "post",
+            data: cusImgFormData,
+            dataType: "json",
+            async: true,
+            contentType: false,
+            processData: false,
+            enctype: "multipart/form-data",
+            success: function (res) {
+              console.log(res.message);
+            },
+            error: function (err){
+              console.log("Can't Save Image : "+JSON.parse(err.responseText).message);
+            }
+          });
+
+          alert(res.message);
+
+          console.log("Successfully Registered! Now Login Again");
+          setCusTxtField("", "", "", "", "");
+        },
+        error: function (err) {
+          let message = JSON.parse(err.responseText).message;
+          alert(message);
+          console.log("Error : " + message)
+        }
+      });
+
+      var cusLogObj = {
+        userId: $("#cus_nic").val(),
+        userName : $("#username").val(),
+        password : $("#password").val(),
+        role  : "Customer"
       }
-    });
+
+      $.ajax({
+        url: baseURL + "register/customer",
+        method: "post",
+        data: JSON.stringify(cusLogObj),
+        contentType: "application/json",
+        dataType: "json",
+        success: function (res) {
+          $(location).attr('href', 'index.html');
+        },
+        error: function (err) {
+          let message = JSON.parse(err.responseText).message;
+          alert(message);
+          console.log("Error : " + message)
+        }
+      });
+    }
 
   });
 
